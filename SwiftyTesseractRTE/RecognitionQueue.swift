@@ -19,6 +19,11 @@ public struct RecognitionQueue<T: Hashable> {
     return Set(values).count == 1
   }
   
+  init(maxElements: Int) {
+    size = maxElements
+    values = [T]()
+  }
+  
   init(maxElements: Int, values: T...) {
     size = maxElements
     if values.count > size {
