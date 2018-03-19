@@ -9,9 +9,9 @@
 import Foundation
 
 public enum RecognitionReliability: Int {
-  case tentative = 1
-  case verifiable = 2
-  case available = 3
-  case stable = 4
-  case solid = 5
+  case tentative = 3
+  case verifiable = 4
+  case available = 5
+  case stable = 6
+  case solid = 7
 }

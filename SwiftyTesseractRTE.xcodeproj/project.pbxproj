@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		623C4847204F6E670086681F /* DispatchQueueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623C4846204F6E670086681F /* DispatchQueueLabel.swift */; };
+		62216034205F3F7200A87AF5 /* DispatchQueue+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62216033205F3F7200A87AF5 /* DispatchQueue+Extension.swift */; };
+		62216036205F402D00A87AF5 /* AVCaptureSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62216035205F402D00A87AF5 /* AVCaptureSession+Extension.swift */; };
+		62216038205F40B800A87AF5 /* PipeInOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62216037205F40B800A87AF5 /* PipeInOperator.swift */; };
 		623C484A204F71250086681F /* RecognitionReliability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623C4849204F71250086681F /* RecognitionReliability.swift */; };
-		623C484C20504FEC0086681F /* SwiftyTesseract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623C484B20504FEC0086681F /* SwiftyTesseract.framework */; };
+		628E7E1A205E21B100148337 /* SwiftyTesseract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 628E7E19205E21B100148337 /* SwiftyTesseract.framework */; };
 		629F55A1204BBDB400974B07 /* SwiftyTesseractRTE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629F5597204BBDB400974B07 /* SwiftyTesseractRTE.framework */; };
 		629F55A6204BBDB400974B07 /* SwiftyTesseractRTETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629F55A5204BBDB400974B07 /* SwiftyTesseractRTETests.swift */; };
 		629F55A8204BBDB400974B07 /* SwiftyTesseractRTE.h in Headers */ = {isa = PBXBuildFile; fileRef = 629F559A204BBDB400974B07 /* SwiftyTesseractRTE.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -28,9 +30,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		623C4846204F6E670086681F /* DispatchQueueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueLabel.swift; sourceTree = "<group>"; };
+		62216033205F3F7200A87AF5 /* DispatchQueue+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extension.swift"; sourceTree = "<group>"; };
+		62216035205F402D00A87AF5 /* AVCaptureSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureSession+Extension.swift"; sourceTree = "<group>"; };
+		62216037205F40B800A87AF5 /* PipeInOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipeInOperator.swift; sourceTree = "<group>"; };
 		623C4849204F71250086681F /* RecognitionReliability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionReliability.swift; sourceTree = "<group>"; };
-		623C484B20504FEC0086681F /* SwiftyTesseract.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyTesseract.framework; sourceTree = "<group>"; };
+		628E7E19205E21B100148337 /* SwiftyTesseract.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyTesseract.framework; sourceTree = "<group>"; };
 		629F5597204BBDB400974B07 /* SwiftyTesseractRTE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyTesseractRTE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		629F559A204BBDB400974B07 /* SwiftyTesseractRTE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyTesseractRTE.h; sourceTree = "<group>"; };
 		629F559B204BBDB400974B07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				623C484C20504FEC0086681F /* SwiftyTesseract.framework in Frameworks */,
+				628E7E1A205E21B100148337 /* SwiftyTesseract.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,11 +88,13 @@
 			children = (
 				629F559A204BBDB400974B07 /* SwiftyTesseractRTE.h */,
 				629F559B204BBDB400974B07 /* Info.plist */,
-				629F55B3204BC03F00974B07 /* RecognitionQueue.swift */,
 				62CFF699204DFDB50090DA83 /* SwiftyTesseractRTE.swift */,
-				623C4846204F6E670086681F /* DispatchQueueLabel.swift */,
+				629F55B3204BC03F00974B07 /* RecognitionQueue.swift */,
 				623C4849204F71250086681F /* RecognitionReliability.swift */,
-				623C484B20504FEC0086681F /* SwiftyTesseract.framework */,
+				62216037205F40B800A87AF5 /* PipeInOperator.swift */,
+				62216033205F3F7200A87AF5 /* DispatchQueue+Extension.swift */,
+				62216035205F402D00A87AF5 /* AVCaptureSession+Extension.swift */,
+				628E7E19205E21B100148337 /* SwiftyTesseract.framework */,
 			);
 			path = SwiftyTesseractRTE;
 			sourceTree = "<group>";
@@ -214,7 +220,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				62CFF69A204DFDB50090DA83 /* SwiftyTesseractRTE.swift in Sources */,
-				623C4847204F6E670086681F /* DispatchQueueLabel.swift in Sources */,
+				62216034205F3F7200A87AF5 /* DispatchQueue+Extension.swift in Sources */,
+				62216038205F40B800A87AF5 /* PipeInOperator.swift in Sources */,
+				62216036205F402D00A87AF5 /* AVCaptureSession+Extension.swift in Sources */,
 				623C484A204F71250086681F /* RecognitionReliability.swift in Sources */,
 				629F55B4204BC03F00974B07 /* RecognitionQueue.swift in Sources */,
 			);
