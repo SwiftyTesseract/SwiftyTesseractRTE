@@ -41,9 +41,19 @@ public struct RecognitionQueue<T: Hashable> {
     }
   }
   
+  public mutating func clear() {
+    values = []
+  }
+  
   @discardableResult
   public mutating func dequeue() -> T? {
     guard !values.isEmpty else { return nil }
     return values.remove(at: 0)
+  }
+}
+
+extension RecognitionQueue {
+  init(desiredReliability: RecognitionReliability) {
+    self.init(maxElements: desiredReliability.rawValue)
   }
 }

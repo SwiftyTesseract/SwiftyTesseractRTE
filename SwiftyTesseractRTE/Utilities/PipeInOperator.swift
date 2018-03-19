@@ -9,6 +9,6 @@
 import Foundation
 
 infix operator |>: AdditionPrecedence
-func |><T, U>(lhs: T, rhs: ((T) -> (U))) -> U {
+func |><T, U>(lhs: T, rhs: (T) -> (U)) -> U {
   return rhs(lhs)
 }

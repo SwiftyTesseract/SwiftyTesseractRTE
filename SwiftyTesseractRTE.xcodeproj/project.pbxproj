@@ -10,6 +10,10 @@
 		62216034205F3F7200A87AF5 /* DispatchQueue+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62216033205F3F7200A87AF5 /* DispatchQueue+Extension.swift */; };
 		62216036205F402D00A87AF5 /* AVCaptureSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62216035205F402D00A87AF5 /* AVCaptureSession+Extension.swift */; };
 		62216038205F40B800A87AF5 /* PipeInOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62216037205F40B800A87AF5 /* PipeInOperator.swift */; };
+		6221603A205FF4AE00A87AF5 /* AVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62216039205FF4AE00A87AF5 /* AVManager.swift */; };
+		6221603C205FF83500A87AF5 /* AVSampleProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221603B205FF83500A87AF5 /* AVSampleProcessor.swift */; };
+		62216040205FFD3B00A87AF5 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221603F205FFD3B00A87AF5 /* ImageProcessor.swift */; };
+		62216046206003BD00A87AF5 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62216045206003BD00A87AF5 /* VideoManager.swift */; };
 		623C484A204F71250086681F /* RecognitionReliability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623C4849204F71250086681F /* RecognitionReliability.swift */; };
 		628E7E1A205E21B100148337 /* SwiftyTesseract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 628E7E19205E21B100148337 /* SwiftyTesseract.framework */; };
 		629F55A1204BBDB400974B07 /* SwiftyTesseractRTE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629F5597204BBDB400974B07 /* SwiftyTesseractRTE.framework */; };
@@ -33,6 +37,10 @@
 		62216033205F3F7200A87AF5 /* DispatchQueue+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extension.swift"; sourceTree = "<group>"; };
 		62216035205F402D00A87AF5 /* AVCaptureSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureSession+Extension.swift"; sourceTree = "<group>"; };
 		62216037205F40B800A87AF5 /* PipeInOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipeInOperator.swift; sourceTree = "<group>"; };
+		62216039205FF4AE00A87AF5 /* AVManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVManager.swift; sourceTree = "<group>"; };
+		6221603B205FF83500A87AF5 /* AVSampleProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVSampleProcessor.swift; sourceTree = "<group>"; };
+		6221603F205FFD3B00A87AF5 /* ImageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
+		62216045206003BD00A87AF5 /* VideoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
 		623C4849204F71250086681F /* RecognitionReliability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionReliability.swift; sourceTree = "<group>"; };
 		628E7E19205E21B100148337 /* SwiftyTesseract.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyTesseract.framework; sourceTree = "<group>"; };
 		629F5597204BBDB400974B07 /* SwiftyTesseractRTE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyTesseractRTE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +73,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6221603D205FFBB000A87AF5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				62216039205FF4AE00A87AF5 /* AVManager.swift */,
+				6221603B205FF83500A87AF5 /* AVSampleProcessor.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		6221603E205FFBCC00A87AF5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				62216033205F3F7200A87AF5 /* DispatchQueue+Extension.swift */,
+				62216035205F402D00A87AF5 /* AVCaptureSession+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		62216099206051EC00A87AF5 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				62216037205F40B800A87AF5 /* PipeInOperator.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		629F558D204BBDB400974B07 = {
 			isa = PBXGroup;
 			children = (
@@ -86,14 +120,16 @@
 		629F5599204BBDB400974B07 /* SwiftyTesseractRTE */ = {
 			isa = PBXGroup;
 			children = (
+				6221603D205FFBB000A87AF5 /* Protocols */,
+				6221603E205FFBCC00A87AF5 /* Extensions */,
+				62216099206051EC00A87AF5 /* Utilities */,
 				629F559A204BBDB400974B07 /* SwiftyTesseractRTE.h */,
 				629F559B204BBDB400974B07 /* Info.plist */,
+				6221603F205FFD3B00A87AF5 /* ImageProcessor.swift */,
+				62216045206003BD00A87AF5 /* VideoManager.swift */,
 				62CFF699204DFDB50090DA83 /* SwiftyTesseractRTE.swift */,
 				629F55B3204BC03F00974B07 /* RecognitionQueue.swift */,
 				623C4849204F71250086681F /* RecognitionReliability.swift */,
-				62216037205F40B800A87AF5 /* PipeInOperator.swift */,
-				62216033205F3F7200A87AF5 /* DispatchQueue+Extension.swift */,
-				62216035205F402D00A87AF5 /* AVCaptureSession+Extension.swift */,
 				628E7E19205E21B100148337 /* SwiftyTesseract.framework */,
 			);
 			path = SwiftyTesseractRTE;
@@ -220,11 +256,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				62CFF69A204DFDB50090DA83 /* SwiftyTesseractRTE.swift in Sources */,
+				62216040205FFD3B00A87AF5 /* ImageProcessor.swift in Sources */,
 				62216034205F3F7200A87AF5 /* DispatchQueue+Extension.swift in Sources */,
+				6221603C205FF83500A87AF5 /* AVSampleProcessor.swift in Sources */,
 				62216038205F40B800A87AF5 /* PipeInOperator.swift in Sources */,
 				62216036205F402D00A87AF5 /* AVCaptureSession+Extension.swift in Sources */,
 				623C484A204F71250086681F /* RecognitionReliability.swift in Sources */,
+				62216046206003BD00A87AF5 /* VideoManager.swift in Sources */,
 				629F55B4204BC03F00974B07 /* RecognitionQueue.swift in Sources */,
+				6221603A205FF4AE00A87AF5 /* AVManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
