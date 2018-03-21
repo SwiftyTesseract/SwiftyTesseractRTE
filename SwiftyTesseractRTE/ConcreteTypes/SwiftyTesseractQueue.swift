@@ -6,19 +6,11 @@
 //  Copyright © 2018 Steven Sherry. All rights reserved.
 //
 
-import Foundation
-
-public struct RecognitionQueue<T: Hashable> {
+struct RecognitionQueue<T: Hashable> {
   private var values: [T]
   
-  public let size: Int
-  public var count: Int {
-    return values.count
-  }
-  public var allValuesMatch: Bool {
-    return Set(values).count == 1
-  }
-  
+  let size: Int
+
   init(maxElements: Int) {
     size = maxElements
     values = [T]()
@@ -34,22 +26,31 @@ public struct RecognitionQueue<T: Hashable> {
     }
   }
   
-  public mutating func enqueue(_ value: T) {
+  var count: Int {
+    return values.count
+  }
+  
+  var allValuesMatch: Bool {
+    return Set(values).count == 1
+  }
+  
+  mutating func enqueue(_ value: T) {
     values.append(value)
     if values.count > size {
       values.remove(at: 0)
     }
   }
   
-  public mutating func clear() {
-    values = []
+  mutating func clear() {
+    values.removeAll()
   }
   
   @discardableResult
-  public mutating func dequeue() -> T? {
+  mutating func dequeue() -> T? {
     guard !values.isEmpty else { return nil }
     return values.remove(at: 0)
   }
+  
 }
 
 extension RecognitionQueue {

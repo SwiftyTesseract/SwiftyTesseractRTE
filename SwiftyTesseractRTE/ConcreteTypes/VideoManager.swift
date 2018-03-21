@@ -6,7 +6,6 @@
 //  Copyright © 2018 Steven Sherry. All rights reserved.
 //
 
-import Foundation
 import AVFoundation
 
 class VideoManager: AVManager {

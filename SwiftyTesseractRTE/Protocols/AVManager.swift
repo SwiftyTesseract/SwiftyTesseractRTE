@@ -9,7 +9,7 @@
 import Foundation
 import AVFoundation
 
-protocol AVManager: class {
+public protocol AVManager: class {
   var previewLayer: AVCaptureVideoPreviewLayer { get }
   var captureSession: AVCaptureSession { get }
   var sessionQueue: DispatchQueue { get }

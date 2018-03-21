@@ -9,6 +9,7 @@
 import XCTest
 @testable import SwiftyTesseractRTE
 
+
 class SwiftyTesseractRTETests: XCTestCase {
     
   override func setUp() {
@@ -31,6 +32,16 @@ class SwiftyTesseractRTETests: XCTestCase {
   func testQueueInit_valueCountGreaterThanSize() {
     let queue = RecognitionQueue(maxElements: 3, values: 1, 2, 3, 4)
     XCTAssertEqual(queue.size, queue.count)
+  }
+  
+  func testQueueInit_withRecognitionReliability() {
+    let verifiableQueue = RecognitionQueue<Int>(desiredReliability: .verifiable)
+    let repeatableQueue = RecognitionQueue<Int>(desiredReliability: .repeatable)
+    let stableQueue = RecognitionQueue<Int>(desiredReliability: .stable)
+    
+    XCTAssert(verifiableQueue.size == 3)
+    XCTAssert(repeatableQueue.size == 4)
+    XCTAssert(stableQueue.size == 5)
   }
   
   func testQueueAllValuesMatch() {

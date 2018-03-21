@@ -6,8 +6,8 @@
 //  Copyright © 2018 Steven Sherry. All rights reserved.
 //
 
-import AVFoundation
 import SwiftyTesseract
+import AVFoundation
 
 // MARK: - SwiftyTesseractRTEDelegate definition
 public protocol SwiftyTesseractRTEDelegate: class {
@@ -59,31 +59,44 @@ public class SwiftyTesseractRTE: NSObject {
 
   
   // MARK: - Initializers
-  public init(recognitionLanguage: RecognitionLanguage = .english,
-              desiredReliability: RecognitionReliability,
-              bundle: Bundle = .main,
-              cameraPosition: AVCaptureDevice.Position = .back,
-              cameraQuality: AVCaptureSession.Preset = .medium) {
+  public convenience init(swiftyTesseract: SwiftyTesseract,
+                          desiredReliability: RecognitionReliability,
+                          imageProcessor: AVSampleProcessor,
+                          cameraQuality: AVCaptureSession.Preset = .medium) {
 
-    recognitionQueue = RecognitionQueue(desiredReliability: desiredReliability)
-    swiftyTesseract = SwiftyTesseract(language: recognitionLanguage, bundle: .main, engineMode: .lstmOnly)
-    self.imageProcessor = ImageProcessor()
-    self.videoManager = VideoManager()
+    let recognitionQueue = RecognitionQueue<String>(desiredReliability: desiredReliability)
+    let avManager = VideoManager(cameraQuality: cameraQuality)
+    
+    self.init(swiftyTesseract: swiftyTesseract,
+              recognitionQueue: recognitionQueue,
+              imageProcessor: imageProcessor,
+              avManager: avManager)
+  }
+  
+  public convenience init(swiftyTesseract: SwiftyTesseract,
+                          desiredReliability: RecognitionReliability,
+                          cameraQuality: AVCaptureSession.Preset = .medium) {
+    
+    let recognitionQueue = RecognitionQueue<String>(desiredReliability: desiredReliability)
+    let videoManager = VideoManager(cameraQuality: cameraQuality)
+    
+    self.init(swiftyTesseract: swiftyTesseract,
+              recognitionQueue: recognitionQueue,
+              avManager: videoManager)
+  }
+  
+  init(swiftyTesseract: SwiftyTesseract,
+       recognitionQueue: RecognitionQueue<String>,
+       imageProcessor: AVSampleProcessor = ImageProcessor(),
+       avManager: AVManager = VideoManager()) {
+    
+    self.swiftyTesseract = swiftyTesseract
+    self.recognitionQueue = recognitionQueue
+    self.imageProcessor = imageProcessor
+    self.videoManager = avManager
     super.init()
     self.videoManager.delegate = self
   }
-  
-//  init(recognitionLanguage: RecognitionLanguage,
-//               desiredReliability: RecognitionReliability,
-//               bundle: Bundle,
-//               cameraPositions: AVCaptureDevice.Position,
-//               cameraQuality: AVCaptureSession.Preset,
-//               imageProcessor: AVSampleProcessor = ImageProcessor(),
-//               avManager: AVManager = VideoManager(cameraPosition: cameraPosition,
-//                                                   cameraQuality: cameraQuality),
-//               recognitionQueue: RecognitionQueue<String> = RecognitionQueue(desiredReliability: desiredReliability)) {
-//
-//  }
   
 }
 
@@ -92,17 +105,18 @@ public class SwiftyTesseractRTE: NSObject {
 extension SwiftyTesseractRTE: AVCaptureVideoDataOutputSampleBufferDelegate {
   
   public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-    print("Thread priority \(Thread.threadPriority())")
-    guard let cgImage = imageProcessor.convertToGrayscaleCgImage(from: sampleBuffer) else { return }
-
-    let image = UIImage(cgImage: cgImage)
+    
+    guard let grayscaleCgImage = imageProcessor.convertToGrayscaleCgImage(from: sampleBuffer) else { return }
+    let grayscaleUiImage = UIImage(cgImage: grayscaleCgImage)
+    
     guard
-      let thisImage = imageProcessor.crop(output: image, toBoundsOf: previewLayer),
-      let thatImage = imageProcessor.crop(output: thisImage, toBoundsOf: areaOfInterest!, containedIn: previewLayer)
+      let imageCroppedToPreviewLayer = imageProcessor.crop(output: grayscaleUiImage, toBoundsOf: previewLayer),
+      let imageCroppedToAreaOfInterest = imageProcessor.crop(output: imageCroppedToPreviewLayer, toBoundsOf: areaOfInterest!, containedIn: previewLayer)
     else { return }
 
-    delegate?.captured(image: thatImage)
-    swiftyTesseract.performOCR(from: thatImage) { [weak self] success, recognizedString in
+    delegate?.captured(image: imageCroppedToAreaOfInterest)
+    
+    swiftyTesseract.performOCR(from: imageCroppedToAreaOfInterest) { [weak self] success, recognizedString in
       guard success, let recognizedString = recognizedString, let strongSelf = self else { return }
       print("recognizedString in SwiftyTesseractRTE: \(recognizedString)")
       if strongSelf.recognitionQueue.count == strongSelf.recognitionQueue.size && strongSelf.recognitionQueue.allValuesMatch {

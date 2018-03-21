@@ -6,7 +6,6 @@
 //  Copyright © 2018 Steven Sherry. All rights reserved.
 //
 
-import Foundation
 import AVFoundation
 
 struct ImageProcessor {
@@ -101,15 +100,6 @@ extension ImageProcessor: AVSampleProcessor {
     }
     image.draw(in: newRect)
     guard let newImage = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
-//    let transformation = CGAffineTransform
-//      .identity
-//      .translatedBy(x: areaOfInterest.origin.x * widthMultiplier / 2, y: areaOfInterest.origin.y * heightMultiplier / 2)
-//      .scaledBy(x: widthMultiplier, y: heightMultiplier)
-//    
-//    
-//    let croppingRect = areaOfInterest.applying(transformation)
-//    
-//    guard let cropImage = image.cgImage?.cropping(to: croppingRect) else { return newImage }
     guard let cropImage = newImage.cgImage?.cropping(to: areaOfInterest) else { return newImage }
     return UIImage(cgImage: cropImage, scale: image.scale, orientation: image.imageOrientation)
   }

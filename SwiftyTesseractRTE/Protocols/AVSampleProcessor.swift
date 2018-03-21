@@ -9,7 +9,7 @@
 import Foundation
 import AVFoundation
 
-protocol AVSampleProcessor {
+public protocol AVSampleProcessor {
   var ciContext: CIContext { get }
   
   // Color adjustment methods
