@@ -9,30 +9,43 @@
 import AVFoundation
 
 class VideoManager: AVManager {
-  var previewLayer: AVCaptureVideoPreviewLayer
-  var captureSession: AVCaptureSession
-  var sessionQueue: DispatchQueue
-  var mediaType: AVMediaType
+  
+  private(set) var previewLayer: AVCaptureVideoPreviewLayer
+  private(set) var captureSession: AVCaptureSession
+  private(set) var sessionQueue: DispatchQueue
+  private(set) var mediaType: AVMediaType
+  var videoOrientation: AVCaptureVideoOrientation
   
   var cameraPosition: AVCaptureDevice.Position {
     didSet {
-      configure(captureSession: captureSession, withQuality: cameraQuality, forMediaType: mediaType, andCameraPosition: cameraPosition)
+      sessionQueue.suspend()
+      configure(captureSession: captureSession)
+      sessionQueue.resume()
     }
   }
   
   var cameraQuality: AVCaptureSession.Preset {
     didSet {
-      configure(captureSession: captureSession, withQuality: cameraQuality, forMediaType: mediaType, andCameraPosition: cameraPosition)
+      sessionQueue.suspend()
+      configure(captureSession: captureSession)
+      sessionQueue.resume()
     }
   }
   
-  weak var delegate: AVCaptureVideoDataOutputSampleBufferDelegate?
+  weak var delegate: AVCaptureVideoDataOutputSampleBufferDelegate? {
+    didSet {
+      sessionQueue.suspend()
+      configure(captureSession: captureSession)
+      sessionQueue.resume()
+    }
+  }
   
   init(previewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(),
        captureSession: AVCaptureSession = AVCaptureSession(),
        sessionQueue: DispatchQueue = DispatchQueue(queueLabel: .session),
        cameraPosition: AVCaptureDevice.Position = .back,
        cameraQuality: AVCaptureSession.Preset = .medium,
+       videoOrientation: AVCaptureVideoOrientation = .portrait,
        mediaType: AVMediaType = .video) {
     
     self.previewLayer = previewLayer
@@ -40,21 +53,21 @@ class VideoManager: AVManager {
     self.sessionQueue = sessionQueue
     self.cameraPosition = cameraPosition
     self.cameraQuality = cameraQuality
+    self.videoOrientation = videoOrientation
     self.mediaType = mediaType
     
-    self.previewLayer.videoGravity = .resizeAspectFill
-    self.previewLayer.connection?.videoOrientation = .portrait
     self.previewLayer.session = self.captureSession
+    self.previewLayer.videoGravity = .resizeAspectFill
     
-    isAuthorized(for: mediaType)
-    sessionQueue.async { [weak self] in
-      guard let strongSelf = self else { return }
-      strongSelf.configure(captureSession: captureSession, withQuality: cameraQuality, forMediaType: mediaType, andCameraPosition: cameraPosition)
+    if isAuthorized(for: mediaType) {
+      sessionQueue.async { [weak self] in
+        guard let strongSelf = self else { return }
+        strongSelf.configure(captureSession: strongSelf.captureSession)
+      }
     }
   }
   
-  @discardableResult
-  func isAuthorized(for mediaType: AVMediaType) -> Bool {
+  private func isAuthorized(for mediaType: AVMediaType) -> Bool {
     switch AVCaptureDevice.authorizationStatus(for: mediaType) {
     case .authorized:
       return true
@@ -66,32 +79,31 @@ class VideoManager: AVManager {
     }
   }
   
-  func requestPermission(for mediaType: AVMediaType) {
+  private func requestPermission(for mediaType: AVMediaType) {
     sessionQueue.suspend()
     AVCaptureDevice.requestAccess(for: mediaType) { [weak self] granted in
       guard let strongSelf = self else { return }
       if granted {
-        strongSelf.configure(captureSession: strongSelf.captureSession,
-                             withQuality: strongSelf.cameraQuality,
-                             forMediaType: mediaType,
-                             andCameraPosition: strongSelf.cameraPosition)
-        
+        strongSelf.configure(captureSession: strongSelf.captureSession)
         strongSelf.sessionQueue.resume()
       }
     }
   }
   
-  func configure(captureSession: AVCaptureSession, withQuality quality: AVCaptureSession.Preset, forMediaType mediaType: AVMediaType,
-                 andCameraPosition cameraPosition: AVCaptureDevice.Position) {
-    guard isAuthorized(for: mediaType) else { return }
-    
-    captureSession.sessionPreset = quality
+  private func configure(captureSession: AVCaptureSession) {
     
     guard
-      let captureDevice = AVCaptureDevice.default(for: mediaType),
+      let delegate = delegate,
+      isAuthorized(for: mediaType)
+    else { return }
+    
+    captureSession.sessionPreset = cameraQuality
+    
+    guard
+      let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: mediaType, position: cameraPosition),
       let captureDeviceInput = try? AVCaptureDeviceInput(device: captureDevice),
       captureSession.canAddInput(captureDeviceInput)
-      else { return }
+    else { return }
     captureSession.addInput(captureDeviceInput)
     
     let videoOutput = AVCaptureVideoDataOutput()
@@ -106,7 +118,7 @@ class VideoManager: AVManager {
       connection.isVideoMirroringSupported
     else { return }
     
-    connection.videoOrientation = .portrait
+    connection.videoOrientation = videoOrientation
     connection.isVideoMirrored = cameraPosition == .front
   }
 }

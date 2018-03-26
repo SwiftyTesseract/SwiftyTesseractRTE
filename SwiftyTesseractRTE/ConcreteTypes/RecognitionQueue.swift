@@ -1,5 +1,5 @@
 //
-//  RecognitionArray.swift
+//  RecognitionQueue.swift
 //  SwiftyTesseractRTE
 //
 //  Created by Steven Sherry on 3/3/18.
@@ -47,7 +47,7 @@ struct RecognitionQueue<T: Hashable> {
   
   @discardableResult
   mutating func dequeue() -> T? {
-    guard !values.isEmpty else { return nil }
+    if values.isEmpty { return nil }
     return values.remove(at: 0)
   }
   

@@ -17,6 +17,7 @@ struct ImageProcessor {
 }
 
 extension ImageProcessor: AVSampleProcessor {
+  
   func adjustColors(in ciImage: CIImage?) -> CIImage? {
     guard
       let ciImage = ciImage,
@@ -71,6 +72,7 @@ extension ImageProcessor: AVSampleProcessor {
   }
   
   func crop(output image: UIImage, toBoundsOf previewLayer: AVCaptureVideoPreviewLayer) -> UIImage? {
+    
     let widthToHeightRatio = previewLayer.bounds.size.width / previewLayer.bounds.size.height
     
     let cropWidth = image.size.width < image.size.height ? image.size.width : image.size.height * widthToHeightRatio
@@ -102,17 +104,5 @@ extension ImageProcessor: AVSampleProcessor {
     guard let newImage = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
     guard let cropImage = newImage.cgImage?.cropping(to: areaOfInterest) else { return newImage }
     return UIImage(cgImage: cropImage, scale: image.scale, orientation: image.imageOrientation)
-  }
-  
-  func convertToGrayscaleCgImage(from sampleBuffer: CMSampleBuffer) -> CGImage? {
-    guard
-      let cgImage = sampleBuffer
-        |> convertToCvImageBuffer
-        |> convertToCiImage
-        |> adjustColors
-        |> convertToCgImage
-        |> convertToGrayscale
-      else { return nil }
-    return cgImage
   }
 }

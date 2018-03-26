@@ -6,22 +6,19 @@
 //  Copyright © 2018 Steven Sherry. All rights reserved.
 //
 
-import Foundation
 import AVFoundation
 
-public protocol AVManager: class {
+protocol AVManager: class {
+  // MARK: - Required member variables
   var previewLayer: AVCaptureVideoPreviewLayer { get }
   var captureSession: AVCaptureSession { get }
   var sessionQueue: DispatchQueue { get }
-  weak var delegate: AVCaptureVideoDataOutputSampleBufferDelegate? { get set }
-  var cameraPosition: AVCaptureDevice.Position { get }
+  var cameraPosition: AVCaptureDevice.Position { get set }
   var cameraQuality: AVCaptureSession.Preset { get set }
+  var videoOrientation: AVCaptureVideoOrientation { get set }
   var mediaType: AVMediaType { get }
   
-  @discardableResult
-  func isAuthorized(for mediaType: AVMediaType) -> Bool
-  
-  func requestPermission(for mediaType: AVMediaType)
-  func configure(captureSession: AVCaptureSession, withQuality quality: AVCaptureSession.Preset, forMediaType mediaType: AVMediaType, andCameraPosition cameraPosition: AVCaptureDevice.Position)
+  // MARK: - Required delegate
+  weak var delegate: AVCaptureVideoDataOutputSampleBufferDelegate? { get set }
   
 }

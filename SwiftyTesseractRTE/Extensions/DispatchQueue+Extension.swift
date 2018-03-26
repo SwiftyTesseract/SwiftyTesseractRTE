@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension DispatchQueue {
+extension DispatchQueue {
   convenience init(queueLabel: DispatchQueue.Label) {
     self.init(label: queueLabel.rawValue)
   }

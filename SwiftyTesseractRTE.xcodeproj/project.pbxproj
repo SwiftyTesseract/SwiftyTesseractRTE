@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6217339B2062AFBF00297EDC /* SwiftyTesseract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6217339A2062AFBF00297EDC /* SwiftyTesseract.framework */; };
-		6217339C2062AFBF00297EDC /* SwiftyTesseract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6217339A2062AFBF00297EDC /* SwiftyTesseract.framework */; };
 		62216034205F3F7200A87AF5 /* DispatchQueue+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62216033205F3F7200A87AF5 /* DispatchQueue+Extension.swift */; };
-		62216036205F402D00A87AF5 /* AVCaptureSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62216035205F402D00A87AF5 /* AVCaptureSession+Extension.swift */; };
 		62216038205F40B800A87AF5 /* PipeInOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62216037205F40B800A87AF5 /* PipeInOperator.swift */; };
 		6221603A205FF4AE00A87AF5 /* AVManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62216039205FF4AE00A87AF5 /* AVManager.swift */; };
 		6221603C205FF83500A87AF5 /* AVSampleProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221603B205FF83500A87AF5 /* AVSampleProcessor.swift */; };
@@ -20,8 +17,9 @@
 		629F55A1204BBDB400974B07 /* SwiftyTesseractRTE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629F5597204BBDB400974B07 /* SwiftyTesseractRTE.framework */; };
 		629F55A6204BBDB400974B07 /* SwiftyTesseractRTETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629F55A5204BBDB400974B07 /* SwiftyTesseractRTETests.swift */; };
 		629F55A8204BBDB400974B07 /* SwiftyTesseractRTE.h in Headers */ = {isa = PBXBuildFile; fileRef = 629F559A204BBDB400974B07 /* SwiftyTesseractRTE.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		629F55B4204BC03F00974B07 /* SwiftyTesseractQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629F55B3204BC03F00974B07 /* SwiftyTesseractQueue.swift */; };
+		629F55B4204BC03F00974B07 /* RecognitionQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629F55B3204BC03F00974B07 /* RecognitionQueue.swift */; };
 		62CFF69A204DFDB50090DA83 /* SwiftyTesseractRTE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CFF699204DFDB50090DA83 /* SwiftyTesseractRTE.swift */; };
+		62DF38CD2066F709008F0476 /* SwiftyTesseract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62DF38CC2066F709008F0476 /* SwiftyTesseract.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,9 +34,7 @@
 
 /* Begin PBXFileReference section */
 		621733922062ADA800297EDC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		6217339A2062AFBF00297EDC /* SwiftyTesseract.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyTesseract.framework; sourceTree = "<group>"; };
 		62216033205F3F7200A87AF5 /* DispatchQueue+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extension.swift"; sourceTree = "<group>"; };
-		62216035205F402D00A87AF5 /* AVCaptureSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureSession+Extension.swift"; sourceTree = "<group>"; };
 		62216037205F40B800A87AF5 /* PipeInOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipeInOperator.swift; sourceTree = "<group>"; };
 		62216039205FF4AE00A87AF5 /* AVManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVManager.swift; sourceTree = "<group>"; };
 		6221603B205FF83500A87AF5 /* AVSampleProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVSampleProcessor.swift; sourceTree = "<group>"; };
@@ -51,8 +47,9 @@
 		629F55A0204BBDB400974B07 /* SwiftyTesseractRTETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyTesseractRTETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		629F55A5204BBDB400974B07 /* SwiftyTesseractRTETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyTesseractRTETests.swift; sourceTree = "<group>"; };
 		629F55A7204BBDB400974B07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		629F55B3204BC03F00974B07 /* SwiftyTesseractQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyTesseractQueue.swift; sourceTree = "<group>"; };
+		629F55B3204BC03F00974B07 /* RecognitionQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionQueue.swift; sourceTree = "<group>"; };
 		62CFF699204DFDB50090DA83 /* SwiftyTesseractRTE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyTesseractRTE.swift; sourceTree = "<group>"; };
+		62DF38CC2066F709008F0476 /* SwiftyTesseract.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyTesseract.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6217339B2062AFBF00297EDC /* SwiftyTesseract.framework in Frameworks */,
+				62DF38CD2066F709008F0476 /* SwiftyTesseract.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,7 +66,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				629F55A1204BBDB400974B07 /* SwiftyTesseractRTE.framework in Frameworks */,
-				6217339C2062AFBF00297EDC /* SwiftyTesseract.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				62CFF699204DFDB50090DA83 /* SwiftyTesseractRTE.swift */,
-				629F55B3204BC03F00974B07 /* SwiftyTesseractQueue.swift */,
+				629F55B3204BC03F00974B07 /* RecognitionQueue.swift */,
 				623C4849204F71250086681F /* RecognitionReliability.swift */,
 				6221603F205FFD3B00A87AF5 /* ImageProcessor.swift */,
 				62216045206003BD00A87AF5 /* VideoManager.swift */,
@@ -109,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				62216033205F3F7200A87AF5 /* DispatchQueue+Extension.swift */,
-				62216035205F402D00A87AF5 /* AVCaptureSession+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -150,7 +145,7 @@
 				62216099206051EC00A87AF5 /* Utilities */,
 				629F559A204BBDB400974B07 /* SwiftyTesseractRTE.h */,
 				629F559B204BBDB400974B07 /* Info.plist */,
-				6217339A2062AFBF00297EDC /* SwiftyTesseract.framework */,
+				62DF38CC2066F709008F0476 /* SwiftyTesseract.framework */,
 			);
 			path = SwiftyTesseractRTE;
 			sourceTree = "<group>";
@@ -280,10 +275,9 @@
 				62216034205F3F7200A87AF5 /* DispatchQueue+Extension.swift in Sources */,
 				6221603C205FF83500A87AF5 /* AVSampleProcessor.swift in Sources */,
 				62216038205F40B800A87AF5 /* PipeInOperator.swift in Sources */,
-				62216036205F402D00A87AF5 /* AVCaptureSession+Extension.swift in Sources */,
 				623C484A204F71250086681F /* RecognitionReliability.swift in Sources */,
 				62216046206003BD00A87AF5 /* VideoManager.swift in Sources */,
-				629F55B4204BC03F00974B07 /* SwiftyTesseractQueue.swift in Sources */,
+				629F55B4204BC03F00974B07 /* RecognitionQueue.swift in Sources */,
 				6221603A205FF4AE00A87AF5 /* AVManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
