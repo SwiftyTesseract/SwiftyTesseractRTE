@@ -68,7 +68,7 @@ $ pod install
 
 ### [Carthage](https://github.com/Carthage/Carthage)
 
-**Tested with `carthage version`: `0.28.0`**
+**Tested with `carthage version`: `0.29.0`**
 
 Add this to `Cartfile`
 
