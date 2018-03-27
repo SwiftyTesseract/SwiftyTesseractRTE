@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="SwiftyTesseractRTE_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QsP-EC-SIH">
+                                <rect key="frame" x="0.0" y="28" width="414" height="442"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pY-x2-Kns">
+                                        <rect key="frame" x="69" y="190.66666666666666" width="275" height="60"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="275" id="WDj-L7-VyV"/>
+                                            <constraint firstAttribute="height" constant="60" id="cNW-AJ-fGV"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="6pY-x2-Kns" firstAttribute="centerX" secondItem="QsP-EC-SIH" secondAttribute="centerX" id="33E-my-byi"/>
+                                    <constraint firstItem="6pY-x2-Kns" firstAttribute="centerY" secondItem="QsP-EC-SIH" secondAttribute="centerY" id="I73-zK-vVZ"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View finder below can be resized. Tap and drag to resize and fit the text to be recognized in the box." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUq-E0-SXT">
+                                <rect key="frame" x="28" y="28" width="358" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oIB-Ti-Qn5">
+                                <rect key="frame" x="28" y="478" width="358" height="250"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F6V-ms-4I3">
+                                        <rect key="frame" x="0.0" y="0.0" width="358" height="28.333333333333332"/>
+                                        <state key="normal" image="flashlightOff"/>
+                                        <connections>
+                                            <action selector="flashLightButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="LbF-k0-t1H"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Df9-DJ-y6p">
+                                        <rect key="frame" x="0.0" y="36.333333333333371" width="358" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="recognitionButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3Gb-W4-ZZ8"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recognition Text:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFY-sy-3qF">
+                                        <rect key="frame" x="0.0" y="74.333333333333371" width="358" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Let's do this!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6Wj-BC-sZL">
+                                        <rect key="frame" x="0.0" y="102.66666666666664" width="358" height="147.33333333333337"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="a3m-0k-X0f"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="QsP-EC-SIH" secondAttribute="trailing" id="1Bw-7c-t0I"/>
+                            <constraint firstItem="oIB-Ti-Qn5" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="8" id="9rG-2E-BrU"/>
+                            <constraint firstItem="QsP-EC-SIH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="KMq-M9-jdO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oIB-Ti-Qn5" secondAttribute="trailing" constant="8" id="Mrk-kq-6db"/>
+                            <constraint firstItem="QsP-EC-SIH" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="NT5-kY-VEB"/>
+                            <constraint firstItem="xUq-E0-SXT" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="8" id="Qp0-Kx-zHk"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="oIB-Ti-Qn5" secondAttribute="bottom" constant="8" id="UZa-dd-D2R"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xUq-E0-SXT" secondAttribute="trailing" constant="8" id="V15-CR-PRw"/>
+                            <constraint firstItem="xUq-E0-SXT" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="beG-NE-UJ6"/>
+                            <constraint firstItem="oIB-Ti-Qn5" firstAttribute="top" secondItem="QsP-EC-SIH" secondAttribute="bottom" constant="8" id="umT-Bq-YxA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="flashLightButton" destination="F6V-ms-4I3" id="iJk-mx-XsX"/>
+                        <outlet property="informationLabel" destination="xUq-E0-SXT" id="5uS-IR-FCA"/>
+                        <outlet property="previewView" destination="QsP-EC-SIH" id="6Qu-SJ-Wd2"/>
+                        <outlet property="recognitionButton" destination="Df9-DJ-y6p" id="9z2-Ux-E35"/>
+                        <outlet property="recognitionTextView" destination="6Wj-BC-sZL" id="Viy-eN-4xs"/>
+                        <outlet property="regionOfInterest" destination="6pY-x2-Kns" id="lxx-Ma-0uS"/>
+                        <outlet property="regionOfInterestHeight" destination="cNW-AJ-fGV" id="Y9U-89-gab"/>
+                        <outlet property="regionOfInterestWidth" destination="WDj-L7-VyV" id="uhO-LS-yV2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="flashlightOff" width="36" height="48"/>
+    </resources>
+</document>

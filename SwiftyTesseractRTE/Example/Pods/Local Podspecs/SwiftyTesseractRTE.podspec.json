@@ -1,0 +1,27 @@
+{
+  "name": "SwiftyTesseractRTE",
+  "version": "0.1.0",
+  "summary": "A short description of SwiftyTesseractRTE.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Steven0351/SwiftyTesseractRTE",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Steven0351": "steven.r.sherry@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Steven0351/SwiftyTesseractRTE.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "SwiftyTesseractRTE/Classes/**/*",
+  "dependencies": {
+    "SwiftyTesseract": [
+
+    ]
+  }
+}

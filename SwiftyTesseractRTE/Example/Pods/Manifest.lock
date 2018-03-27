@@ -1,0 +1,20 @@
+PODS:
+  - SwiftyTesseract (0.8.0)
+  - SwiftyTesseractRTE (0.1.0):
+    - SwiftyTesseract
+
+DEPENDENCIES:
+  - SwiftyTesseract
+  - SwiftyTesseractRTE (from `../`)
+
+EXTERNAL SOURCES:
+  SwiftyTesseractRTE:
+    :path: ../
+
+SPEC CHECKSUMS:
+  SwiftyTesseract: b38b868be0b47e10d4fbb8495af022fbda7b668f
+  SwiftyTesseractRTE: 583fea5a9da759f09a06743ceeef5ff9573dfbe6
+
+PODFILE CHECKSUM: 6e7b652f3efbf08cf5988c80636d16ebf79398a4
+
+COCOAPODS: 1.3.1
