@@ -1,6 +1,0 @@
-framework module SwiftyTesseractRTE {
-  umbrella header "SwiftyTesseractRTE-umbrella.h"
-
-  export *
-  module * { export * }
-}
