@@ -156,7 +156,7 @@ public class SwiftyTesseractRTE: NSObject {
   }
   
   private func enqueueAndEvalutateRecognitionResults(from image: UIImage) {
-    try? swiftyTesseract.performOCR(on: image) { [weak self] recognizedString in
+    swiftyTesseract.performOCR(on: image) { [weak self] recognizedString in
       
       guard let recognizedString = recognizedString, let strongSelf = self else { return }
       

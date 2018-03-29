@@ -6,7 +6,7 @@
 //  Copyright © 2018 Steven Sherry. All rights reserved.
 //
 
-/// The level of reliability required to assure OCR accuracy.
+/// The level of reliability required to assure OCR accuracy. The higher the reliability, the longer it will take to return results
 ///
 /// - verifiable: Requires the last three frames return the same results
 /// - stable:     Requires the last four frames return the same results

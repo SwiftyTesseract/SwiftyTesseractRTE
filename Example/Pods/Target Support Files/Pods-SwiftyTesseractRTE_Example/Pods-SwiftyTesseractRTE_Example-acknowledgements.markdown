@@ -15,7 +15,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## SwiftyTesseractRTE
 
-Copyright (c) 2018 Steven0351 <steven.r.sherry@gmail.com>
+Copyright (c) 2018 Steven Sherry <steven.sherry@affinityforapps.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

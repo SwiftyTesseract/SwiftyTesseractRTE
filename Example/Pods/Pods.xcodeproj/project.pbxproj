@@ -19,13 +19,14 @@
 		0B3C5FF739308CA09557799D9122A444 /* array.h in Headers */ = {isa = PBXBuildFile; fileRef = DAF3E6E091DA31AE134E944D17379A01 /* array.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		1212446D5741BE59AFC4A7DB268891A4 /* ptra.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A4C3CB236D1D446C45FAED2A3E27C1E /* ptra.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		12B4369CA66E8AE218DCED78F2B349FF /* ctc.h in Headers */ = {isa = PBXBuildFile; fileRef = C73871D378159F239242A991EAC21008 /* ctc.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		17E3C0CB008F7DCE866B6E97281D4FE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D56897DE93063F2290583E8C206D1F7 /* Foundation.framework */; };
 		18371F34166FA32A7A53599AF90FAA03 /* baseapi.h in Headers */ = {isa = PBXBuildFile; fileRef = B45E211BB7FA0F3D0AC606F12266AB35 /* baseapi.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		192D5649B16F25417976FA5881F33F17 /* png.h in Headers */ = {isa = PBXBuildFile; fileRef = 5867DC7A3924EE5E16C0D74E630B5709 /* png.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		1E296AA15313C7DDAECC7D0BBA688C5A /* ccbord.h in Headers */ = {isa = PBXBuildFile; fileRef = ABAF8213C227D6D8CEF79B9E5B1E9F33 /* ccbord.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		1F55A4448356C7685738A157C6BBE0B2 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C0BD728562F7E0F92D6AF9FA9B58BF /* VideoManager.swift */; };
 		1FF454D3ABE015EB8E16C819D473FF99 /* convolve.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E6B8A1F162CFCDA1A69587F33B7431D /* convolve.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		21548535E74B391D5C2A8335FC55B4C9 /* jbclass.h in Headers */ = {isa = PBXBuildFile; fileRef = CF9A3D0C0D49DC5B20A6E1DD53AF650D /* jbclass.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		254094A7EC702213E4A1EDAC5CE56155 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C325A98CAC8C2EE0D2449D74EEE5674E /* Foundation.framework */; };
+		254094A7EC702213E4A1EDAC5CE56155 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D56897DE93063F2290583E8C206D1F7 /* Foundation.framework */; };
 		2595E2F05157F7EB8E09F14761905520 /* lstm.h in Headers */ = {isa = PBXBuildFile; fileRef = 96916B854C960003E6F2C009B4ECE27A /* lstm.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		29B8E8B5E1A7712AD35655CC9EC3A31C /* fileerr.h in Headers */ = {isa = PBXBuildFile; fileRef = EDFAA8F8FF4C94A7B7E1024CB37B207B /* fileerr.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		2A30C30B579658EAE442502D16729C85 /* thresholder.h in Headers */ = {isa = PBXBuildFile; fileRef = 147C585917E54963A8A54A20FF5BEF4F /* thresholder.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -33,7 +34,9 @@
 		2FD43001A4DB567D2E4016CA4BDD8473 /* DispatchQueue+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190664763C921D435EFFBD3DF9FA400E /* DispatchQueue+Extension.swift */; };
 		32192ADA02D52AA474995681C18157DD /* SwiftyTesseract.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5095D1EDA3A53AEBDE2176926A18589 /* SwiftyTesseract.swift */; };
 		3227FEF422A239DB3F66DC470C230283 /* leptwin.h in Headers */ = {isa = PBXBuildFile; fileRef = C015A8FF37F553868C76F7FB52ABBAC7 /* leptwin.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		34B7A902A7DC29B6265294403B013333 /* SwiftyTesseract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCB12E860015605D5D7F0CE1AC7B3D7 /* SwiftyTesseract.framework */; };
 		34DFE9B74099BEA320CC0CD64702053E /* queue.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EECC4D9971AD097FF5A2E1C683DE268 /* queue.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3502D58A81A3F54AFE570A587F86B71A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 665104D05BB5B5802354A13CDCB59337 /* AVFoundation.framework */; };
 		36BED83F662CA59E9C39DDA754D85E47 /* intsimdmatrixavx2.h in Headers */ = {isa = PBXBuildFile; fileRef = 223502C992427988734697E512097EAC /* intsimdmatrixavx2.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		38C6D6526E07A6AB86D225A89BD27296 /* tfnetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = A1F6808DA6BE9615D61CF1DDE59E7036 /* tfnetwork.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3A45520A63D2F8C1B6777AA909D70B09 /* stack.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A7E7260E14D8A2F8C2B35313491D27E /* stack.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -76,15 +79,15 @@
 		78C7C1076D7F7E34581AD1BA7B96FFF4 /* EngineMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0F6627BDE02475090078EF408C2D08 /* EngineMode.swift */; };
 		79C05CAD6C05B23DE2077F07EBCCD581 /* pngconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 56600A4C1C34063F5C0E0706FA82CCDA /* pngconf.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		7EB93689F1C51EFD3803E46B8B28BD8B /* recodebeam.h in Headers */ = {isa = PBXBuildFile; fileRef = F4A8B3CEDEF1FD92DF06413EA4D39D03 /* recodebeam.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		813838844093FEAF123D534865A3F820 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2720DFC3B38596528F697A0E06AE54B /* UIKit.framework */; };
 		81D2B0D2F90F4055BAAD82BBAC71CCAA /* capi.h in Headers */ = {isa = PBXBuildFile; fileRef = D238284581DB4CA24D3E3073A57F8C94 /* capi.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		83DBE6F2A06683DEF6FC65F3D6436474 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C325A98CAC8C2EE0D2449D74EEE5674E /* Foundation.framework */; };
+		83DBE6F2A06683DEF6FC65F3D6436474 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D56897DE93063F2290583E8C206D1F7 /* Foundation.framework */; };
 		88015C034933C0855B59B7B628D5A22E /* lstmtrainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 667677FF0903AA0CD23251C7BB330A61 /* lstmtrainer.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		89B0251EB8335049F0353A0F20FB6FFE /* memry.h in Headers */ = {isa = PBXBuildFile; fileRef = 2460F62A4DD269ADEF0E8061550051D5 /* memry.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		8C3E420633646FAEBF5FA7828CAA1975 /* jconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = A37CCFC7BA79AB8EACDE35A4582F033A /* jconfig.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		8D792D62CD61B667D4125D1DBB209C94 /* pageiterator.h in Headers */ = {isa = PBXBuildFile; fileRef = AFE3EF677FF0B2E17210D4FD8A71306E /* pageiterator.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		8E89A5B5FA8D52BC1074DF080B861BAE /* params.h in Headers */ = {isa = PBXBuildFile; fileRef = F01B8B7E74F5CCA8F2E8D7CA130BD28A /* params.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		8F5FCC28A5645EC73CBA9ACA7A2A79FD /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB95F149DD64665B2489ACBC3E897836 /* ImageProcessor.swift */; };
-		91AD246C779511EA9D677BF240BA0D2F /* SwiftyTesseract.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E27C5B1271D21E7E3D22218B76B2234E /* SwiftyTesseract.framework */; };
 		92872958C467D61904D0443ABA4FF7A9 /* PipeInOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE12A77504ED76F77F80846A7CA29DD /* PipeInOperator.swift */; };
 		9574F412919D71EB3EA691A1193D6507 /* Pods-SwiftyTesseractRTE_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E3DDCDD22866CA0311F5389E5CA2C745 /* Pods-SwiftyTesseractRTE_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		95EB1F93627769E17D44B3DFD6294241 /* watershed.h in Headers */ = {isa = PBXBuildFile; fileRef = AA9BB3DC2873DECB2D27FC1063AB646F /* watershed.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -95,7 +98,7 @@
 		A1DC3286AC4C197B69B319575746B640 /* SwiftyTesseractRTE-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B51227359BE35657094C15E1C808F5B8 /* SwiftyTesseractRTE-dummy.m */; };
 		A3BFC0010EF634D01E5BF861814C18C5 /* TesseractVariableName.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FCF7EE2C2F80BAA8A4CFE5A5F1C74D /* TesseractVariableName.swift */; };
 		A4643D36CB41B98052FEC84C4A4E24F5 /* tiffio.h in Headers */ = {isa = PBXBuildFile; fileRef = 79570F9104EB89BB89C2647EB442AEC5 /* tiffio.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		A4850A47876FDCFEECEC56734667C3B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C325A98CAC8C2EE0D2449D74EEE5674E /* Foundation.framework */; };
+		A4850A47876FDCFEECEC56734667C3B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D56897DE93063F2290583E8C206D1F7 /* Foundation.framework */; };
 		A97BDA8E441EE24C44CE32A5358D7F27 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D7DAC2918CFF2C2E9EB50895BA113C9 /* version.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		AB4477C4212E657848441A5CE4F96501 /* host.h in Headers */ = {isa = PBXBuildFile; fileRef = 96ACD123AC36D929FD8826B284D184C5 /* host.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		AC389E00EB29F8A4085CB4D629C32F39 /* pix.h in Headers */ = {isa = PBXBuildFile; fileRef = 94B9B6CC30BD16ECD092BC592801DF2C /* pix.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -127,7 +130,7 @@
 		DEF7B3FFF2B522E0EFAF60050634704C /* lstmrecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = E2BA4280E3AAE80E11660864E8BE0B32 /* lstmrecognizer.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		DF3EEAD38A9A1DFD162D3E636C2A15F4 /* pnglibconf.h in Headers */ = {isa = PBXBuildFile; fileRef = A2AE85474B83466CB0F4B82E780172CA /* pnglibconf.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		E174D4FCD2E40A74D882E33D4A9963EF /* series.h in Headers */ = {isa = PBXBuildFile; fileRef = A7B40951BE3F0E7D88E3C5BB0A9B05C4 /* series.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		E670FD2C08E0B6DAABC031C5BF611B3A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD461781312333A4D7AF16023C8CC7C /* UIKit.framework */; };
+		E670FD2C08E0B6DAABC031C5BF611B3A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2720DFC3B38596528F697A0E06AE54B /* UIKit.framework */; };
 		E9C5EC2E9C90372B4FD9441BB434BC33 /* apitypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 69D870EBC2C730526D78FC111147B733 /* apitypes.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		EBCB4122A19DCA2069747B2DFEEAC8EF /* alltypes.h in Headers */ = {isa = PBXBuildFile; fileRef = CD4C9B4CC0BA6F968C885CA101139CED /* alltypes.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		EC0CD470CA0A70299C95F41BD11A67DD /* static_shape.h in Headers */ = {isa = PBXBuildFile; fileRef = 750B97FE2413DC0017487899E537C216 /* static_shape.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -135,7 +138,6 @@
 		F1289EEB619CF348B3F28A91BEF5ED8F /* osdetect.h in Headers */ = {isa = PBXBuildFile; fileRef = AFADF1B7E9B1A7833736EB66238452B8 /* osdetect.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F26EBDBB119E1675361DC66606CB7A12 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820C8A111DCD1D3FBC963990DC46227C /* String+Extensions.swift */; };
 		F28DC79B1AA0F5A8D1190EA425FEDA0C /* SwiftyTesseractError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8023EB9F26977B7C470265C35708EA80 /* SwiftyTesseractError.swift */; };
-		F4871A0A8571BFCDF96C12EA744155B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C325A98CAC8C2EE0D2449D74EEE5674E /* Foundation.framework */; };
 		F642A369AB7B0A874BCA2B5624A53789 /* Bundle+pathToTrainedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF5ECCB34D8EEEBC4048CA6F2239FED /* Bundle+pathToTrainedData.swift */; };
 		FED218BD601EBB9B96870AB7BD34B1C3 /* bilateral.h in Headers */ = {isa = PBXBuildFile; fileRef = C1D22BCE671631E8DD4C3D66DF158A98 /* bilateral.h */; settings = {ATTRIBUTES = (Private, ); }; };
 /* End PBXBuildFile section */
@@ -181,6 +183,7 @@
 		151B660563DA232137B71981637F6391 /* ltrresultiterator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ltrresultiterator.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/ltrresultiterator.h; sourceTree = "<group>"; };
 		184549D87E8E54B346C16C6714CCACC5 /* tiff.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tiff.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tiff.h; sourceTree = "<group>"; };
 		190664763C921D435EFFBD3DF9FA400E /* DispatchQueue+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extension.swift"; sourceTree = "<group>"; };
+		1D56897DE93063F2290583E8C206D1F7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		1D7DAC2918CFF2C2E9EB50895BA113C9 /* version.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = version.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/version.h; sourceTree = "<group>"; };
 		202153892AB1DAA1E136BDF1707A5F18 /* basedir.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = basedir.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/basedir.h; sourceTree = "<group>"; };
 		205FFFA821DAA5AF71C973D8E44723A5 /* SwiftyTesseract-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyTesseract-prefix.pch"; sourceTree = "<group>"; };
@@ -216,6 +219,7 @@
 		5AB32B67835D34FB54C56DC842D395D4 /* AVManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AVManager.swift; sourceTree = "<group>"; };
 		5BF5ECCB34D8EEEBC4048CA6F2239FED /* Bundle+pathToTrainedData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Bundle+pathToTrainedData.swift"; path = "SwiftyTesseract/SwiftyTesseract/Extensions/Bundle+pathToTrainedData.swift"; sourceTree = "<group>"; };
 		62C0BD728562F7E0F92D6AF9FA9B58BF /* VideoManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
+		665104D05BB5B5802354A13CDCB59337 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		667677FF0903AA0CD23251C7BB330A61 /* lstmtrainer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = lstmtrainer.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/lstmtrainer.h; sourceTree = "<group>"; };
 		68B18F6EC071BD7CA4A101D6E4F5F5FA /* bmfdata.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bmfdata.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/bmfdata.h; sourceTree = "<group>"; };
 		699DDD649C112F9E260597B7A6ABD84A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -292,10 +296,8 @@
 		C015A8FF37F553868C76F7FB52ABBAC7 /* leptwin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = leptwin.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/leptwin.h; sourceTree = "<group>"; };
 		C1D22BCE671631E8DD4C3D66DF158A98 /* bilateral.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bilateral.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/bilateral.h; sourceTree = "<group>"; };
 		C2C8104E5ED3B000219191A898326FAB /* readbarcode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = readbarcode.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/readbarcode.h; sourceTree = "<group>"; };
-		C325A98CAC8C2EE0D2449D74EEE5674E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		C5F1FD6D411F5513E234772F877B3743 /* weightmatrix.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = weightmatrix.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/weightmatrix.h; sourceTree = "<group>"; };
 		C73871D378159F239242A991EAC21008 /* ctc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ctc.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/ctc.h; sourceTree = "<group>"; };
-		CAD461781312333A4D7AF16023C8CC7C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		CD4C9B4CC0BA6F968C885CA101139CED /* alltypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = alltypes.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/alltypes.h; sourceTree = "<group>"; };
 		CF9A3D0C0D49DC5B20A6E1DD53AF650D /* jbclass.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = jbclass.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/jbclass.h; sourceTree = "<group>"; };
 		D228B0DA2CFA04A372500E80E046F8A7 /* tiffvers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tiffvers.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tiffvers.h; sourceTree = "<group>"; };
@@ -305,9 +307,9 @@
 		D50B2830750E7639F49B1B482EC59734 /* bbuffer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bbuffer.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/bbuffer.h; sourceTree = "<group>"; };
 		DAD8F961A9432AFE081A423546207C66 /* unicharmap.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = unicharmap.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/unicharmap.h; sourceTree = "<group>"; };
 		DAF3E6E091DA31AE134E944D17379A01 /* array.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = array.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/array.h; sourceTree = "<group>"; };
+		DBCB12E860015605D5D7F0CE1AC7B3D7 /* SwiftyTesseract.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyTesseract.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE3B24CED5F4388899F6E9B38E63EA53 /* morph.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = morph.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/morph.h; sourceTree = "<group>"; };
 		DE8AAFDE25D4F66846D85587EEA3B700 /* genericvector.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = genericvector.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/genericvector.h; sourceTree = "<group>"; };
-		E27C5B1271D21E7E3D22218B76B2234E /* SwiftyTesseract.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyTesseract.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BA4280E3AAE80E11660864E8BE0B32 /* lstmrecognizer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = lstmrecognizer.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/lstmrecognizer.h; sourceTree = "<group>"; };
 		E3DDCDD22866CA0311F5389E5CA2C745 /* Pods-SwiftyTesseractRTE_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftyTesseractRTE_Example-umbrella.h"; sourceTree = "<group>"; };
 		E473AFFEF34B33D6A2BDCF78235B6869 /* plumbing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = plumbing.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/plumbing.h; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 		EF6A6B23D3BFB4E2733F36527DCDC7F7 /* SwiftyTesseractRTE.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SwiftyTesseractRTE.swift; sourceTree = "<group>"; };
 		F01B8B7E74F5CCA8F2E8D7CA130BD28A /* params.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = params.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/params.h; sourceTree = "<group>"; };
 		F04485AA9897271690078F7BB255EC21 /* network.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = network.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/network.h; sourceTree = "<group>"; };
+		F2720DFC3B38596528F697A0E06AE54B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		F4A8B3CEDEF1FD92DF06413EA4D39D03 /* recodebeam.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = recodebeam.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/recodebeam.h; sourceTree = "<group>"; };
 		F8313AD86905F1A3646EDB878FFF27C0 /* Pods-SwiftyTesseractRTE_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftyTesseractRTE_Example-dummy.m"; sourceTree = "<group>"; };
 		F90E8885FE61753DF617A89F0A5BA8EF /* dewarp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = dewarp.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/dewarp.h; sourceTree = "<group>"; };
@@ -331,20 +334,22 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		46CD1AB972CE381EDE3A50D5F61A4A6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3502D58A81A3F54AFE570A587F86B71A /* AVFoundation.framework in Frameworks */,
+				17E3C0CB008F7DCE866B6E97281D4FE5 /* Foundation.framework in Frameworks */,
+				34B7A902A7DC29B6265294403B013333 /* SwiftyTesseract.framework in Frameworks */,
+				813838844093FEAF123D534865A3F820 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5457E51771318797EA3D39C4A79EE132 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				254094A7EC702213E4A1EDAC5CE56155 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BF415796F1369A81C1F180565B83F360 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F4871A0A8571BFCDF96C12EA744155B5 /* Foundation.framework in Frameworks */,
-				91AD246C779511EA9D677BF240BA0D2F /* SwiftyTesseract.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,25 +578,25 @@
 			path = SwiftyTesseractRTE/Classes/ConcreteTypes;
 			sourceTree = "<group>";
 		};
-		6CA7A77F3B2B03B680FE49C036FB3EA4 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E27C5B1271D21E7E3D22218B76B2234E /* SwiftyTesseract.framework */,
-				F06677DD5EA042B7DB86A0C9E9645CB6 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				E85A36E872CE0665A5C3E6A92FE9E49D /* Development Pods */,
-				6CA7A77F3B2B03B680FE49C036FB3EA4 /* Frameworks */,
+				9003596298A10545EB9404A5B03FC252 /* Frameworks */,
 				9F9F7A1DF32AC8B36983F1C56B703EEE /* Pods */,
 				143937FA8323FB2989DE0E9D47570584 /* Products */,
 				B9F1D258E3C4FD0E96B55C4CDFF9DA21 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		9003596298A10545EB9404A5B03FC252 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DBCB12E860015605D5D7F0CE1AC7B3D7 /* SwiftyTesseract.framework */,
+				B44BDA05D6391DBBB5FF4088CB4BFA70 /* iOS */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		9F9F7A1DF32AC8B36983F1C56B703EEE /* Pods */ = {
@@ -614,6 +619,16 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SwiftyTesseract";
+			sourceTree = "<group>";
+		};
+		B44BDA05D6391DBBB5FF4088CB4BFA70 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				665104D05BB5B5802354A13CDCB59337 /* AVFoundation.framework */,
+				1D56897DE93063F2290583E8C206D1F7 /* Foundation.framework */,
+				F2720DFC3B38596528F697A0E06AE54B /* UIKit.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		B9F1D258E3C4FD0E96B55C4CDFF9DA21 /* Targets Support Files */ = {
@@ -672,15 +687,6 @@
 			);
 			name = "Pods-SwiftyTesseractRTE_Example";
 			path = "Target Support Files/Pods-SwiftyTesseractRTE_Example";
-			sourceTree = "<group>";
-		};
-		F06677DD5EA042B7DB86A0C9E9645CB6 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				C325A98CAC8C2EE0D2449D74EEE5674E /* Foundation.framework */,
-				CAD461781312333A4D7AF16023C8CC7C /* UIKit.framework */,
-			);
-			name = iOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -861,7 +867,7 @@
 			buildConfigurationList = D78D17D8E501798F54B57534E3886938 /* Build configuration list for PBXNativeTarget "SwiftyTesseractRTE" */;
 			buildPhases = (
 				8169A464168D81DB8BA07A4C20D349C3 /* Sources */,
-				BF415796F1369A81C1F180565B83F360 /* Frameworks */,
+				46CD1AB972CE381EDE3A50D5F61A4A6C /* Frameworks */,
 				697E436F6B57387F1D29FD936E7E5C00 /* Headers */,
 			);
 			buildRules = (

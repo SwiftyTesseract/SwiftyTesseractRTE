@@ -47,13 +47,6 @@ class VideoManager: AVManager {
     
     self.previewLayer.session = self.captureSession
     self.previewLayer.videoGravity = .resizeAspectFill
-    
-//    if isAuthorized(for: mediaType) {
-//      sessionQueue.async { [weak self] in
-//        guard let strongSelf = self else { return }
-//        strongSelf.configure(captureSession: strongSelf.captureSession)
-//      }
-//    }
   }
   
   private func isAuthorized(for mediaType: AVMediaType) -> Bool {
