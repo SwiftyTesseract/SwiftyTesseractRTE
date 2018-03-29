@@ -31,17 +31,20 @@ public class SwiftyTesseractRTE: NSObject {
   private let avManager: AVManager
   
   // MARK: - Public variables
-  /// The region within the AVCaptureVideoPreviewLayer that OCR is to be performed. If using a UIView to define the region of interest this **must**
-  /// be assigned as the UIView's frame and be a subview of the the AVCaptureVideoPreviewLayer's parent view.
+  /// The region within the AVCaptureVideoPreviewLayer that OCR is to be performed. If using a UIView to
+  /// define the region of interest this **must** be assigned as the UIView's frame and
+  /// be a subview of the the AVCaptureVideoPreviewLayer's parent view.
   public var regionOfInterest: CGRect?
 
-  /// Sets recognition to be running or not. Default is **true**. Setting the value to false will allow the preview to be active without processing
-  /// incoming video frames. If it is not desired for recognition to be active after initialization, set this value to false immediately after
-  /// creating an instance of SwiftyTesseractRTE
+  /// Sets recognition to be running or not. Default is **true**. Setting the value to false will
+  /// allow the preview to be active without processing incoming video frames.
+  /// If it is not desired for recognition to be active after initialization, set this
+  /// value to false immediately after creating an instance of SwiftyTesseractRTE
   public var recognitionIsActive: Bool = true
   
-  /// The quality of the previewLayer video session. The default is set to .medium. Changing this setting will only affect how the video is displayed to the
-  /// user and will not affect the results of OCR if set above `.medium`. Setting the quality higher will result in decreased performance.
+  /// The quality of the previewLayer video session. The default is set to .medium. Changing this
+  /// setting will only affect how the video is displayed to the user and will not affect the 
+  /// results of OCR if set above `.medium`. Setting the quality higher will result in decreased performance.
   public var cameraQuality: AVCaptureSession.Preset {
     get {
       return avManager.cameraQuality
@@ -129,38 +132,35 @@ public class SwiftyTesseractRTE: NSObject {
   }
   
   // MARK: - Helper functions
+  private func performOCR(on sampleBuffer: CMSampleBuffer) {
+    guard recognitionIsActive, let croppedImage = cropAndConvert(sampleBuffer: sampleBuffer) else { return }
+    enqueueAndEvalutateRecognitionResults(from: croppedImage)
+  }
+  
   private func cropAndConvert(sampleBuffer: CMSampleBuffer) -> UIImage? {
     
     guard
       let processedImage = imageProcessor.convertToGrayscaleUiImage(from: sampleBuffer),
-      let imageCroppedToPreviewLayer = imageProcessor.crop(output: processedImage,
+      let imageCroppedToPreviewLayer = imageProcessor.crop(processedImage,
                                                            toBoundsOf: avManager.previewLayer)
     else { return nil }
     
     guard
       let regionOfInterest = regionOfInterest,
-      let imageCroppedToRegionOfInterest = imageProcessor.crop(output: imageCroppedToPreviewLayer,
+      let imageCroppedToRegionOfInterest = imageProcessor.crop(imageCroppedToPreviewLayer,
                                                                toBoundsOf: regionOfInterest,
                                                                containedIn: avManager.previewLayer)
     else { return imageCroppedToPreviewLayer }
     
     return imageCroppedToRegionOfInterest
   }
-}
-
-// MARK: - AVCaptureVideoDataOutputSampleBufferDelegate Extension
-
-extension SwiftyTesseractRTE: AVCaptureVideoDataOutputSampleBufferDelegate {
   
-  public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-
-    guard recognitionIsActive, let croppedImage = cropAndConvert(sampleBuffer: sampleBuffer) else { return }
-    
-    try? swiftyTesseract.performOCR(on: croppedImage) { [weak self] recognizedString in
-
+  private func enqueueAndEvalutateRecognitionResults(from image: UIImage) {
+    try? swiftyTesseract.performOCR(on: image) { [weak self] recognizedString in
+      
       guard let recognizedString = recognizedString, let strongSelf = self else { return }
-
-      guard strongSelf.recognitionQueue.count == strongSelf.recognitionQueue.size && strongSelf.recognitionQueue.allValuesMatch else {
+      
+      guard strongSelf.recognitionQueue.allValuesMatch else {
         strongSelf.recognitionQueue.enqueue(recognizedString)
         return
       }
@@ -169,4 +169,17 @@ extension SwiftyTesseractRTE: AVCaptureVideoDataOutputSampleBufferDelegate {
       strongSelf.recognitionQueue.clear()
     }
   }
+
+}
+
+// MARK: - AVCaptureVideoDataOutputSampleBufferDelegate Extension
+
+extension SwiftyTesseractRTE: AVCaptureVideoDataOutputSampleBufferDelegate {
+  
+  public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+
+    performOCR(on: sampleBuffer)
+    
+  }
+  
 }

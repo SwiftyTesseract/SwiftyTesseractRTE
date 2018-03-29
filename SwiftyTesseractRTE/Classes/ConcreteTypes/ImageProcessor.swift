@@ -9,14 +9,11 @@
 import AVFoundation
 
 struct ImageProcessor {
-  private(set) var ciContext: CIContext
+  private var ciContext: CIContext
   
   init(ciContext: CIContext = CIContext()) {
     self.ciContext = ciContext
   }
-}
-
-extension ImageProcessor: AVSampleProcessor {
   
   func adjustColors(in ciImage: CIImage?) -> CIImage? {
     guard
@@ -62,7 +59,7 @@ extension ImageProcessor: AVSampleProcessor {
     guard
       let ciImage = ciImage,
       let cgImage = ciContext.createCGImage(ciImage, from: ciImage.extent)
-    else { return nil }
+      else { return nil }
     return cgImage
   }
   
@@ -71,7 +68,25 @@ extension ImageProcessor: AVSampleProcessor {
     return UIImage(cgImage: cgImage)
   }
   
-  func crop(output image: UIImage, toBoundsOf previewLayer: AVCaptureVideoPreviewLayer) -> UIImage? {
+}
+
+extension ImageProcessor: AVSampleProcessor {
+
+  func convertToGrayscaleUiImage(from sampleBuffer: CMSampleBuffer) -> UIImage? {
+    guard
+      let uiImage = sampleBuffer
+        |> convertToCvImageBuffer
+        |> convertToCiImage
+        |> adjustColors
+        |> convertToCgImage
+        |> convertToGrayscale
+        |> convertToUiImage
+      else { return nil }
+    
+    return uiImage
+  }
+  
+  func crop(_ image: UIImage, toBoundsOf previewLayer: AVCaptureVideoPreviewLayer) -> UIImage? {
     
     let widthToHeightRatio = previewLayer.bounds.size.width / previewLayer.bounds.size.height
     
@@ -87,7 +102,7 @@ extension ImageProcessor: AVSampleProcessor {
     return UIImage(cgImage: cropImage, scale: image.scale, orientation: image.imageOrientation)
   }
   
-  func crop(output image: UIImage, toBoundsOf areaOfInterest: CGRect, containedIn previewLayer: AVCaptureVideoPreviewLayer) -> UIImage? {
+  func crop(_ image: UIImage, toBoundsOf areaOfInterest: CGRect, containedIn previewLayer: AVCaptureVideoPreviewLayer) -> UIImage? {
     let previewLayerSize = previewLayer.bounds.size
     let heightMultiplier = image.size.height / previewLayerSize.height
     let widthMultiplier = image.size.width / previewLayerSize.width

@@ -14,18 +14,13 @@ import SwiftyTesseractRTE
 
 class ViewController: UIViewController {
 
-  var isRunning = false {
+  var recognitionIsRunning = false {
     didSet {
-      if isRunning {
-        DispatchQueue.main.async {
-          self.recognitionButton.setTitle("Stop Running", for: .normal)
-        }
-      } else {
-        DispatchQueue.main.async {
-          self.recognitionButton.setTitle("Start Recognition", for: .normal)
-        }
+      let recognitionButtonText = recognitionIsRunning ? "Stop Running" : "Start Recognition"
+      DispatchQueue.main.async { [weak self] in
+        self?.recognitionButton.setTitle(recognitionButtonText, for: .normal)
       }
-      engine.recognitionIsActive = isRunning
+      engine.recognitionIsActive = recognitionIsRunning
     }
   }
   
@@ -60,8 +55,9 @@ class ViewController: UIViewController {
     excludeLayer = CAShapeLayer()
     excludeLayer.fillRule = kCAFillRuleEvenOdd
     excludeLayer.fillColor = UIColor.black.cgColor
-    excludeLayer.opacity = 0.5
+    excludeLayer.opacity = 0.7
     
+    engine.startPreview()
   }
   
   override func viewDidLayoutSubviews() {
@@ -69,22 +65,16 @@ class ViewController: UIViewController {
     engine.regionOfInterest = regionOfInterest.frame
     previewView.layer.addSublayer(regionOfInterest.layer)
     fillOpaqueAroundAreaOfInterest(parentView: previewView, areaOfInterest: regionOfInterest)
-    previewView.setNeedsDisplay()
-    
-    
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-      appDelegate.shouldRotate = false
-    }
-    
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+    appDelegate.shouldRotate = false
   }
   
   override func viewWillDisappear(_ animated: Bool) {
-    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-      appDelegate.shouldRotate = true
-    }
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+    appDelegate.shouldRotate = true
   }
   
   private func fillOpaqueAroundAreaOfInterest(parentView: UIView, areaOfInterest: UIView) {
@@ -115,7 +105,7 @@ class ViewController: UIViewController {
   
   
   @IBAction func recognitionButtonTapped(_ sender: Any) {
-    isRunning.toggle()
+    recognitionIsRunning.toggle()
   }
   
   @IBAction func flashLightButtonTapped(_ sender: Any) {
@@ -124,14 +114,12 @@ class ViewController: UIViewController {
       do {
         try device.lockForConfiguration()
         device.torchMode = device.torchMode == .off ? .on : .off
+        device.unlockForConfiguration()
       } catch let e {
         print("Error: \(e.localizedDescription)")
       }
     }
-    let flashlightImage = device.torchMode == .off ?
-      UIImage(named: "flashlightOff") :
-      UIImage(imageLiteralResourceName: "flashlightOn")
-    
+    let flashlightImage = device.torchMode == .off ? UIImage(named: "flashlightOff") : UIImage(named: "flashlightOn")
     flashLightButton.setImage(flashlightImage, for: .normal)
   }
 }
@@ -142,7 +130,7 @@ extension ViewController: SwiftyTesseractRTEDelegate {
     DispatchQueue.main.async { [weak self] in
       self?.recognitionTextView.text = recognizedString
     }
-    isRunning = false
+    recognitionIsRunning = false
   }
 }
 

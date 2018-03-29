@@ -1,42 +1,22 @@
-#
-# Be sure to run `pod lib lint SwiftyTesseractRTE.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = 'SwiftyTesseractRTE'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of SwiftyTesseractRTE.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.version          = '0.8.0'
+  s.summary          = 'A real-time optical character recognition engine built on top of SwiftyTesseract.'
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+                        SwiftyTesseractRTE is an out-of-the-box solution for real-time optical character recognition. Add the SwiftyTesseractRTE to your project and you'll be performing OCR via a live camera feed in just a few lines of code.
                        DESC
 
   s.homepage         = 'https://github.com/Steven0351/SwiftyTesseractRTE'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Steven0351' => 'steven.r.sherry@gmail.com' }
+  s.author           = { 'Steven Sherry' => 'steven.sherry@affinityforapps.com' }
   s.source           = { :git => 'https://github.com/Steven0351/SwiftyTesseractRTE.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.social_media_url = 'https://twitter.com/steven_0351'
 
   s.ios.deployment_target = '10.0'
 
   s.source_files = 'SwiftyTesseractRTE/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'SwiftyTesseractRTE' => ['SwiftyTesseractRTE/Assets/*.png']
-  # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.frameworks = 'UIKit', 'AVFoundation'
   s.dependency 'SwiftyTesseract'
 end
