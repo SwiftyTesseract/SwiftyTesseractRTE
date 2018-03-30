@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SwiftyTesseractRTE  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="SwiftyTesseractRTE  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">SwiftyTesseractRTE Docs</a> (59% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">SwiftyTesseractRTE Reference</a>
+        <img id="carat" src="img/carat.png" />
+        SwiftyTesseractRTE  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/SwiftyTesseractRTE.html">SwiftyTesseractRTE</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/RecognitionReliability.html">RecognitionReliability</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/AVSampleProcessor.html">AVSampleProcessor</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SwiftyTesseractRTEDelegate.html">SwiftyTesseractRTEDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='swiftytesseractrte' class='heading'>SwiftyTesseractRTE</h1>
+
+<p><img src="https://img.shields.io/badge/Platform-iOS-lightgrey.svg" alt="platforms"></p>
+<h4 id='swiftytesseractrte-can-only-currently-be-used-in-portrait-mode' class='heading'>SwiftyTesseractRTE can only currently be used in portrait mode.</h4>
+<h1 id='about-swiftytesseractrte' class='heading'>About SwiftyTesseractRTE</h1>
+
+<p>SwiftyTesseractRTE (SwiftyTesseract Real-Time Engine) is a real-time optical character recognition library built on top of SwiftyTesseract.</p>
+<h1 id='using-swiftytesseractrte-in-your-project' class='heading'>Using SwiftyTesseractRTE in Your Project</h1>
+<h2 id='import-the-neccessary-modules' class='heading'>Import the neccessary modules</h2>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">SwiftyTesseract</span>
+<span class="kd">import</span> <span class="kt">SwiftyTesseractRTE</span>
+</code></pre>
+
+<p>Create an instance of SwiftyTesseractRTE and assign it&rsquo;s regionOfInterest property. </p>
+<pre class="highlight swift"><code><span class="kd">private</span> <span class="k">var</span> <span class="nv">realTimeEngine</span><span class="p">:</span> <span class="kt">SwiftyTesseractRTE</span><span class="o">!</span>
+
+<span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">previewView</span><span class="p">:</span> <span class="kt">UIView</span><span class="o">!</span>
+<span class="kd">@IBOutlet</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">regionOfInterest</span><span class="p">:</span> <span class="kt">UIView</span><span class="o">!</span> <span class="c1">// A subview of previewView</span>
+
+<span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">let</span> <span class="nv">swiftyTesseract</span> <span class="o">=</span> <span class="kt">SwiftyTesseract</span><span class="p">(</span><span class="nv">language</span><span class="p">:</span> <span class="o">.</span><span class="n">english</span><span class="p">)</span>
+  <span class="n">realTimeEngine</span> <span class="o">=</span> <span class="kt">SwiftyTesseractRTE</span><span class="p">(</span><span class="nv">swiftyTesseract</span><span class="p">:</span> <span class="n">swiftyTesseract</span><span class="p">,</span> <span class="nv">desiredReliability</span><span class="p">:</span> <span class="o">.</span><span class="n">verifiable</span><span class="p">)</span>
+  <span class="n">realTimeEngine</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+<span class="p">}</span>
+
+<span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLayoutSubviews</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Must occur during viewDidLayoutSubviews() - Autolayout constraints are not set in viewDidLoad()</span>
+  <span class="n">realTimeEngine</span><span class="o">.</span><span class="nf">bindPreviewLayer</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">previewView</span><span class="p">)</span>
+  <span class="n">realTimeEngine</span><span class="o">.</span><span class="n">regionOfInterest</span> <span class="o">=</span> <span class="n">regionOfInterest</span><span class="o">.</span><span class="n">frame</span>
+
+  <span class="c1">// Only neccessary if providing a visual cue where the regionOfInterest is to your end user</span>
+  <span class="n">previewView</span><span class="o">.</span><span class="nf">addSublayer</span><span class="p">(</span><span class="n">regionOfInterest</span><span class="o">.</span><span class="n">layer</span><span class="p">)</span>
+<span class="p">}</span>
+
+</code></pre>
+<h2 id='conform-to-the-swiftytesseractrtedelegate-protocol' class='heading'>Conform to the SwiftyTesseractRTEDelegate protocol</h2>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">YourViewController</span><span class="p">:</span> <span class="kt">SwiftyTesseractRTEDelegate</span> <span class="p">{</span>
+
+  <span class="kd">func</span> <span class="nf">onRecognitionComplete</span><span class="p">(</span><span class="n">_</span> <span class="nv">recognizedString</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Do something with the recognized string</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+<h2 id='starting-and-stopping-recognition' class='heading'>Starting and Stopping Recognition</h2>
+<pre class="highlight swift"><code><span class="c1">// Starts optical character recognition</span>
+<span class="n">realTimeEngine</span><span class="o">.</span><span class="n">recognitionIsActive</span> <span class="o">=</span> <span class="kc">true</span>
+
+<span class="c1">// Stops optical character recognition</span>
+<span class="n">realTimeEngine</span><span class="o">.</span><span class="n">recognitionIsActive</span> <span class="o">=</span> <span class="kc">false</span>
+</code></pre>
+<h2 id='starting-and-stopping-camera-preview' class='heading'>Starting and Stopping Camera Preview</h2>
+<pre class="highlight swift"><code><span class="c1">// Starts camera preview</span>
+<span class="n">realTimeEngine</span><span class="o">.</span><span class="nf">startPreview</span><span class="p">()</span>
+
+<span class="c1">// Stops camera preview</span>
+<span class="n">realTimeEngine</span><span class="o">.</span><span class="nf">stopPreview</span><span class="p">()</span>
+</code></pre>
+<h2 id='camera-permissions' class='heading'>Camera Permissions</h2>
+
+<p>For camera permissions, you will need to add the <code>Privacy - Camera Usage Description</code> permission to your <code>Info.plist</code> file. SwiftyTesseractRTE will handle requesting permission if it is not already granted.</p>
+<h1 id='a-note-about-portrait-only' class='heading'>A Note about Portrait-Only</h1>
+
+<p>SwiftyTesseractRTE is currently only able to utilized in portrait mode, but that does not mean your entire app also has to be portrait mode only. See the example project&rsquo;s AppDelegate (specifically the addition of a <code>shouldRotate</code> boolean member variable and the implementation of <code>application(_:supportedInterfaceOrientationsFor:)</code>) and ViewController files (specifically the <code>viewWillAppear()</code> and <code>viewWillDisappear()</code> methods) for an example on how to make a single view controller portrait mode only. </p>
+<h1 id='installation' class='heading'>Installation</h1>
+<h3 id='a-href-https-guides-cocoapods-org-using-using-cocoapods-html-cocoapods-a' class='heading'><a href="https://guides.cocoapods.org/using/using-cocoapods.html">CocoaPods</a></h3>
+
+<p><strong>Tested with <code>pod --version</code>: <code>1.3.1</code></strong></p>
+<pre class="highlight ruby"><code><span class="c1"># Podfile</span>
+<span class="n">use_frameworks!</span>
+
+<span class="n">target</span> <span class="s1">'YOUR_TARGET_NAME'</span> <span class="k">do</span>
+    <span class="n">pod</span> <span class="s1">'SwiftyTesseractRTE'</span><span class="p">,</span>    <span class="s1">'~&gt; 1.0'</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>Replace <code>YOUR_TARGET_NAME</code> and then, in the <code>Podfile</code> directory, type:</p>
+<pre class="highlight shell"><code><span class="nv">$ </span>pod <span class="nb">install</span>
+</code></pre>
+<h2 id='setting-up-swiftytesseract-for-use-in-swiftytesseractrte' class='heading'>Setting Up SwiftyTesseract for Use in SwiftyTesseractRTE</h2>
+
+<p>See SwiftyTesseract&rsquo;s <a href="https://github.com/SwiftyTesseract/SwiftyTesseract/blob/master/Readme.md#additional-configuration">Additional Configuration</a> section on properly setting up SwiftyTesseract to be utilized in your project.</p>
+<h1 id='contributions-welcome' class='heading'>Contributions Welcome</h1>
+
+<p>Contributions are always welcome! Please refer to <a href="Contributions.md">Contributing to SwiftyTesseractRTE</a> for the full guidelines on creating issues and opening pull requests to the project.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/SwiftyTesseract/SwiftyTesseractRTE" target="_blank" rel="external">Steven Sherry</a>. All rights reserved. (Last updated: 2018-03-30)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

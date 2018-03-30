@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/SwiftyTesseract/SwiftyTesseractRTE'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Steven Sherry' => 'steven.sherry@affinityforapps.com' }
-  s.source           = { :git => 'https://github.com/Steven0351/SwiftyTesseractRTE.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/SwiftyTesseract/SwiftyTesseractRTE.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/steven_0351'
 
   s.ios.deployment_target = '10.0'
@@ -19,5 +19,5 @@ Pod::Spec.new do |s|
   s.source_files = 'SwiftyTesseractRTE/Classes/**/*'
 
   s.frameworks = 'UIKit', 'AVFoundation'
-  s.dependency 'SwiftyTesseract', ~> 1.0
+  s.dependency 'SwiftyTesseract', '~> 1.0'
 end
