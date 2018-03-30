@@ -1,6 +1,6 @@
 PODS:
-  - SwiftyTesseract (0.8.1)
-  - SwiftyTesseractRTE (0.8.0):
+  - SwiftyTesseract (1.0.1)
+  - SwiftyTesseractRTE (0.8.8):
     - SwiftyTesseract
 
 DEPENDENCIES:
@@ -12,8 +12,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  SwiftyTesseract: 10029bc329fb7ddeaced817a9fbb35cc38e311f0
-  SwiftyTesseractRTE: e3cbbd7ea4c64132d48a42b56f96231e8536803b
+  SwiftyTesseract: 763a09b63ab3b16252cb8dc367d3677d651b6876
+  SwiftyTesseractRTE: f6d05fd7bdb2f0ecf430a80a9e59f3bf211981c8
 
 PODFILE CHECKSUM: 6e7b652f3efbf08cf5988c80636d16ebf79398a4
 

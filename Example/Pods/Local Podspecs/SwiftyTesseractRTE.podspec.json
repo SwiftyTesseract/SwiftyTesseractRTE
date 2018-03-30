@@ -1,8 +1,11 @@
 {
   "name": "SwiftyTesseractRTE",
-  "version": "0.8.0",
+  "version": "0.8.8",
   "summary": "A real-time optical character recognition engine built on top of SwiftyTesseract.",
   "description": "SwiftyTesseractRTE is an out-of-the-box solution for real-time optical character recognition. Add the SwiftyTesseractRTE to your project and you'll be performing OCR via a live camera feed in just a few lines of code.",
+  "platforms": {
+    "ios": "10.0"
+  },
   "homepage": "https://github.com/Steven0351/SwiftyTesseractRTE",
   "license": {
     "type": "MIT",
@@ -13,12 +16,9 @@
   },
   "source": {
     "git": "https://github.com/Steven0351/SwiftyTesseractRTE.git",
-    "tag": "0.8.0"
+    "tag": "0.8.8"
   },
   "social_media_url": "https://twitter.com/steven_0351",
-  "platforms": {
-    "ios": "10.0"
-  },
   "source_files": "SwiftyTesseractRTE/Classes/**/*",
   "frameworks": [
     "UIKit",

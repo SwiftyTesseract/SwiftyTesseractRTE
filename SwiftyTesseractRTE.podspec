@@ -1,12 +1,13 @@
 Pod::Spec.new do |s|
   s.name             = 'SwiftyTesseractRTE'
-  s.version          = '0.8.0'
+  s.version          = '0.8.8'
   s.summary          = 'A real-time optical character recognition engine built on top of SwiftyTesseract.'
 
   s.description      = <<-DESC
                         SwiftyTesseractRTE is an out-of-the-box solution for real-time optical character recognition. Add the SwiftyTesseractRTE to your project and you'll be performing OCR via a live camera feed in just a few lines of code.
                        DESC
 
+  s.platform         = :ios, "11.0"
   s.homepage         = 'https://github.com/Steven0351/SwiftyTesseractRTE'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Steven Sherry' => 'steven.sherry@affinityforapps.com' }

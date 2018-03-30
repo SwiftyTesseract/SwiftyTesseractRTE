@@ -1,5 +1,5 @@
 # SwiftyTesseractRTE
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![platforms](https://img.shields.io/badge/Platform-iOS-lightgrey.svg)
+![platforms](https://img.shields.io/badge/Platform-iOS-lightgrey.svg)
 
 #### SwiftyTesseractRTE can only currently be used in portrait mode.
 
@@ -90,21 +90,6 @@ Replace `YOUR_TARGET_NAME` and then, in the `Podfile` directory, type:
 ```bash
 $ pod install
 ```
-
-### [Carthage](https://github.com/Carthage/Carthage)
-
-**Tested with `carthage version`: `0.29.0`**
-
-Add this to `Cartfile`
-
-```
-github "SwiftyTesseract/SwiftyTesseractRTE" ~> 1.0
-```
-
-```bash
-$ carthage update
-```
-
 
 ## Setting Up SwiftyTesseract for Use in SwiftyTesseractRTE
 See SwiftyTesseract's [Additional Configuration](https://github.com/Steven0351/SwiftyTesseract/blob/master/Readme.md#additional-configuration) section on properly setting up SwiftyTesseract to be utilized in your project.

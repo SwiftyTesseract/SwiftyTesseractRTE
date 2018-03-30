@@ -173,9 +173,9 @@
 		06C24FC772D17BFB9E40126BCB94C21A /* endianness.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = endianness.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/endianness.h; sourceTree = "<group>"; };
 		07AFBCD8C466E95C1A2B7D858D2B95F3 /* Pods-SwiftyTesseractRTE_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftyTesseractRTE_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		0842BE0C99F20A7E6849F6F73FC7E680 /* tiffconf.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tiffconf.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tiffconf.h; sourceTree = "<group>"; };
-		08E31881CAAECC0B200CD88FB6F6D49D /* SwiftyTesseractRTE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyTesseractRTE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		08E31881CAAECC0B200CD88FB6F6D49D /* SwiftyTesseractRTE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyTesseractRTE.framework; path = SwiftyTesseractRTE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		08FAC899F8BB4326C3A48AB147B61DA5 /* networkbuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = networkbuilder.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/networkbuilder.h; sourceTree = "<group>"; };
-		092A5A5C9F02B9DAF35C6BF94F00C81F /* SwiftyTesseract.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyTesseract.modulemap; sourceTree = "<group>"; };
+		092A5A5C9F02B9DAF35C6BF94F00C81F /* SwiftyTesseract.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyTesseract.modulemap; sourceTree = "<group>"; };
 		0DC5BF265877FACC36942DA9DB79764C /* Pods-SwiftyTesseractRTE_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftyTesseractRTE_Tests-umbrella.h"; sourceTree = "<group>"; };
 		0DE12A77504ED76F77F80846A7CA29DD /* PipeInOperator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PipeInOperator.swift; sourceTree = "<group>"; };
 		0E6B8A1F162CFCDA1A69587F33B7431D /* convolve.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = convolve.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/convolve.h; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 		4E2B522C86CF8D23BB26505A3F5B6777 /* Pods-SwiftyTesseractRTE_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftyTesseractRTE_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4EECC4D9971AD097FF5A2E1C683DE268 /* queue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = queue.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/queue.h; sourceTree = "<group>"; };
 		504D96BB9651F535096DD22BE53D13B1 /* publictypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = publictypes.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/publictypes.h; sourceTree = "<group>"; };
-		5276B46CC9449FEE2D1112A35C18A6EC /* Pods_SwiftyTesseractRTE_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyTesseractRTE_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5276B46CC9449FEE2D1112A35C18A6EC /* Pods_SwiftyTesseractRTE_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SwiftyTesseractRTE_Tests.framework; path = "Pods-SwiftyTesseractRTE_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52CB7ACBAD35BBBBFDBAAAA4A839441D /* SwiftyTesseract-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyTesseract-umbrella.h"; sourceTree = "<group>"; };
 		534242F2821FEB627F30CDD40DB886D0 /* libtiffxx.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libtiffxx.a; path = SwiftyTesseract/SwiftyTesseract/dependencies/lib/libtiffxx.a; sourceTree = "<group>"; };
 		559D52ED8A6264DBDA046FBBCE0FF2CC /* SwiftyTesseractRTE-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyTesseractRTE-umbrella.h"; sourceTree = "<group>"; };
@@ -251,7 +251,7 @@
 		91247A7366130E738F818F6C4FF13EF7 /* Pods-SwiftyTesseractRTE_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftyTesseractRTE_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		916AEC596D24939E2D96E505814F1E8D /* libtiff.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libtiff.a; path = SwiftyTesseract/SwiftyTesseract/dependencies/lib/libtiff.a; sourceTree = "<group>"; };
 		91976C77CADAC43A00A19FBE50478D02 /* liblept.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = liblept.a; path = SwiftyTesseract/SwiftyTesseract/dependencies/lib/liblept.a; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94B9B6CC30BD16ECD092BC592801DF2C /* pix.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = pix.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/pix.h; sourceTree = "<group>"; };
 		96916B854C960003E6F2C009B4ECE27A /* lstm.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = lstm.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/lstm.h; sourceTree = "<group>"; };
 		96ACD123AC36D929FD8826B284D184C5 /* host.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = host.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/host.h; sourceTree = "<group>"; };
@@ -274,9 +274,9 @@
 		A7B40951BE3F0E7D88E3C5BB0A9B05C4 /* series.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = series.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/series.h; sourceTree = "<group>"; };
 		A7D800E8EFA5FE3ACC6C5E0568D6AD2F /* unichar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = unichar.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/unichar.h; sourceTree = "<group>"; };
 		A8A7EEB98360F00F2B3AF61600DFE09D /* errcode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = errcode.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/errcode.h; sourceTree = "<group>"; };
-		A8F525269709C7C7FAA98F449825894D /* Pods_SwiftyTesseractRTE_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyTesseractRTE_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8F525269709C7C7FAA98F449825894D /* Pods_SwiftyTesseractRTE_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SwiftyTesseractRTE_Example.framework; path = "Pods-SwiftyTesseractRTE_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9C3AAFE854C2757C163F6B20FCFA12C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA6749421657282C37A55AADC47AF7CE /* SwiftyTesseract.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyTesseract.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA6749421657282C37A55AADC47AF7CE /* SwiftyTesseract.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyTesseract.framework; path = SwiftyTesseract.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA9BB3DC2873DECB2D27FC1063AB646F /* watershed.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = watershed.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/watershed.h; sourceTree = "<group>"; };
 		ABAF8213C227D6D8CEF79B9E5B1E9F33 /* ccbord.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ccbord.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/ccbord.h; sourceTree = "<group>"; };
 		ABF304FB9F9B55C14578B6DBBAD377DB /* simddetect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = simddetect.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/simddetect.h; sourceTree = "<group>"; };
@@ -292,7 +292,7 @@
 		B67283BA9EBEE2C505795E2E3ED0D859 /* gplot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = gplot.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/gplot.h; sourceTree = "<group>"; };
 		B77BDF3099E5ADC0F3945C87F802C919 /* input.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = input.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/input.h; sourceTree = "<group>"; };
 		BD120C4B2C684F40D19A2418D9361592 /* intsimdmatrixsse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = intsimdmatrixsse.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/intsimdmatrixsse.h; sourceTree = "<group>"; };
-		BD5030FDAE7FB10DE7049ED73C271398 /* Pods-SwiftyTesseractRTE_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SwiftyTesseractRTE_Tests.modulemap"; sourceTree = "<group>"; };
+		BD5030FDAE7FB10DE7049ED73C271398 /* Pods-SwiftyTesseractRTE_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SwiftyTesseractRTE_Tests.modulemap"; sourceTree = "<group>"; };
 		C015A8FF37F553868C76F7FB52ABBAC7 /* leptwin.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = leptwin.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/leptwin.h; sourceTree = "<group>"; };
 		C1D22BCE671631E8DD4C3D66DF158A98 /* bilateral.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = bilateral.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/bilateral.h; sourceTree = "<group>"; };
 		C2C8104E5ED3B000219191A898326FAB /* readbarcode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = readbarcode.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/readbarcode.h; sourceTree = "<group>"; };
@@ -315,8 +315,8 @@
 		E473AFFEF34B33D6A2BDCF78235B6869 /* plumbing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = plumbing.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/plumbing.h; sourceTree = "<group>"; };
 		E555718A0CF6ECB98E7CB90D2FE97D54 /* platform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = platform.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/platform.h; sourceTree = "<group>"; };
 		E6D92E45764E9BC46ABF32244860A3FE /* arrayaccess.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = arrayaccess.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/leptonica/arrayaccess.h; sourceTree = "<group>"; };
-		E7687CA04350881CDEB7F2FF86B36D18 /* Pods-SwiftyTesseractRTE_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SwiftyTesseractRTE_Example.modulemap"; sourceTree = "<group>"; };
-		E8B10726A8C4EE2D697F8837E155AAB0 /* SwiftyTesseractRTE.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyTesseractRTE.modulemap; sourceTree = "<group>"; };
+		E7687CA04350881CDEB7F2FF86B36D18 /* Pods-SwiftyTesseractRTE_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SwiftyTesseractRTE_Example.modulemap"; sourceTree = "<group>"; };
+		E8B10726A8C4EE2D697F8837E155AAB0 /* SwiftyTesseractRTE.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyTesseractRTE.modulemap; sourceTree = "<group>"; };
 		E9941CA284D9F1B2EC85E8A123234566 /* dotproductavx.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = dotproductavx.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/dotproductavx.h; sourceTree = "<group>"; };
 		EB95F149DD64665B2489ACBC3E897836 /* ImageProcessor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
 		EDFAA8F8FF4C94A7B7E1024CB37B207B /* fileerr.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = fileerr.h; path = SwiftyTesseract/SwiftyTesseract/dependencies/include/tesseract/fileerr.h; sourceTree = "<group>"; };
@@ -511,6 +511,7 @@
 				ECE3FAE658E4C25EA69AD883CBDCF872 /* Frameworks */,
 				AE533F22FBB9E70B6CC841ABA0B8EC00 /* Support Files */,
 			);
+			name = SwiftyTesseract;
 			path = SwiftyTesseract;
 			sourceTree = "<group>";
 		};
@@ -905,7 +906,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1239,7 +1240,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;

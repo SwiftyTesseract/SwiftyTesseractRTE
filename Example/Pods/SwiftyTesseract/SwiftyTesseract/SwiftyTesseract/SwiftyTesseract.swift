@@ -15,10 +15,12 @@ typealias TessString = UnsafePointer<Int8>
 typealias Pix = UnsafeMutablePointer<PIX>?
 
 
+/// A class to perform optical character recognition with the open-source Tesseract library
 public class SwiftyTesseract {
   
+  // MARK: - Properties
   private let tesseract: TessBaseAPI = TessBaseAPICreate()
-  
+
   /// **Only available for** `EngineMode.tesseractOnly`.
   /// **Setting** `whiteList` **in any other EngineMode will do nothing**.
   ///
@@ -64,7 +66,7 @@ public class SwiftyTesseract {
     return String(tesseractString: tesseractVersion)
   }()
   
-
+  // MARK: - Initialization
   /// Creates an instance of SwiftyTesseract. The tessdata folder MUST be
   /// in your Xcode project as a folder reference (blue folder icon, not yellow) and be named
   /// "tessdata"
@@ -111,6 +113,7 @@ public class SwiftyTesseract {
     TessBaseAPIDelete(tesseract)
   }
   
+  // MARK: - Methods
   /// Takes a UIImage and passes resulting recognized UTF-8 text into completion handler
   ///
   /// - Parameters:
@@ -118,56 +121,48 @@ public class SwiftyTesseract {
   ///   - completionHandler: The action to be performed on the recognized string
   ///
   public func performOCR(on image: UIImage, completionHandler: @escaping (String?) -> ()) {
-    // pixImage is a var because it has to be passed as an inout paramter to pixDestroy to release the memory allocation
-    var pixImage: Pix
+      // pixImage is a var because it has to be passed as an inout paramter to pixDestroy to release the memory allocation
+      var pixImage: Pix
+      
+      do {
+        pixImage = try createPix(from: image)
+      } catch {
+        completionHandler(nil)
+        return
+      }
     
-    do {
-      pixImage = try createPix(from: image)
-    } catch {
-      completionHandler(nil)
-      return
-    }
-    
-    TessBaseAPISetImage2(tesseract, pixImage)
+      TessBaseAPISetImage2(tesseract, pixImage)
+      
+      if TessBaseAPIGetSourceYResolution(tesseract) < 70 {
+        TessBaseAPISetSourceResolution(tesseract, 300)
+      }
+      
+      guard let tesseractString = TessBaseAPIGetUTF8Text(tesseract) else {
+        completionHandler(nil)
+        return
+      }
+      
+      defer {
+        // Release the Pix instance from memory
+        pixDestroy(&pixImage)
+        // Release the Tesseract string from memory
+        TessDeleteText(tesseractString)
+      }
+      
+      let swiftString = String(tesseractString: tesseractString)
+      completionHandler(swiftString)
 
-    if TessBaseAPIGetSourceYResolution(tesseract) < 70 {
-      TessBaseAPISetSourceResolution(tesseract, 300)
-    }
-
-    guard let tesseractString = TessBaseAPIGetUTF8Text(tesseract) else {
-      completionHandler(nil)
-      return
-    }
-
-    defer {
-      // Release the Pix instance from memory
-      pixDestroy(&pixImage)
-      // Release the Tesseract string from memory
-      TessDeleteText(tesseractString)
-    }
-
-    let swiftString = String(tesseractString: tesseractString)
-    completionHandler(swiftString)
   }
   
   // MARK: - Helper functions
-  
+
   private func createPix(from image: UIImage) throws -> Pix {
-    let filename = try save(image).path
-    return pixRead(filename)
-  }
-  
-  private func save(_ image: UIImage) throws -> URL {
     guard let data = UIImagePNGRepresentation(image) else { throw SwiftyTesseractError.imageConversionError }
-    let url = getDocumentsDirectory().appendingPathComponent("temp.png")
-    try data.write(to: url)
-    return url
+    let rawPointer = (data as NSData).bytes
+    let uint8Pointer = rawPointer.assumingMemoryBound(to: UInt8.self)
+    return pixReadMem(uint8Pointer, data.count)
   }
-  
-  private func getDocumentsDirectory() -> URL {
-    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-    return paths[0]
-  }
+
   
   private func setTesseractVariable(_ variableName: TesseractVariableName, value: String) {
     TessBaseAPISetVariable(tesseract, variableName.rawValue, value)

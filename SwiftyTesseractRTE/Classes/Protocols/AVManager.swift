@@ -19,6 +19,6 @@ protocol AVManager: class {
   var cameraQuality: AVCaptureSession.Preset { get set }
   
   // MARK: - Required delegate
-  weak var delegate: AVCaptureVideoDataOutputSampleBufferDelegate? { get set }
+  var delegate: AVCaptureVideoDataOutputSampleBufferDelegate? { get set }
   
 }
