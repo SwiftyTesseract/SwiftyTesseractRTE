@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SwiftyTesseractRTE'
-  s.version          = '0.8.8'
+  s.version          = '1.0.0'
   s.summary          = 'A real-time optical character recognition engine built on top of SwiftyTesseract.'
 
   s.description      = <<-DESC
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
                        DESC
 
   s.platform         = :ios, "11.0"
-  s.homepage         = 'https://github.com/Steven0351/SwiftyTesseractRTE'
+  s.homepage         = 'https://github.com/SwiftyTesseract/SwiftyTesseractRTE'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Steven Sherry' => 'steven.sherry@affinityforapps.com' }
   s.source           = { :git => 'https://github.com/Steven0351/SwiftyTesseractRTE.git', :tag => s.version.to_s }
@@ -19,5 +19,5 @@ Pod::Spec.new do |s|
   s.source_files = 'SwiftyTesseractRTE/Classes/**/*'
 
   s.frameworks = 'UIKit', 'AVFoundation'
-  s.dependency 'SwiftyTesseract'
+  s.dependency 'SwiftyTesseract', ~> 1.0
 end

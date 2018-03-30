@@ -13,7 +13,7 @@ import SwiftyTesseract
 import SwiftyTesseractRTE
 ```
 
-Create an instance of SwiftyTesseractRTE and assign it's areaOfInterest property. 
+Create an instance of SwiftyTesseractRTE and assign it's regionOfInterest property. 
 ```swift
 private var realTimeEngine: SwiftyTesseractRTE!
 
@@ -27,7 +27,7 @@ override func viewDidLoad() {
 }
 
 override func viewDidLayoutSubviews() {
-  // Must occur during viewDidLayoutSubviews()
+  // Must occur during viewDidLayoutSubviews() - Autolayout constraints are not set in viewDidLoad()
   realTimeEngine.bindPreviewLayer(to: previewView)
   realTimeEngine.regionOfInterest = regionOfInterest.frame
 
@@ -42,7 +42,7 @@ override func viewDidLayoutSubviews() {
 extension YourViewController: SwiftyTesseractRTEDelegate {
 
   func onRecognitionComplete(_ recognizedString: String) {
-      print(recognizedString)
+      // Do something with the recognized string
   }
 
 }
@@ -92,4 +92,7 @@ $ pod install
 ```
 
 ## Setting Up SwiftyTesseract for Use in SwiftyTesseractRTE
-See SwiftyTesseract's [Additional Configuration](https://github.com/Steven0351/SwiftyTesseract/blob/master/Readme.md#additional-configuration) section on properly setting up SwiftyTesseract to be utilized in your project.
+See SwiftyTesseract's [Additional Configuration](https://github.com/SwiftyTesseract/SwiftyTesseract/blob/master/Readme.md#additional-configuration) section on properly setting up SwiftyTesseract to be utilized in your project.
+
+# Contributions Welcome
+Contributions are always welcome! Please refer to [Contributing to SwiftyTesseractRTE](Contributions.md) for the full guidelines on creating issues and opening pull requests to the project.

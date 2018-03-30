@@ -1,8 +1,8 @@
 use_frameworks!
-source 'https://github.com/Steven0351/private-spec-repo'
+
 target 'SwiftyTesseractRTE_Example' do
   pod 'SwiftyTesseractRTE', :path => '../'
-  pod 'SwiftyTesseract'
+  pod 'SwiftyTesseract' ~> 1.0
   target 'SwiftyTesseractRTE_Tests' do
     inherit! :search_paths
     
