@@ -2,7 +2,7 @@ use_frameworks!
 
 target 'SwiftyTesseractRTE_Example' do
   pod 'SwiftyTesseractRTE', :path => '../'
-  pod 'SwiftyTesseract' ~> 1.0
+  pod 'SwiftyTesseract', '~> 1.0'
   target 'SwiftyTesseractRTE_Tests' do
     inherit! :search_paths
     
