@@ -8,6 +8,7 @@ cache: cocoapods
 podfile: Example/Podfile
 before_install:
 - gem install cocoapods # Since Travis is not always on latest version
+- pod repo update
 - pod install --project-directory=Example
 script:
 - set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/SwiftyTesseractRTE.xcworkspace -scheme SwiftyTesseractRTE-Example -sdk iphonesimulator11.3 ONLY_ACTIVE_ARCH=NO | xcpretty
