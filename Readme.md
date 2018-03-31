@@ -1,5 +1,5 @@
 # SwiftyTesseractRTE
-![platforms](https://img.shields.io/badge/Platform-iOS-lightgrey.svg)
+![pod-version](https://img.shields.io/cocoapods/v/SwiftyTesseractRTE.svg) ![platforms](https://img.shields.io/badge/Platform-iOS-lightgrey.svg) ![swift-version](https://img.shields.io/badge/Swift-4.0%20%2F%204.1-orange.svg)
 
 #### SwiftyTesseractRTE can only currently be used in portrait mode.
 
