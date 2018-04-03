@@ -1,7 +1,11 @@
 # SwiftyTesseractRTE
-![pod-version](https://img.shields.io/cocoapods/v/SwiftyTesseractRTE.svg) ![platforms](https://img.shields.io/badge/Platform-iOS-lightgrey.svg) ![swift-version](https://img.shields.io/badge/Swift-4.0%20%2F%204.1-orange.svg) [![Build Status](https://travis-ci.org/SwiftyTesseract/SwiftyTesseractRTE.svg?branch=master)](https://travis-ci.org/SwiftyTesseract/SwiftyTesseractRTE)
+![pod-version](https://img.shields.io/cocoapods/v/SwiftyTesseractRTE.svg) ![platforms](https://img.shields.io/badge/Platform-iOS-lightgrey.svg) ![swift-version](https://img.shields.io/badge/Swift-4.0%20%2F%204.1-orange.svg) ![[Build Status](https://travis-ci.org/SwiftyTesseract/SwiftyTesseractRTE.svg?branch=master)](https://travis-ci.org/SwiftyTesseract/SwiftyTesseractRTE)
 
 #### SwiftyTesseractRTE can only currently be used in portrait mode.
+
+<p align="center">
+<img alt="SwiftyTesseractRTE-example" src=https://lh3.googleusercontent.com/o-C41-Wb7uJ2kzKEMgZ3VYYfGEFlgrpo4q-XLXaJRbMiwGdwRPKSdY3pwOopXyT7xZhxUm0yF0CGCn_4p5j5Vg3abouQyaSzud10uGZ4WCSL2hlOU72csZEgS6cX7lclQxAAFPCJ=w2400 />
+</p>
 
 # About SwiftyTesseractRTE
 SwiftyTesseractRTE (SwiftyTesseract Real-Time Engine) is a real-time optical character recognition library built on top of SwiftyTesseract.
@@ -15,7 +19,7 @@ import SwiftyTesseractRTE
 
 Create an instance of SwiftyTesseractRTE and assign it's regionOfInterest property. 
 ```swift
-private var realTimeEngine: SwiftyTesseractRTE!
+var realTimeEngine: SwiftyTesseractRTE!
 
 @IBOutlet weak var previewView: UIView!
 @IBOutlet weak var regionOfInterest: UIView! // A subview of previewView
@@ -95,4 +99,4 @@ $ pod install
 See SwiftyTesseract's [Additional Configuration](https://github.com/SwiftyTesseract/SwiftyTesseract/blob/master/Readme.md#additional-configuration) section on properly setting up SwiftyTesseract to be utilized in your project.
 
 # Contributions Welcome
-Contributions are always welcome! Please refer to [Contributing to SwiftyTesseractRTE](Contributions.md) for the full guidelines on creating issues and opening pull requests to the project.
+Contributions are always welcome! Please refer to [Contributing to SwiftyTesseractRTE](https://github.com/SwiftyTesseract/SwiftyTesseractRTE/blob/master/Contributions.md) for the full guidelines on creating issues and opening pull requests to the project.
