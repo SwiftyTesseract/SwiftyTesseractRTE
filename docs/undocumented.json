@@ -1,68 +1,6 @@
 {
   "warnings": [
-    {
-      "file": "/Users/stevensherry/Documents/Code/SwiftyTesseractRTE/SwiftyTesseractRTE/Classes/ConcreteTypes/RecognitionReliability.swift",
-      "line": 15,
-      "symbol": "RecognitionReliability.verifiable",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/stevensherry/Documents/Code/SwiftyTesseractRTE/SwiftyTesseractRTE/Classes/ConcreteTypes/RecognitionReliability.swift",
-      "line": 16,
-      "symbol": "RecognitionReliability.stable",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/stevensherry/Documents/Code/SwiftyTesseractRTE/SwiftyTesseractRTE/Classes/ConcreteTypes/RecognitionReliability.swift",
-      "line": 17,
-      "symbol": "RecognitionReliability.solid",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/stevensherry/Documents/Code/SwiftyTesseractRTE/SwiftyTesseractRTE/Classes/ConcreteTypes/SwiftyTesseractRTE.swift",
-      "line": null,
-      "symbol": "SwiftyTesseractRTE",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/stevensherry/Documents/Code/SwiftyTesseractRTE/SwiftyTesseractRTE/Classes/ConcreteTypes/SwiftyTesseractRTE.swift",
-      "line": 13,
-      "symbol": "SwiftyTesseractRTEDelegate",
-      "symbol_kind": "source.lang.swift.decl.protocol",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/stevensherry/Documents/Code/SwiftyTesseractRTE/SwiftyTesseractRTE/Classes/ConcreteTypes/SwiftyTesseractRTE.swift",
-      "line": 21,
-      "symbol": "SwiftyTesseractRTE",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/stevensherry/Documents/Code/SwiftyTesseractRTE/SwiftyTesseractRTE/Classes/ConcreteTypes/SwiftyTesseractRTE.swift",
-      "line": 58,
-      "symbol": "SwiftyTesseractRTE.delegate",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/stevensherry/Documents/Code/SwiftyTesseractRTE/SwiftyTesseractRTE/Classes/ConcreteTypes/SwiftyTesseractRTE.swift",
-      "line": 179,
-      "symbol": "SwiftyTesseractRTE.captureOutput(_:didOutput:from:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/stevensherry/Documents/Code/SwiftyTesseractRTE/SwiftyTesseractRTE/Classes/Protocols/AVSampleProcessor.swift",
-      "line": 15,
-      "symbol": "AVSampleProcessor.convertToGrayscaleUiImage(from:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    }
+
   ],
   "source_directory": "/Users/stevensherry/Documents/Code/SwiftyTesseractRTE"
 }

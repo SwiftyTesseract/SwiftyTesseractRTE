@@ -10,6 +10,7 @@ import SwiftyTesseract
 import AVFoundation
 
 // MARK: - SwiftyTesseractRTEDelegate definition
+/// A class-bound instance that handles recognition results returned by SwiftyTesseractRTE
 public protocol SwiftyTesseractRTEDelegate: class {
   /// SwiftyTesseractRTEDelegate
   ///
@@ -18,6 +19,7 @@ public protocol SwiftyTesseractRTEDelegate: class {
 
 }
 
+/// A class to perform real-time optical character recognition
 public class SwiftyTesseractRTE: NSObject {
   
   // MARK: - Private variables
@@ -55,6 +57,7 @@ public class SwiftyTesseractRTE: NSObject {
   }
   
   // MARK: - Delegate
+  /// Implements the `onRecognitionComplete(_ recognizedString:)` declared in the `SwiftyTesseractRTEDelegate` protocol
   public weak var delegate: SwiftyTesseractRTEDelegate?
 
   // MARK: - Initializers
@@ -164,7 +167,7 @@ public class SwiftyTesseractRTE: NSObject {
         strongSelf.recognitionQueue.enqueue(recognizedString)
         return
       }
-      
+
       strongSelf.delegate?.onRecognitionComplete(recognizedString)
       strongSelf.recognitionQueue.clear()
     }
@@ -176,6 +179,12 @@ public class SwiftyTesseractRTE: NSObject {
 
 extension SwiftyTesseractRTE: AVCaptureVideoDataOutputSampleBufferDelegate {
   
+  /// Do not call; this method is only public due to the requirements of the `AVCaptureVideoDataOutputSampleBufferDelegate` protocol
+  ///
+  /// - Parameters:
+  ///   - output: `AVCaptureOutput`
+  ///   - sampleBuffer: `CMSampleBuffer`
+  ///   - connection: `AVCaptureConnection`
   public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
 
     performOCR(on: sampleBuffer)

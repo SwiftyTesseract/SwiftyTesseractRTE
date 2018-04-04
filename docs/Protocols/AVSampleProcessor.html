@@ -14,7 +14,7 @@
     <a title="AVSampleProcessor Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">SwiftyTesseractRTE Docs</a> (59% documented)</p>
+        <p><a href="../index.html">SwiftyTesseractRTE Docs</a> (100% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -66,8 +66,8 @@
 
                 </div>
               </div>
-            <p>To be implemented if custom image processing is needed. Methods only need to be implemented; SwiftyTesseractRTE calls the methods internally.
-If implementing custom image processing logic, results will be</p>
+            <p>To be implemented if custom image processing is needed. Methods only need to be implemented; SwiftyTesseractRTE will the methods internally when
+passed as a dependency during initialization</p>
 
           </section>
           <section class="section task-group-section">
@@ -93,7 +93,7 @@ If implementing custom image processing logic, results will be</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Converts CMSampleBuffer into a grayscale UIImage.</p>
 
                       </div>
                       <div class="declaration">
@@ -103,6 +103,29 @@ If implementing custom image processing logic, results will be</p>
                           <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">convertToGrayscaleUiImage</span><span class="p">(</span><span class="n">from</span> <span class="nv">sampleBuffer</span><span class="p">:</span> <span class="kt">CMSampleBuffer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIImage</span><span class="p">?</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sampleBuffer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The incoming <code>CMSampleBuffer</code> from the AVCaptureSession</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An optional grayscale <code>UIImage</code></p>
                       </div>
                     </section>
                   </div>
