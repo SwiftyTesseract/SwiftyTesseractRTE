@@ -162,12 +162,15 @@ public class SwiftyTesseractRTE: NSObject {
   
   // MARK: - Helper functions
   private func performOCR(on sampleBuffer: CMSampleBuffer) {
-    guard recognitionIsActive, let croppedImage = cropAndConvert(sampleBuffer: sampleBuffer) else { return }
+    guard
+      recognitionIsActive,
+      let croppedImage = convertAndCrop(sampleBuffer)
+    else { return }
+    
     enqueueAndEvalutateRecognitionResults(from: croppedImage)
   }
   
-  private func cropAndConvert(sampleBuffer: CMSampleBuffer) -> UIImage? {
-    
+  private func convertAndCrop(_ sampleBuffer: CMSampleBuffer) -> UIImage? {
     guard
       let processedImage = imageProcessor.convertToGrayscaleUiImage(from: sampleBuffer),
       let imageCroppedToPreviewLayer = imageProcessor.crop(processedImage,
