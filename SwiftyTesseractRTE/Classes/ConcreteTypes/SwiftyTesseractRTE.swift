@@ -187,14 +187,19 @@ public class SwiftyTesseractRTE: NSObject {
   private func enqueueAndEvalutateRecognitionResults(from image: UIImage) {
     swiftyTesseract.performOCR(on: image) { [weak self] recognizedString in
       
-      guard let recognizedString = recognizedString, let strongSelf = self else { return }
+      guard
+        let recognizedString = recognizedString,
+        let strongSelf = self
+      else { return }
       
-      guard strongSelf.recognitionQueue.allValuesMatch else {
-        strongSelf.recognitionQueue.enqueue(recognizedString)
-        return
-      }
-
-      strongSelf.delegate?.onRecognitionComplete(recognizedString)
+      strongSelf.recognitionQueue.enqueue(recognizedString)
+      
+      guard
+        strongSelf.recognitionQueue.allValuesMatch,
+        let result = strongSelf.recognitionQueue.dequeue()
+      else { return }
+      
+      strongSelf.delegate?.onRecognitionComplete(result)
       strongSelf.recognitionQueue.clear()
     }
   }
