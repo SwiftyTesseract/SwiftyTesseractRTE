@@ -10,12 +10,13 @@ import AVFoundation
 
 class VideoManager: AVManager {
   
+  private let sessionQueue: DispatchQueue
+  private let mediaType: AVMediaType
+  private let videoOrientation: AVCaptureVideoOrientation
+  private let cameraPosition: AVCaptureDevice.Position
+  
   private(set) var previewLayer: AVCaptureVideoPreviewLayer
   private(set) var captureSession: AVCaptureSession
-  private(set) var sessionQueue: DispatchQueue
-  private(set) var mediaType: AVMediaType
-  private(set) var videoOrientation: AVCaptureVideoOrientation
-  private(set) var cameraPosition: AVCaptureDevice.Position
   
   var cameraQuality: AVCaptureSession.Preset {
     didSet {
@@ -66,46 +67,54 @@ class VideoManager: AVManager {
     AVCaptureDevice.requestAccess(for: mediaType) { [weak self] granted in
       guard let strongSelf = self else { return }
       if granted {
-        strongSelf.configure(captureSession: strongSelf.captureSession)
+        strongSelf.configure(strongSelf.captureSession)
         strongSelf.sessionQueue.resume()
       }
     }
   }
   
-  private func configure(captureSession: AVCaptureSession) {
-    guard
-      let delegate = delegate,
-      isAuthorized(for: mediaType)
-    else { return }
+  private func configure(_ captureSession: AVCaptureSession) {
+    guard isAuthorized(for: mediaType) else { return }
     
     captureSession.sessionPreset = cameraQuality
+    configureInput(for: captureSession)
     
+    let connection = configureOutputConnection(for: captureSession)
+    configureOutput(for: connection)
+  }
+  
+  private func configureInput(for captureSession: AVCaptureSession) {
     guard
       let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: mediaType, position: cameraPosition),
       let captureDeviceInput = try? AVCaptureDeviceInput(device: captureDevice),
       captureSession.canAddInput(captureDeviceInput)
     else { return }
-    captureSession.addInput(captureDeviceInput)
     
+    captureSession.addInput(captureDeviceInput)
+  }
+  
+  private func configureOutputConnection(for captureSession: AVCaptureSession) -> AVCaptureConnection? {
     let videoOutput = AVCaptureVideoDataOutput()
     videoOutput.setSampleBufferDelegate(delegate, queue: DispatchQueue(queueLabel: .videoOutput))
     
-    guard captureSession.canAddOutput(videoOutput) else { return }
+    guard captureSession.canAddOutput(videoOutput) else { return nil }
     captureSession.addOutput(videoOutput)
     
+    return videoOutput.connection(with: mediaType)
+  }
+  
+  private func configureOutput(for captureConnection: AVCaptureConnection?) {
     guard
-      let connection = videoOutput.connection(with: mediaType),
-      connection.isVideoOrientationSupported,
-      connection.isVideoMirroringSupported
+      let captureConnection = captureConnection,
+      captureConnection.isVideoOrientationSupported
     else { return }
     
-    connection.videoOrientation = videoOrientation
-    connection.isVideoMirrored = cameraPosition == .front
+    captureConnection.videoOrientation = videoOrientation
   }
   
   private func suspendQueueAndConfigureSession() {
     sessionQueue.suspend()
-    configure(captureSession: captureSession)
+    configure(captureSession)
     sessionQueue.resume()
   }
 }

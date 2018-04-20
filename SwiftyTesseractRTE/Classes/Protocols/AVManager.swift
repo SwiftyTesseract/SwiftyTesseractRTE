@@ -9,16 +9,9 @@
 import AVFoundation
 
 protocol AVManager: class {
-  // MARK: - Required member variables
   var previewLayer: AVCaptureVideoPreviewLayer { get }
-  var captureSession: AVCaptureSession { get }
-  var sessionQueue: DispatchQueue { get }
-  var cameraPosition: AVCaptureDevice.Position { get }
-  var videoOrientation: AVCaptureVideoOrientation { get }
-  var mediaType: AVMediaType { get }
   var cameraQuality: AVCaptureSession.Preset { get set }
-  
-  // MARK: - Required delegate
+  var captureSession: AVCaptureSession { get }
+
   var delegate: AVCaptureVideoDataOutputSampleBufferDelegate? { get set }
-  
 }

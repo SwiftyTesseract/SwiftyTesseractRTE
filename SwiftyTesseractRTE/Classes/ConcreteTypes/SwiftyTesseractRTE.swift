@@ -101,7 +101,7 @@ public class SwiftyTesseractRTE: NSObject {
               imageProcessor: imageProcessor,
               avManager: avManager)
   }
-  
+
   init(swiftyTesseract: SwiftyTesseract,
        recognitionQueue: RecognitionQueue<String>,
        imageProcessor: AVSampleProcessor = ImageProcessor(),
@@ -136,12 +136,15 @@ public class SwiftyTesseractRTE: NSObject {
   
   // MARK: - Helper functions
   private func performOCR(on sampleBuffer: CMSampleBuffer) {
-    guard recognitionIsActive, let croppedImage = cropAndConvert(sampleBuffer: sampleBuffer) else { return }
+    guard
+      recognitionIsActive,
+      let croppedImage = convertAndCrop(sampleBuffer)
+    else { return }
+    
     enqueueAndEvalutateRecognitionResults(from: croppedImage)
   }
   
-  private func cropAndConvert(sampleBuffer: CMSampleBuffer) -> UIImage? {
-    
+  private func convertAndCrop(_ sampleBuffer: CMSampleBuffer) -> UIImage? {
     guard
       let processedImage = imageProcessor.convertToGrayscaleUiImage(from: sampleBuffer),
       let imageCroppedToPreviewLayer = imageProcessor.crop(processedImage,
@@ -161,14 +164,19 @@ public class SwiftyTesseractRTE: NSObject {
   private func enqueueAndEvalutateRecognitionResults(from image: UIImage) {
     swiftyTesseract.performOCR(on: image) { [weak self] recognizedString in
       
-      guard let recognizedString = recognizedString, let strongSelf = self else { return }
+      guard
+        let recognizedString = recognizedString,
+        let strongSelf = self
+      else { return }
       
-      guard strongSelf.recognitionQueue.allValuesMatch else {
-        strongSelf.recognitionQueue.enqueue(recognizedString)
-        return
-      }
-
-      strongSelf.delegate?.onRecognitionComplete(recognizedString)
+      strongSelf.recognitionQueue.enqueue(recognizedString)
+      
+      guard
+        strongSelf.recognitionQueue.allValuesMatch,
+        let result = strongSelf.recognitionQueue.dequeue()
+      else { return }
+      
+      strongSelf.delegate?.onRecognitionComplete(result)
       strongSelf.recognitionQueue.clear()
     }
   }
