@@ -101,33 +101,7 @@ public class SwiftyTesseractRTE: NSObject {
               imageProcessor: imageProcessor,
               avManager: avManager)
   }
-  
-  public convenience init(swiftyTesseract: SwiftyTesseract,
-                          desiredReliability: RecognitionReliability,
-                          imageProcessor: AVSampleProcessor,
-                          avManager: AVManager) {
-    
-    let recognitionQueue = RecognitionQueue<String>(desiredReliability: desiredReliability)
-    
-    self.init(swiftyTesseract: swiftyTesseract,
-              recognitionQueue: recognitionQueue,
-              imageProcessor: imageProcessor,
-              avManager: avManager)
-  }
-  
-  public convenience init(swiftyTesseract: SwiftyTesseract,
-                          desiredReliability: RecognitionReliability,
-                          avManager: AVManager) {
-    
-    let recognitionQueue = RecognitionQueue<String>(desiredReliability: desiredReliability)
-    
-    self.init(swiftyTesseract: swiftyTesseract,
-              recognitionQueue: recognitionQueue,
-              avManager: avManager)
-  }
-  
-  
-  
+
   init(swiftyTesseract: SwiftyTesseract,
        recognitionQueue: RecognitionQueue<String>,
        imageProcessor: AVSampleProcessor = ImageProcessor(),

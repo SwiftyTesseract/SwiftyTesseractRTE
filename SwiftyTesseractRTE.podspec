@@ -4,7 +4,9 @@ Pod::Spec.new do |s|
   s.summary          = 'A real-time optical character recognition engine built on top of SwiftyTesseract.'
 
   s.description      = <<-DESC
-                        SwiftyTesseractRTE is an out-of-the-box solution for real-time optical character recognition. Add the SwiftyTesseractRTE to your project and you'll be performing OCR via a live camera feed in just a few lines of code.
+                        SwiftyTesseractRTE is an out-of-the-box solution for real-time optical character recognition. 
+                        Add SwiftyTesseractRTE to your project and you'll be performing OCR via a live camera 
+                        feed in just a few lines of code.
                        DESC
 
   s.platform         = :ios, "11.0"

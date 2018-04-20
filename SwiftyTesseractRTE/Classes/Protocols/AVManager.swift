@@ -8,13 +8,10 @@
 
 import AVFoundation
 
-/// <#Description#>
-public protocol AVManager: class {
-  // MARK: - Required member variables
+protocol AVManager: class {
   var previewLayer: AVCaptureVideoPreviewLayer { get }
   var cameraQuality: AVCaptureSession.Preset { get set }
   var captureSession: AVCaptureSession { get }
-  
-  // MARK: - Required delegate
+
   var delegate: AVCaptureVideoDataOutputSampleBufferDelegate? { get set }
 }
