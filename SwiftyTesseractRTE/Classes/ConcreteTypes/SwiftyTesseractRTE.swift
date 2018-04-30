@@ -16,7 +16,6 @@ public protocol SwiftyTesseractRTEDelegate: class {
   ///
   /// - Parameter recognizedString: The string returned after recognition has completed
   func onRecognitionComplete(_ recognizedString: String)
-
 }
 
 /// A class to perform real-time optical character recognition
@@ -168,7 +167,7 @@ public class SwiftyTesseractRTE: NSObject {
         let recognizedString = recognizedString,
         let strongSelf = self
       else { return }
-      
+
       strongSelf.recognitionQueue.enqueue(recognizedString)
       
       guard

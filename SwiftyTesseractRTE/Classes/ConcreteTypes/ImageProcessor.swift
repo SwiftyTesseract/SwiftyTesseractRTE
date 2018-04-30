@@ -98,26 +98,20 @@ extension ImageProcessor: AVSampleProcessor {
     let cropRect = CGRect(x: cropX, y: cropY, width: cropWidth, height: cropHeight)
     
     guard let cropImage = image.cgImage?.cropping(to: cropRect) else { return nil }
-
     return UIImage(cgImage: cropImage, scale: image.scale, orientation: image.imageOrientation)
   }
   
   func crop(_ image: UIImage, toBoundsOf areaOfInterest: CGRect, containedIn previewLayer: AVCaptureVideoPreviewLayer) -> UIImage? {
     let previewLayerSize = previewLayer.bounds.size
-    let heightMultiplier = image.size.height / previewLayerSize.height
-    let widthMultiplier = image.size.width / previewLayerSize.width
-    let xOffset = image.size.width - previewLayerSize.width / 2
-    let yOffset = image.size.height - previewLayerSize.height / 2
-
-    let newSizeRect = CGRect(origin: .zero, size: previewLayerSize)
-    let newRect = AVMakeRect(aspectRatio: image.size, insideRect: newSizeRect)
-    UIGraphicsBeginImageContext(previewLayerSize)
-    defer {
-      UIGraphicsEndImageContext()
-    }
-    image.draw(in: newRect)
-    guard let newImage = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
-    guard let cropImage = newImage.cgImage?.cropping(to: areaOfInterest) else { return newImage }
+    let yAxisMultiplier = image.size.height / previewLayerSize.height
+    let xAxisMultiplier = image.size.width / previewLayerSize.width
+    
+    let resizedAreaOfInterest = CGRect(x: areaOfInterest.origin.x * xAxisMultiplier,
+                                       y: areaOfInterest.origin.y * yAxisMultiplier,
+                                       width: areaOfInterest.width * xAxisMultiplier,
+                                       height: areaOfInterest.height * yAxisMultiplier)
+    
+    guard let cropImage = image.cgImage?.cropping(to: resizedAreaOfInterest) else { return image }
     return UIImage(cgImage: cropImage, scale: image.scale, orientation: image.imageOrientation)
   }
 }
