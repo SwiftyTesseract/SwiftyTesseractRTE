@@ -125,6 +125,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: SwiftyTesseractRTEDelegate {
+  
   func onRecognitionComplete(_ recognizedString: String) {
     AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
     DispatchQueue.main.async { [weak self] in
@@ -132,6 +133,7 @@ extension ViewController: SwiftyTesseractRTEDelegate {
     }
     recognitionIsRunning = false
   }
+  
 }
 
 extension Bool {
