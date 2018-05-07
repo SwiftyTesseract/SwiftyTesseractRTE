@@ -8,7 +8,7 @@
 
 import AVFoundation
 
-protocol AVManager: class {
+public protocol AVManager: class {
   var previewLayer: AVCaptureVideoPreviewLayer { get }
   var cameraQuality: AVCaptureSession.Preset { get set }
   var captureSession: AVCaptureSession { get }
