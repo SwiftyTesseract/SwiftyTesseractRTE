@@ -14,12 +14,14 @@ typealias TessBaseAPI = OpaquePointer
 typealias TessString = UnsafePointer<Int8>
 typealias Pix = UnsafeMutablePointer<PIX>?
 
-
 /// A class to perform optical character recognition with the open-source Tesseract library
 public class SwiftyTesseract {
   
   // MARK: - Properties
   private let tesseract: TessBaseAPI = TessBaseAPICreate()
+  
+  /// Required to make `performOCR(on:completionHandler:)` thread safe. Runs faster on average than a `DispatchQueue` with `.barrier` flag.
+  private let semaphore = DispatchSemaphore(value: 1)
 
   /// **Only available for** `EngineMode.tesseractOnly`.
   /// **Setting** `whiteList` **in any other EngineMode will do nothing**.
@@ -66,30 +68,35 @@ public class SwiftyTesseract {
     return String(tesseractString: tesseractVersion)
   }()
   
+  private init(languageString: String,
+               bundle: Bundle = .main,
+               engineMode: EngineMode = .lstmOnly) {
+    
+    setEnvironmentVariable(.tessDataPrefix, value: bundle.pathToTrainedData)
+    
+    guard TessBaseAPIInit2(tesseract,
+                           bundle.pathToTrainedData,
+                           languageString,
+                           TessOcrEngineMode(rawValue: engineMode.rawValue)) == 0
+    else { fatalError(SwiftyTesseractError.initializationErrorMessage) }
+    
+  }
+  
   // MARK: - Initialization
-  /// Creates an instance of SwiftyTesseract. The tessdata folder MUST be
-  /// in your Xcode project as a folder reference (blue folder icon, not yellow) and be named
-  /// "tessdata"
+  /// Creates an instance of SwiftyTesseract using standard RecognitionLanguages. The tessdata
+  /// folder MUST be in your Xcode project as a folder reference (blue folder icon, not yellow)
+  /// and be named "tessdata"
   ///
   /// - Parameters:
   ///   - languages: Languages of the text to be recognized
   ///   - bundle: The bundle that contains the tessdata folder - default is .main
   ///   - engineMode: The tesseract engine mode - default is .lstmOnly
-  public init(languages: [RecognitionLanguage],
+  public convenience init(languages: [RecognitionLanguage],
               bundle: Bundle = .main,
               engineMode: EngineMode = .lstmOnly) {
     
     let stringLanguages = RecognitionLanguage.createLanguageString(from: languages)
-    
-    // Required for Tesseract to access the .traineddata files
-    setEnvironmentVariable(.tessDataPrefix, value: bundle.pathToTrainedData)
-    
-    // Traps to avoid undefined behavior - TessBaseAPI returns 0 upon successful initialization
-    guard TessBaseAPIInit2(tesseract,
-                           bundle.pathToTrainedData,
-                           stringLanguages,
-                           TessOcrEngineMode(rawValue: engineMode.rawValue)) == 0
-    else { fatalError(SwiftyTesseractError.initializationErrorMessage) }
+    self.init(languageString: stringLanguages, bundle: bundle, engineMode: engineMode)
     
   }
   
@@ -107,6 +114,38 @@ public class SwiftyTesseract {
     self.init(languages: [language], bundle: bundle, engineMode: engineMode)
   }
   
+  /// Creates an instance of SwiftyTesseract using CustomLanguages. The tessdata
+  /// folder MUST be in your Xcode project as a folder reference (blue folder icon, not yellow)
+  /// and be named "tessdata"
+  ///
+  /// - Parameters:
+  ///   - customLanguages: The custom languages of the text to be recognized
+  ///   - bundle: The bundle that contains the tessdata folder - default is .main
+  ///   - engineMode: The tesseract engine mode - default is .lstmOnly
+  public convenience init(customLanguages: [CustomLanguage],
+                          bundle: Bundle = .main,
+                          engineMode: EngineMode = .lstmOnly) {
+    
+    let stringLanguages = CustomLanguage.createLanguageString(from: customLanguages)
+    self.init(languageString: stringLanguages, bundle: bundle, engineMode: engineMode)
+  }
+  
+  /// Convenience initializer for creating an instance of SwiftyTesseract with one custom language
+  /// to avoid having to input an array with one value (e.g. [.customData("klingon")])
+  /// for the languages parameter
+  ///
+  /// - Parameters:
+  ///   - language: The language of the text to be recognized
+  ///   - bundle: The bundle that contains the tessdata folder - default is .main
+  ///   - engineMode: The tesseract engine mode - default is .lstmOnly
+  public convenience init(customLanguage: CustomLanguage,
+                          bundle: Bundle = .main,
+                          engineMode: EngineMode = .lstmOnly) {
+    
+    self.init(customLanguages: [customLanguage], bundle: bundle, engineMode: engineMode)
+    
+  }
+  
   deinit {
     // Releases the tesseract instance from memory
     TessBaseAPIEnd(tesseract)
@@ -121,39 +160,44 @@ public class SwiftyTesseract {
   ///   - completionHandler: The action to be performed on the recognized string
   ///
   public func performOCR(on image: UIImage, completionHandler: @escaping (String?) -> ()) {
-      // pixImage is a var because it has to be passed as an inout paramter to pixDestroy to release the memory allocation
-      var pixImage: Pix
-      
-      do {
-        pixImage = try createPix(from: image)
-      } catch {
-        completionHandler(nil)
-        return
-      }
+    let _ = semaphore.wait(timeout: .distantFuture)
     
-      TessBaseAPISetImage2(tesseract, pixImage)
-      
-      if TessBaseAPIGetSourceYResolution(tesseract) < 70 {
-        TessBaseAPISetSourceResolution(tesseract, 300)
-      }
-      
-      guard let tesseractString = TessBaseAPIGetUTF8Text(tesseract) else {
-        completionHandler(nil)
-        return
-      }
-      
-      defer {
-        // Release the Pix instance from memory
-        pixDestroy(&pixImage)
-        // Release the Tesseract string from memory
-        TessDeleteText(tesseractString)
-      }
-      
-      let swiftString = String(tesseractString: tesseractString)
-      completionHandler(swiftString)
+    // pixImage is a var because it has to be passed as an inout paramter to pixDestroy to release the memory allocation
+    var pixImage: Pix
 
+    do {
+      pixImage = try createPix(from: image)
+    } catch {
+      completionHandler(nil)
+      semaphore.signal()
+      return
+    }
+
+    TessBaseAPISetImage2(tesseract, pixImage)
+
+    if TessBaseAPIGetSourceYResolution(tesseract) < 70 {
+      TessBaseAPISetSourceResolution(tesseract, 300)
+    }
+    
+    guard let tesseractString = TessBaseAPIGetUTF8Text(tesseract) else {
+      completionHandler(nil)
+      semaphore.signal()
+      return
+    }
+    
+    defer {
+      // Release the Pix instance from memory
+      pixDestroy(&pixImage)
+      // Release the Tesseract string from memory
+      TessDeleteText(tesseractString)
+      semaphore.signal()
+    }
+    
+    let swiftString = String(tesseractString: tesseractString)
+    completionHandler(swiftString)
+    
   }
-  
+
   // MARK: - Helper functions
 
   private func createPix(from image: UIImage) throws -> Pix {
@@ -162,7 +206,6 @@ public class SwiftyTesseract {
     let uint8Pointer = rawPointer.assumingMemoryBound(to: UInt8.self)
     return pixReadMem(uint8Pointer, data.count)
   }
-
   
   private func setTesseractVariable(_ variableName: TesseractVariableName, value: String) {
     TessBaseAPISetVariable(tesseract, variableName.rawValue, value)
@@ -173,4 +216,3 @@ public class SwiftyTesseract {
   }
   
 }
-

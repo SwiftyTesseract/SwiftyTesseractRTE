@@ -1,12 +1,12 @@
 {
   "name": "SwiftyTesseractRTE",
-  "version": "0.8.8",
+  "version": "1.0.4",
   "summary": "A real-time optical character recognition engine built on top of SwiftyTesseract.",
-  "description": "SwiftyTesseractRTE is an out-of-the-box solution for real-time optical character recognition. Add the SwiftyTesseractRTE to your project and you'll be performing OCR via a live camera feed in just a few lines of code.",
+  "description": "SwiftyTesseractRTE is an out-of-the-box solution for real-time optical character recognition. \nAdd SwiftyTesseractRTE to your project and you'll be performing OCR via a live camera \nfeed in just a few lines of code.",
   "platforms": {
     "ios": "10.0"
   },
-  "homepage": "https://github.com/Steven0351/SwiftyTesseractRTE",
+  "homepage": "https://github.com/SwiftyTesseract/SwiftyTesseractRTE",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -15,8 +15,8 @@
     "Steven Sherry": "steven.sherry@affinityforapps.com"
   },
   "source": {
-    "git": "https://github.com/Steven0351/SwiftyTesseractRTE.git",
-    "tag": "0.8.8"
+    "git": "https://github.com/SwiftyTesseract/SwiftyTesseractRTE.git",
+    "tag": "1.0.4"
   },
   "social_media_url": "https://twitter.com/steven_0351",
   "source_files": "SwiftyTesseractRTE/Classes/**/*",
@@ -26,7 +26,7 @@
   ],
   "dependencies": {
     "SwiftyTesseract": [
-
+      "~> 1.0"
     ]
   }
 }
