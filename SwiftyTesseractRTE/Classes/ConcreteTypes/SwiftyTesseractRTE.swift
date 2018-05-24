@@ -55,13 +55,12 @@ public class SwiftyTesseractRTE: NSObject {
     }
   }
   
-  // MARK: - Delegate
   /// Implements the `onRecognitionComplete(_ recognizedString:)` declared in the `SwiftyTesseractRTEDelegate` protocol
   public weak var delegate: SwiftyTesseractRTEDelegate?
+  
+  // MARK: Initializers
 
-  // MARK: - Initializers
-  /// Primary initializer
-  ///
+  /// Primary Initializer - Uses SwiftyTesseractRTE defaults
   /// - Parameters:
   ///   - swiftyTesseract:    Instance of SwiftyTesseract
   ///   - desiredReliability: The desired reliability of the recognition results.
@@ -78,9 +77,7 @@ public class SwiftyTesseractRTE: NSObject {
               recognitionQueue: recognitionQueue,
               avManager: videoManager)
   }
-  
-  /// Secondary Initializer. Use this **only** if custom image processing logic is needed
-  ///
+
   /// - Parameters:
   ///   - swiftyTesseract:    Instance of SwiftyTesseract
   ///   - desiredReliability: The desired reliability of the recognition results.
@@ -100,18 +97,55 @@ public class SwiftyTesseractRTE: NSObject {
               imageProcessor: imageProcessor,
               avManager: avManager)
   }
-
+  
+  /// - Parameters:
+  ///   - swiftyTesseract: Instance of SwiftyTesseract
+  ///   - desiredReliability: The desired reliability of the recognition results.
+  ///   - avManager: Manages the AVCaptureSession
+  public convenience init(swiftyTesseract: SwiftyTesseract,
+                          desiredReliability: RecognitionReliability,
+                          avManager: AVManager) {
+    
+    let recognitionQueue = RecognitionQueue<String>(desiredReliability: desiredReliability)
+    
+    self.init(swiftyTesseract: swiftyTesseract,
+              recognitionQueue: recognitionQueue,
+              avManager: avManager)
+  }
+  
+  /// - Parameters:
+  ///   - swiftyTesseract: Instance of SwiftyTesseract
+  ///   - desiredReliability: The desired reliability of the recognition results.
+  ///   - imageProcessor: Performs conversion and processing from `CMSampleBuffer` to `UIImage`
+  ///   - avManager: Manages the AVCaptureSession
+  public convenience init(swiftyTesseract: SwiftyTesseract,
+                          desiredReliability: RecognitionReliability,
+                          imageProcessor: AVSampleProcessor,
+                          avManager: AVManager) {
+    
+    let recognitionQueue = RecognitionQueue<String>(desiredReliability: desiredReliability)
+    
+    self.init(swiftyTesseract: swiftyTesseract,
+              recognitionQueue: recognitionQueue,
+              imageProcessor: imageProcessor,
+              avManager: avManager)
+  }
+  
+  
   init(swiftyTesseract: SwiftyTesseract,
        recognitionQueue: RecognitionQueue<String>,
        imageProcessor: AVSampleProcessor = ImageProcessor(),
-       avManager: AVManager = VideoManager()) {
+       avManager: AVManager) {
     
     self.swiftyTesseract = swiftyTesseract
     self.recognitionQueue = recognitionQueue
     self.imageProcessor = imageProcessor
     self.avManager = avManager
     super.init()
-    self.avManager.delegate = self
+    
+    if type(of: avManager) == VideoManager.self {
+      self.avManager.delegate = self
+    }
   }
   
   // MARK: - Public functions
@@ -149,7 +183,6 @@ public class SwiftyTesseractRTE: NSObject {
       let imageCroppedToPreviewLayer = imageProcessor.crop(processedImage,
                                                            toBoundsOf: avManager.previewLayer)
     else { return nil }
-    
     guard
       let regionOfInterest = regionOfInterest,
       let imageCroppedToRegionOfInterest = imageProcessor.crop(imageCroppedToPreviewLayer,
@@ -182,12 +215,9 @@ public class SwiftyTesseractRTE: NSObject {
 
 }
 
-// MARK: - AVCaptureVideoDataOutputSampleBufferDelegate Extension
-
 extension SwiftyTesseractRTE: AVCaptureVideoDataOutputSampleBufferDelegate {
   
-  /// Do not call; this method is only public due to the requirements of the `AVCaptureVideoDataOutputSampleBufferDelegate` protocol
-  ///
+  /// Provides conformance to `AVCaptureVideoDataOutputSampleBufferDelegate`
   /// - Parameters:
   ///   - output: `AVCaptureOutput`
   ///   - sampleBuffer: `CMSampleBuffer`

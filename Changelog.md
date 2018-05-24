@@ -1,3 +1,8 @@
+#### 1.1.0 - May 24, 2018
+* `AVManager` protocol made public
+* Added 2 new cases to `RecognitionReliability` to allow for returning results on 1 and 2 frames
+* Fixed issue with internal `ImageProcessor` that was not correctly calculating the area to crop when the aspect ratio of `previewLayer` was less than 1
+
 #### 1.0.4 - May 5, 2018
 * Internal `ImageProcessor` struct was redrawing the captured image at a much lower size which was causing image degradation. Instead of redrawing the image at the scale of `regionOfInterest`, `regionOfInterest` is now scaled to the size of the image.
 

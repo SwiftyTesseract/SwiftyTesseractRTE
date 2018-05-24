@@ -47,6 +47,9 @@
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Protocols/AVManager.html">AVManager</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/AVSampleProcessor.html">AVSampleProcessor</a>
               </li>
               <li class="nav-group-task">
@@ -167,17 +170,6 @@ results of OCR if set above <code>.medium</code>. Setting the quality higher wil
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Delegate"></a>
-                <a name="//apple_ref/swift/Section/Delegate" class="dashAnchor"></a>
-                <a href="#/Delegate">
-                  <h3 class="section-name">Delegate</h3>
-                </a>
-              </div>
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -229,7 +221,7 @@ results of OCR if set above <code>.medium</code>. Setting the quality higher wil
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Primary initializer</p>
+                        <p>Primary Initializer - Uses SwiftyTesseractRTE defaults</p>
 
                       </div>
                       <div class="declaration">
@@ -302,8 +294,7 @@ Anything higher than <code>.medium</code> has no impact on recognition reliabili
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Secondary Initializer. Use this <strong>only</strong> if custom image processing logic is needed</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -366,6 +357,161 @@ Anything higher than <code>.medium</code> has no impact on recognition reliabili
                                 <div>
                                   <p>The desired camera quality output to be seen by the end user. The default is .medium.
                 Anything higher than .medium has no impact on recognition reliability</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18SwiftyTesseractRTEAACAB0aB0ACC06swiftyB0_AA22RecognitionReliabilityO07desiredF0AA9AVManager_p9avManagertcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(swiftyTesseract:desiredReliability:avManager:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SwiftyTesseractRTEAACAB0aB0ACC06swiftyB0_AA22RecognitionReliabilityO07desiredF0AA9AVManager_p9avManagertcfc">init(swiftyTesseract:desiredReliability:avManager:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">swiftyTesseract</span><span class="p">:</span> <span class="kt">SwiftyTesseract</span><span class="p">,</span>
+                        <span class="nv">desiredReliability</span><span class="p">:</span> <span class="kt"><a href="../Enums/RecognitionReliability.html">RecognitionReliability</a></span><span class="p">,</span>
+                        <span class="nv">avManager</span><span class="p">:</span> <span class="kt"><a href="../Protocols/AVManager.html">AVManager</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>swiftyTesseract</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Instance of SwiftyTesseract</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>desiredReliability</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The desired reliability of the recognition results.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>avManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Manages the AVCaptureSession</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18SwiftyTesseractRTEAACAB0aB0ACC06swiftyB0_AA22RecognitionReliabilityO07desiredF0AA17AVSampleProcessor_p05imageI0AA9AVManager_p9avManagertcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(swiftyTesseract:desiredReliability:imageProcessor:avManager:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SwiftyTesseractRTEAACAB0aB0ACC06swiftyB0_AA22RecognitionReliabilityO07desiredF0AA17AVSampleProcessor_p05imageI0AA9AVManager_p9avManagertcfc">init(swiftyTesseract:desiredReliability:imageProcessor:avManager:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">swiftyTesseract</span><span class="p">:</span> <span class="kt">SwiftyTesseract</span><span class="p">,</span>
+                        <span class="nv">desiredReliability</span><span class="p">:</span> <span class="kt"><a href="../Enums/RecognitionReliability.html">RecognitionReliability</a></span><span class="p">,</span>
+                        <span class="nv">imageProcessor</span><span class="p">:</span> <span class="kt"><a href="../Protocols/AVSampleProcessor.html">AVSampleProcessor</a></span><span class="p">,</span>
+                        <span class="nv">avManager</span><span class="p">:</span> <span class="kt"><a href="../Protocols/AVManager.html">AVManager</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>swiftyTesseract</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Instance of SwiftyTesseract</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>desiredReliability</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The desired reliability of the recognition results.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>imageProcessor</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Performs conversion and processing from <code>CMSampleBuffer</code> to <code>UIImage</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>avManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Manages the AVCaptureSession</p>
                                 </div>
                               </td>
                             </tr>
@@ -503,7 +649,7 @@ Anything higher than <code>.medium</code> has no impact on recognition reliabili
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Do not call; this method is only public due to the requirements of the <code>AVCaptureVideoDataOutputSampleBufferDelegate</code> protocol</p>
+                        <p>Provides conformance to <code>AVCaptureVideoDataOutputSampleBufferDelegate</code></p>
 
                       </div>
                       <div class="declaration">
@@ -565,7 +711,7 @@ Anything higher than <code>.medium</code> has no impact on recognition reliabili
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/SwiftyTesseract/SwiftyTesseractRTE" target="_blank" rel="external">Steven Sherry</a>. All rights reserved. (Last updated: 2018-04-03)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/SwiftyTesseract/SwiftyTesseractRTE" target="_blank" rel="external">Steven Sherry</a>. All rights reserved. (Last updated: 2018-05-24)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

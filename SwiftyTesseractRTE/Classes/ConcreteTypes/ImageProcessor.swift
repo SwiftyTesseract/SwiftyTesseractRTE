@@ -15,7 +15,7 @@ struct ImageProcessor {
     self.ciContext = ciContext
   }
   
-  func adjustColors(in ciImage: CIImage?) -> CIImage? {
+  private func adjustColors(in ciImage: CIImage?) -> CIImage? {
     guard
       let ciImage = ciImage,
       let filter = CIFilter(name: "CIColorControls",
@@ -28,7 +28,7 @@ struct ImageProcessor {
     return processedImage
   }
   
-  func convertToGrayscale(_ image: CGImage?) -> CGImage? {
+  private func convertToGrayscale(_ image: CGImage?) -> CGImage? {
     guard let image = image else { return nil }
     let colorSpace = CGColorSpaceCreateDeviceGray()
     let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
@@ -45,17 +45,17 @@ struct ImageProcessor {
     return cgContext?.makeImage()
   }
   
-  func convertToCvImageBuffer(from sampleBuffer: CMSampleBuffer) -> CVImageBuffer? {
+  private func convertToCvImageBuffer(from sampleBuffer: CMSampleBuffer) -> CVImageBuffer? {
     guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return nil }
     return imageBuffer
   }
   
-  func convertToCiImage(from imageBuffer: CVImageBuffer?) -> CIImage? {
+  private func convertToCiImage(from imageBuffer: CVImageBuffer?) -> CIImage? {
     guard let imageBuffer = imageBuffer else { return nil }
     return CIImage(cvImageBuffer: imageBuffer)
   }
   
-  func convertToCgImage(from ciImage: CIImage?) -> CGImage? {
+  private func convertToCgImage(from ciImage: CIImage?) -> CGImage? {
     guard
       let ciImage = ciImage,
       let cgImage = ciContext.createCGImage(ciImage, from: ciImage.extent)
@@ -63,11 +63,19 @@ struct ImageProcessor {
     return cgImage
   }
   
-  func convertToUiImage(from cgImage: CGImage?) -> UIImage? {
+  private func convertToUiImage(from cgImage: CGImage?) -> UIImage? {
     guard let cgImage = cgImage else { return nil }
     return UIImage(cgImage: cgImage)
   }
   
+  private func calculateCroppingRect(for image: UIImage, toSize size: CGSize) -> CGRect {
+    let aspectRatio = size.width / size.height
+    let cropWidth = aspectRatio > 1 ? image.size.width : image.size.height * aspectRatio
+    let cropHeight = aspectRatio > 1 ? cropWidth / aspectRatio : image.size.height / aspectRatio
+    let cropX = aspectRatio > 1 ? 0 : (image.size.width - cropWidth) / 2.0
+    let cropY = (image.size.height - cropHeight) / 2.0
+    return CGRect(x: cropX, y: cropY, width: cropWidth, height: cropHeight)
+  }
 }
 
 extension ImageProcessor: AVSampleProcessor {
@@ -82,35 +90,27 @@ extension ImageProcessor: AVSampleProcessor {
         |> convertToGrayscale
         |> convertToUiImage
       else { return nil }
-    
+
     return uiImage
   }
   
   func crop(_ image: UIImage, toBoundsOf previewLayer: AVCaptureVideoPreviewLayer) -> UIImage? {
-    
-    let widthToHeightRatio = previewLayer.bounds.size.width / previewLayer.bounds.size.height
-    
-    let cropWidth = image.size.width < image.size.height ? image.size.width : image.size.height * widthToHeightRatio
-    let cropHeight = image.size.width < image.size.height ? cropWidth / widthToHeightRatio : image.size.height
-    let cropX = cropWidth < cropHeight ? 0 : (image.size.width - cropWidth) / 2.0
-    let cropY = (image.size.height - cropHeight) / 2.0
-
-    let cropRect = CGRect(x: cropX, y: cropY, width: cropWidth, height: cropHeight)
-    
+    let previewLayerSize = previewLayer.bounds.size
+    let cropRect = calculateCroppingRect(for: image, toSize: previewLayerSize)
     guard let cropImage = image.cgImage?.cropping(to: cropRect) else { return nil }
     return UIImage(cgImage: cropImage, scale: image.scale, orientation: image.imageOrientation)
   }
   
   func crop(_ image: UIImage, toBoundsOf areaOfInterest: CGRect, containedIn previewLayer: AVCaptureVideoPreviewLayer) -> UIImage? {
     let previewLayerSize = previewLayer.bounds.size
-    let yAxisMultiplier = image.size.height / previewLayerSize.height
-    let xAxisMultiplier = image.size.width / previewLayerSize.width
+    let xAxisMultiplier = image.size.height / previewLayerSize.height
+    let yAxisMultiplier = image.size.width / previewLayerSize.width
     
-    let resizedAreaOfInterest = CGRect(x: areaOfInterest.origin.x * xAxisMultiplier,
-                                       y: areaOfInterest.origin.y * yAxisMultiplier,
-                                       width: areaOfInterest.width * xAxisMultiplier,
-                                       height: areaOfInterest.height * yAxisMultiplier)
-    
+    let resizedAreaOfInterest = CGRect(x: areaOfInterest.origin.x * yAxisMultiplier,
+                                       y: areaOfInterest.origin.y * xAxisMultiplier,
+                                       width: areaOfInterest.width * yAxisMultiplier,
+                                       height: areaOfInterest.height * xAxisMultiplier)
+
     guard let cropImage = image.cgImage?.cropping(to: resizedAreaOfInterest) else { return image }
     return UIImage(cgImage: cropImage, scale: image.scale, orientation: image.imageOrientation)
   }

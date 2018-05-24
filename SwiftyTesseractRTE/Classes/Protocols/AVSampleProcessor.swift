@@ -8,8 +8,9 @@
 
 import AVFoundation
 
-/// To be implemented if custom image processing is needed. Methods only need to be implemented; SwiftyTesseractRTE will the methods internally when
-/// passed as a dependency during initialization
+/// To be implemented if custom image processing is needed.
+/// Methods only need to be implemented; SwiftyTesseractRTE will call the
+/// methods internally when passed as a dependency during initialization
 public protocol AVSampleProcessor {
   // MARK: - Image transformation methods
   
