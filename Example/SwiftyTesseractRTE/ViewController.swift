@@ -39,6 +39,9 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    // MARK: - UI Setup
+    
     let navigationBar = navigationController?.navigationBar
     let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
     
@@ -56,7 +59,7 @@ class ViewController: UIViewController {
     navigationItem.rightBarButtonItem = flashlightButton
     
     recognitionButton = UIButton()
-    recognitionButton.setTitleColor(self.view.tintColor, for: .normal)
+    recognitionButton.setTitleColor(view.tintColor, for: .normal)
     recognitionButton.setTitle("Start Recognition", for: .normal)
     recognitionButton.addTarget(self, action: #selector(recognitionButtonTapped(_:)), for: .touchUpInside)
     
@@ -84,11 +87,6 @@ class ViewController: UIViewController {
     stackView.topAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     stackView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor).isActive = true
     
-    let swiftyTesseract = SwiftyTesseract(language: .english)
-    engine = SwiftyTesseractRTE(swiftyTesseract: swiftyTesseract, desiredReliability: .verifiable)
-    engine.recognitionIsActive = false
-    engine.delegate = self
-    
     let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
     
     regionOfInterest.addGestureRecognizer(panGesture)
@@ -96,12 +94,17 @@ class ViewController: UIViewController {
     regionOfInterest.layer.borderColor = UIColor.blue.cgColor
     regionOfInterest.backgroundColor = .clear
     
-    recognitionButton.setTitle("Start Recognition", for: .normal)
-    
     excludeLayer = CAShapeLayer()
     excludeLayer.fillRule = kCAFillRuleEvenOdd
     excludeLayer.fillColor = UIColor.black.cgColor
     excludeLayer.opacity = 0.7
+    
+    // SwiftyTesseractRTE Setup
+    
+    let swiftyTesseract = SwiftyTesseract(language: .english)
+    engine = SwiftyTesseractRTE(swiftyTesseract: swiftyTesseract, desiredReliability: .verifiable)
+    engine.recognitionIsActive = false
+    engine.delegate = self
     
     engine.startPreview()
   }
@@ -175,7 +178,6 @@ extension ViewController: SwiftyTesseractRTEDelegate {
     AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
     DispatchQueue.main.async { [weak self] in
       self?.recognitionLabel.text = recognizedString
-      print(recognizedString)
     }
     recognitionIsRunning = false
   }
