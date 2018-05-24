@@ -135,7 +135,7 @@ public class SwiftyTesseractRTE: NSObject {
   init(swiftyTesseract: SwiftyTesseract,
        recognitionQueue: RecognitionQueue<String>,
        imageProcessor: AVSampleProcessor = ImageProcessor(),
-       avManager: AVManager = VideoManager()) {
+       avManager: AVManager) {
     
     self.swiftyTesseract = swiftyTesseract
     self.recognitionQueue = recognitionQueue
