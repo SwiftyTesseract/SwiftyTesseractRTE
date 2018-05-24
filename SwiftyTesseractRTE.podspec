@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SwiftyTesseractRTE'
-  s.version          = '1.0.4'
+  s.version          = '1.1.0'
   s.summary          = 'A real-time optical character recognition engine built on top of SwiftyTesseract.'
 
   s.description      = <<-DESC
