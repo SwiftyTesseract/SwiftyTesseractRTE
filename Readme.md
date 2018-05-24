@@ -4,7 +4,7 @@
 #### SwiftyTesseractRTE can only currently be used in portrait mode.
 
 <p align="center">
-<img alt="SwiftyTesseractRTE-example" src=https://lh3.googleusercontent.com/Tmg1TcS5Hu1GfLTrNZzqyIdTveT8qjqvqNMiOSq9T4LZ5VEzy8eslN8zhwi9u9eyXmWsDgFL-AomP4G5GQiks7Ocgf0UUI1tE8RARDslzNHJsmRNNyFJeCqB7mkGeEdCF6m9c3eI3efVDOrdHmTnCS0OaQI7hFPcY_sX1NJvg3XjdlVsilG0mU2ghD7RwBezpTyNBjbwpuhP2P8w5936G9JuI03kLGKCF8dax5hXykeQ8HcGeuNbvW-4dEQd0Zlwp_RZ1Cs3VnBAWA0E484v7tS3LuqPH5OfFEPnI8MP7-53SjA9ptO7a5KJDeBYZSQA35007CXDouxGsPYgMAYkUVzzQEZqkMbeNyPPbG9TcrCJOPe7KAVV5BGkCCrHyeTUJ4eVn6WQtfJVV36K8eq8_3_In1oL1xxMdu1SOGeZohrI8u9b_MFzr8AeO6f1iaLfscSRaroPGkPzD0R87PcIr6GUSv17gAPIaAGM-_6MZfl3jw2pC7ScLZyRHkk9YT19gp7s9goOvIb62NXnXVRsT_go58dZUuyx7Z5gBen5LJ0EcZa2NjOKe02yiOlPbIrIvztAHtk3er8_bXVMLch1KgyMx7KwzxFTaX-ZOAekT-I21i3VOQp7BT2jzaoKxpq4-UueJEiYEgY4hYDH-5WnWs8Uz1cGjmw=w420-h747-no width="200px"/>
+<img alt="SwiftyTesseractRTE-example" src=https://goo.gl/jVrgxV width="200px" />
 </p>
 
 # About SwiftyTesseractRTE
