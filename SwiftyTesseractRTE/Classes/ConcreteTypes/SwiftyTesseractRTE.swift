@@ -142,7 +142,6 @@ public class SwiftyTesseractRTE: NSObject {
     if type(of: avManager) == VideoManager.self {
       self.avManager.delegate = self
     }
-    
   }
   
   // MARK: - Public functions
@@ -180,7 +179,6 @@ public class SwiftyTesseractRTE: NSObject {
       let imageCroppedToPreviewLayer = imageProcessor.crop(processedImage,
                                                            toBoundsOf: avManager.previewLayer)
     else { return nil }
-    
     guard
       let regionOfInterest = regionOfInterest,
       let imageCroppedToRegionOfInterest = imageProcessor.crop(imageCroppedToPreviewLayer,
@@ -223,7 +221,7 @@ extension SwiftyTesseractRTE: AVCaptureVideoDataOutputSampleBufferDelegate {
   ///   - sampleBuffer: `CMSampleBuffer`
   ///   - connection: `AVCaptureConnection`
   public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-
+    print("SwiftyTesseractRTE received sample buffer")
     performOCR(on: sampleBuffer)
     
   }

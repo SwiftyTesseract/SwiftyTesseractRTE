@@ -26,18 +26,68 @@ class ViewController: UIViewController {
   
   var engine: SwiftyTesseractRTE!
   var excludeLayer: CAShapeLayer!
+  var flashlightButton: UIBarButtonItem!
+  var recognitionButton: UIButton!
+  var recognitionTitleLabel: UILabel!
+  var recognitionLabel: UILabel!
+  var imageView: UIImageView!
   
   @IBOutlet weak var informationLabel: UILabel!
   @IBOutlet weak var previewView: UIView!
   @IBOutlet weak var regionOfInterest: UIView!
-  @IBOutlet weak var flashLightButton: UIButton!
-  @IBOutlet weak var recognitionButton: UIButton!
-  @IBOutlet weak var recognitionTextView: UITextView!
   @IBOutlet weak var regionOfInterestWidth: NSLayoutConstraint!
   @IBOutlet weak var regionOfInterestHeight: NSLayoutConstraint!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    let navigationBar = navigationController?.navigationBar
+    let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+    
+    if #available(iOS 11.0, *) {
+      navigationBar?.prefersLargeTitles = true
+      navigationBar?.largeTitleTextAttributes = textAttributes
+    }
+    
+    navigationBar?.titleTextAttributes = textAttributes
+    navigationBar?.isTranslucent = false
+    navigationBar?.barTintColor = .black
+    navigationItem.title = "SwiftyTesseractRTE"
+    
+    flashlightButton = UIBarButtonItem(title: "Flashlight On", style: .plain, target: self, action: #selector(flashLightButtonTapped(_:)))
+    navigationItem.rightBarButtonItem = flashlightButton
+    
+    recognitionButton = UIButton()
+    recognitionButton.setTitleColor(self.view.tintColor, for: .normal)
+    recognitionButton.setTitle("Start Recognition", for: .normal)
+    recognitionButton.addTarget(self, action: #selector(recognitionButtonTapped(_:)), for: .touchUpInside)
+    
+    recognitionTitleLabel = UILabel()
+    recognitionTitleLabel.text = "Recognition Text:"
+    recognitionTitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+    recognitionTitleLabel.textColor = .white
+    
+    recognitionLabel = UILabel()
+    recognitionLabel.textColor = .white
+    recognitionLabel.text = "Let's Do This!"
+    recognitionLabel.lineBreakMode = .byWordWrapping
+    
+    imageView = UIImageView()
+    imageView.contentMode = .scaleAspectFit
+    
+    let stackView = UIStackView(arrangedSubviews: [recognitionButton, recognitionTitleLabel, recognitionLabel, imageView])
+    stackView.axis = .vertical
+    stackView.alignment = .center
+    stackView.distribution = .fill
+    stackView.spacing = 8.0
+    stackView.translatesAutoresizingMaskIntoConstraints = false
+    
+    view.addSubview(stackView)
+    stackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+    stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    stackView.topAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    stackView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor).isActive = true
+//    stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50).isActive = true
+    
     let swiftyTesseract = SwiftyTesseract(language: .english)
     engine = SwiftyTesseractRTE(swiftyTesseract: swiftyTesseract, desiredReliability: .verifiable)
     engine.recognitionIsActive = false
@@ -103,12 +153,11 @@ class ViewController: UIViewController {
     informationLabel.isHidden = true
   }
   
-  
-  @IBAction func recognitionButtonTapped(_ sender: Any) {
+  @objc func recognitionButtonTapped(_ sender: Any) {
     recognitionIsRunning.toggle()
   }
   
-  @IBAction func flashLightButtonTapped(_ sender: Any) {
+  @objc func flashLightButtonTapped(_ sender: Any) {
     guard let device = AVCaptureDevice.default(for: .video) else { return }
     if device.hasTorch {
       do {
@@ -119,20 +168,28 @@ class ViewController: UIViewController {
         print("Error: \(e.localizedDescription)")
       }
     }
-    let flashlightImage = device.torchMode == .off ? UIImage(named: "flashlightOff") : UIImage(named: "flashlightOn")
-    flashLightButton.setImage(flashlightImage, for: .normal)
+    let flashlightButtonTitle = device.torchMode == .off ? "Flashlight On" : "Flashlight Off"
+    flashlightButton.title = flashlightButtonTitle
   }
 }
 
 extension ViewController: SwiftyTesseractRTEDelegate {
+  func inspectImage(_ image: UIImage) {
+    DispatchQueue.main.async { [weak self] in
+      self?.imageView.image = image
+    }
+  }
   
   func onRecognitionComplete(_ recognizedString: String) {
-    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+//    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
     DispatchQueue.main.async { [weak self] in
-      self?.recognitionTextView.text = recognizedString
+      self?.recognitionLabel.text = recognizedString
+      print(recognizedString)
     }
-    recognitionIsRunning = false
+//    recognitionIsRunning = false
   }
+  
+  
   
 }
 
