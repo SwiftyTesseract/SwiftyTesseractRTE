@@ -30,7 +30,6 @@ class ViewController: UIViewController {
   var recognitionButton: UIButton!
   var recognitionTitleLabel: UILabel!
   var recognitionLabel: UILabel!
-  var imageView: UIImageView!
   
   @IBOutlet weak var informationLabel: UILabel!
   @IBOutlet weak var previewView: UIView!
@@ -67,14 +66,12 @@ class ViewController: UIViewController {
     recognitionTitleLabel.textColor = .white
     
     recognitionLabel = UILabel()
+    recognitionLabel.textAlignment = .center
+    recognitionLabel.numberOfLines = 20
     recognitionLabel.textColor = .white
     recognitionLabel.text = "Let's Do This!"
-    recognitionLabel.lineBreakMode = .byWordWrapping
     
-    imageView = UIImageView()
-    imageView.contentMode = .scaleAspectFit
-    
-    let stackView = UIStackView(arrangedSubviews: [recognitionButton, recognitionTitleLabel, recognitionLabel, imageView])
+    let stackView = UIStackView(arrangedSubviews: [recognitionButton, recognitionTitleLabel, recognitionLabel])
     stackView.axis = .vertical
     stackView.alignment = .center
     stackView.distribution = .fill
@@ -86,7 +83,6 @@ class ViewController: UIViewController {
     stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     stackView.topAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     stackView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor).isActive = true
-//    stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50).isActive = true
     
     let swiftyTesseract = SwiftyTesseract(language: .english)
     engine = SwiftyTesseractRTE(swiftyTesseract: swiftyTesseract, desiredReliability: .verifiable)
@@ -174,28 +170,23 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: SwiftyTesseractRTEDelegate {
-  func inspectImage(_ image: UIImage) {
-    DispatchQueue.main.async { [weak self] in
-      self?.imageView.image = image
-    }
-  }
   
   func onRecognitionComplete(_ recognizedString: String) {
-//    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
     DispatchQueue.main.async { [weak self] in
       self?.recognitionLabel.text = recognizedString
       print(recognizedString)
     }
-//    recognitionIsRunning = false
+    recognitionIsRunning = false
   }
-  
-  
   
 }
 
 extension Bool {
+  
   mutating func toggle() {
     self = !self
   }
+  
 }
 

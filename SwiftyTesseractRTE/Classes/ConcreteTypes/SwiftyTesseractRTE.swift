@@ -55,13 +55,12 @@ public class SwiftyTesseractRTE: NSObject {
     }
   }
   
-  // MARK: - Delegate
   /// Implements the `onRecognitionComplete(_ recognizedString:)` declared in the `SwiftyTesseractRTEDelegate` protocol
   public weak var delegate: SwiftyTesseractRTEDelegate?
+  
+  // MARK: Initializers
 
-  // MARK: - Initializers
-  /// Primary initializer
-  ///
+  /// Primary Initializer - Uses SwiftyTesseractRTE defaults
   /// - Parameters:
   ///   - swiftyTesseract:    Instance of SwiftyTesseract
   ///   - desiredReliability: The desired reliability of the recognition results.
@@ -78,9 +77,7 @@ public class SwiftyTesseractRTE: NSObject {
               recognitionQueue: recognitionQueue,
               avManager: videoManager)
   }
-  
-  /// Secondary Initializer. Use this **only** if custom image processing logic is needed
-  ///
+
   /// - Parameters:
   ///   - swiftyTesseract:    Instance of SwiftyTesseract
   ///   - desiredReliability: The desired reliability of the recognition results.
@@ -101,19 +98,26 @@ public class SwiftyTesseractRTE: NSObject {
               avManager: avManager)
   }
   
+  /// - Parameters:
+  ///   - swiftyTesseract: Instance of SwiftyTesseract
+  ///   - desiredReliability: The desired reliability of the recognition results.
+  ///   - avManager: Manages the AVCaptureSession
   public convenience init(swiftyTesseract: SwiftyTesseract,
                           desiredReliability: RecognitionReliability,
                           avManager: AVManager) {
     
     let recognitionQueue = RecognitionQueue<String>(desiredReliability: desiredReliability)
-    let imageProcessor = ImageProcessor()
     
     self.init(swiftyTesseract: swiftyTesseract,
               recognitionQueue: recognitionQueue,
-              imageProcessor: imageProcessor,
               avManager: avManager)
   }
   
+  /// - Parameters:
+  ///   - swiftyTesseract: Instance of SwiftyTesseract
+  ///   - desiredReliability: The desired reliability of the recognition results.
+  ///   - imageProcessor: Performs conversion and processing from `CMSampleBuffer` to `UIImage`
+  ///   - avManager: Manages the AVCaptureSession
   public convenience init(swiftyTesseract: SwiftyTesseract,
                           desiredReliability: RecognitionReliability,
                           imageProcessor: AVSampleProcessor,
@@ -211,8 +215,6 @@ public class SwiftyTesseractRTE: NSObject {
 
 }
 
-// MARK: - AVCaptureVideoDataOutputSampleBufferDelegate Extension
-
 extension SwiftyTesseractRTE: AVCaptureVideoDataOutputSampleBufferDelegate {
   
   /// Provides conformance to `AVCaptureVideoDataOutputSampleBufferDelegate`
@@ -221,7 +223,7 @@ extension SwiftyTesseractRTE: AVCaptureVideoDataOutputSampleBufferDelegate {
   ///   - sampleBuffer: `CMSampleBuffer`
   ///   - connection: `AVCaptureConnection`
   public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-    print("SwiftyTesseractRTE received sample buffer")
+
     performOCR(on: sampleBuffer)
     
   }

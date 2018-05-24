@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>RecognitionReliability Enumeration Reference</title>
+    <title>AVManager Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/RecognitionReliability" class="dashAnchor"></a>
-    <a title="RecognitionReliability Enumeration Reference"></a>
+    <a name="//apple_ref/swift/Protocol/AVManager" class="dashAnchor"></a>
+    <a title="AVManager Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">SwiftyTesseractRTE Docs</a> (100% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">SwiftyTesseractRTE Reference</a>
         <img id="carat" src="../img/carat.png" />
-        RecognitionReliability Enumeration Reference
+        AVManager Protocol Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -62,14 +62,16 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>RecognitionReliability</h1>
+            <h1>AVManager</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">RecognitionReliability</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">AVManager</span><span class="p">:</span> <span class="kd">class</span></code></pre>
 
                 </div>
               </div>
-            <p>The level of reliability required to assure OCR accuracy. The higher the reliability, the longer it will take to return results</p>
+            <p>To be implemented if custom AVFoundation logic is needed. This may be desireable if using
+SwiftyTesseractRTE in tandem with another class or library that requires CMSampleBuffers
+for processing.</p>
 
           </section>
           <section class="section task-group-section">
@@ -78,9 +80,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SwiftyTesseractRTE22RecognitionReliabilityO3rawA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/raw" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SwiftyTesseractRTE22RecognitionReliabilityO3rawA2CmF">raw</a>
+                    <a name="/s:18SwiftyTesseractRTE9AVManagerP12previewLayerSo021AVCaptureVideoPreviewF0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/previewLayer" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SwiftyTesseractRTE9AVManagerP12previewLayerSo021AVCaptureVideoPreviewF0Cvp">previewLayer</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -88,30 +90,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Immediately returns the first result</p>
+                        <p>The <code>AVCaptureVideoPreviewLayer</code> displayed to the user</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">raw</span> <span class="o">=</span> <span class="mi">1</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">previewLayer</span><span class="p">:</span> <span class="kt">AVCaptureVideoPreviewLayer</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SwiftyTesseractRTE22RecognitionReliabilityO9tentativeA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/tentative" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SwiftyTesseractRTE22RecognitionReliabilityO9tentativeA2CmF">tentative</a>
+                    <a name="/s:18SwiftyTesseractRTE9AVManagerP13cameraQualitySo16AVCaptureSessionC6PresetVvp"></a>
+                    <a name="//apple_ref/swift/Property/cameraQuality" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SwiftyTesseractRTE9AVManagerP13cameraQualitySo16AVCaptureSessionC6PresetVvp">cameraQuality</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -119,30 +117,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Requires the last two frames return the same results</p>
+                        <p>The quality of the previewLayer video session.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">tentative</span> <span class="o">=</span> <span class="mi">2</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">cameraQuality</span><span class="p">:</span> <span class="kt">AVCaptureSession</span><span class="o">.</span><span class="kt">Preset</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SwiftyTesseractRTE22RecognitionReliabilityO10verifiableA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/verifiable" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SwiftyTesseractRTE22RecognitionReliabilityO10verifiableA2CmF">verifiable</a>
+                    <a name="/s:18SwiftyTesseractRTE9AVManagerP14captureSessionSo09AVCaptureF0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/captureSession" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SwiftyTesseractRTE9AVManagerP14captureSessionSo09AVCaptureF0Cvp">captureSession</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -150,30 +144,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Requires the last three frames return the same results</p>
+                        <p>The underlying capture session providing previewLayer it&rsquo;s video feed</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">verifiable</span> <span class="o">=</span> <span class="mi">3</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">captureSession</span><span class="p">:</span> <span class="kt">AVCaptureSession</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:18SwiftyTesseractRTE22RecognitionReliabilityO6stableA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/stable" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SwiftyTesseractRTE22RecognitionReliabilityO6stableA2CmF">stable</a>
+                    <a name="/s:18SwiftyTesseractRTE9AVManagerP8delegateSo44AVCaptureVideoDataOutputSampleBufferDelegate_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SwiftyTesseractRTE9AVManagerP8delegateSo44AVCaptureVideoDataOutputSampleBufferDelegate_pSgvp">delegate</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -181,45 +171,18 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Requires the last four frames return the same results</p>
+                        <p>The delegate to receive the <code>CMSampleBuffer</code>s for processing.
+<em>Note</em>: If you are creating a custom object to conform to AVManager, you must
+manually set SwiftyTesseractRTE as it&rsquo;s delegate for SwiftyTesseractRTE to
+receive the <code>CMSampleBuffer</code>s, otherwise they will not be received to be
+processed for OCR</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">stable</span> <span class="o">=</span> <span class="mi">4</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:18SwiftyTesseractRTE22RecognitionReliabilityO5solidA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/solid" class="dashAnchor"></a>
-                    <a class="token" href="#/s:18SwiftyTesseractRTE22RecognitionReliabilityO5solidA2CmF">solid</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Requires the last five frames return the same results</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">solid</span> <span class="o">=</span> <span class="mi">5</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt">AVCaptureVideoDataOutputSampleBufferDelegate</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
