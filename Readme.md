@@ -4,7 +4,7 @@
 #### SwiftyTesseractRTE can only currently be used in portrait mode.
 
 <p align="center">
-<img alt="SwiftyTesseractRTE-example" src=https://goo.gl/jVrgxV width="200px" />
+<img alt="SwiftyTesseractRTE-example" src=https://goo.gl/5rZU6V width="200px" />
 </p>
 
 # About SwiftyTesseractRTE
