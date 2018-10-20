@@ -17,17 +17,18 @@ import SwiftyTesseract
 import SwiftyTesseractRTE
 ```
 
-Create an instance of SwiftyTesseractRTE and assign it's regionOfInterest property. 
+Create an instance of RealTimeEngine and assign it's regionOfInterest property. 
 ```swift
-var realTimeEngine: SwiftyTesseractRTE!
+var realTimeEngine: RealTimeEngine!
 
 @IBOutlet weak var previewView: UIView!
 @IBOutlet weak var regionOfInterest: UIView! // A subview of previewView
 
 override func viewDidLoad() {
   let swiftyTesseract = SwiftyTesseract(language: .english)
-  realTimeEngine = SwiftyTesseractRTE(swiftyTesseract: swiftyTesseract, desiredReliability: .verifiable)
-  realTimeEngine.delegate = self
+  realTimeEngine = RealTimeEngine(swiftyTesseract: swiftyTesseract, desiredReliability: .verifiable) { recognizedString in
+    // Do something with the recognized string
+  }
 }
 
 override func viewDidLayoutSubviews() {
@@ -41,16 +42,6 @@ override func viewDidLayoutSubviews() {
 
 ```
 
-## Conform to the SwiftyTesseractRTEDelegate protocol
-```swift
-extension YourViewController: SwiftyTesseractRTEDelegate {
-
-  func onRecognitionComplete(_ recognizedString: String) {
-      // Do something with the recognized string
-  }
-
-}
-```
 ## Starting and Stopping Recognition
 ```swift
 // Starts optical character recognition
@@ -71,6 +62,29 @@ realTimeEngine.stopPreview()
 
 ## Camera Permissions
 For camera permissions, you will need to add the `Privacy - Camera Usage Description` permission to your `Info.plist` file. SwiftyTesseractRTE will handle requesting permission if it is not already granted.
+
+## RealTimeEngine `onRecognitionComplete` closure property
+Starting in SwiftyTesseractRTE 2.0, the SwiftyTesseractRTEDelegate protocol has been replaced in favor of a closure property called `onRecognitionComplete` witn a type of `(String) -> ()`. This can be assigned in a few ways:
+### Trailing Closure on Instantiation
+```swift
+RealTimeEngine(swiftyTesseract: swiftyTesseract, desiredReliability: .verifiable) { recognizedString in
+    // Do something with the recognized string
+}
+```
+### Passing a Function Parameter
+```swift
+RealTimeEngine(swiftyTesseract: swiftyTesseract, desiredReliability: .verifiable, onRecognitionComplete: aFunction)
+```
+### Property Injection
+```swift
+let realTimeEngine = RealTimeEngine(swiftyTesseract: swiftyTesseract, desiredReliability: .verifiable)
+// Anonymous closure
+realTimeEngine.onRecognitionComplete = { recognizedString in 
+  // Do something with the recognized string
+}
+// Named closure
+realTimeEngine.onRecognitionComplete = aFunction
+```
 
 # A Note about Portrait-Only
 SwiftyTesseractRTE is currently only able to utilized in portrait mode, but that does not mean your entire app also has to be portrait mode only. See the example project's AppDelegate (specifically the addition of a `shouldRotate` boolean member variable and the implementation of `application(_:supportedInterfaceOrientationsFor:)`) and ViewController files (specifically the `viewWillAppear()` and `viewWillDisappear()` methods) for an example on how to make a single view controller portrait mode only. 

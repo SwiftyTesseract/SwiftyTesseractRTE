@@ -20,23 +20,13 @@ public protocol AVSampleProcessor {
   /// - Returns: An optional grayscale `UIImage`
   func convertToGrayscaleUiImage(from sampleBuffer: CMSampleBuffer) -> UIImage?
   
-  // MARK: - Cropping methods
-  /// Crops transformed UIImage to the bounds of internal AVCaptureVideoPreviewLayer
-  ///
-  /// - Parameters:
-  ///   - image: The `UIImage` output from `convertToGrayscaleUiImage(from:)`
-  ///   - previewLayer: Internal `SwiftyTesseractRTE AVCaptureVideoPreviewLayer`
-  /// - Returns: Cropped UIImage
-  func crop(_ image: UIImage, toBoundsOf previewLayer: AVCaptureVideoPreviewLayer) -> UIImage?
-  
-  
   /// Crops pre-cropped `UIImage` to the bounds of areaOfInterest. The areaOfInterest must be located within the bounds
   /// of the AVCaptureVideoPreviewLayer or recognition will not be properly performed.
   ///
   /// - Parameters:
   ///   - image: The pre-cropped image from `crop(output:toBoundsOf:)`
   ///   - areaOfInterest: The area within the `AVCaptureVideoPreviewLayer` to explicitly perform recognition on
-  ///   - previewLayer: Internal `SwiftyTesseractRTE
+  ///   - previewLayer: Internal `RealTimeEngine
   /// - Returns: Final `UIImage` ready for OCR
   func crop(_ image: UIImage, toBoundsOf areaOfInterest: CGRect, containedIn previewLayer: AVCaptureVideoPreviewLayer) -> UIImage?
 }

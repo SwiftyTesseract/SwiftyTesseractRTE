@@ -9,7 +9,7 @@
 import AVFoundation
 
 /// To be implemented if custom AVFoundation logic is needed. This may be desireable if using
-/// SwiftyTesseractRTE in tandem with another class or library that requires CMSampleBuffers
+/// RealTimeEngine in tandem with another class or library that requires CMSampleBuffers
 /// for processing.
 public protocol AVManager: class {
   /// The `AVCaptureVideoPreviewLayer` displayed to the user

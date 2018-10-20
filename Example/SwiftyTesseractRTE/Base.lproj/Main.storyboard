@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="92S-qF-W7g">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="92S-qF-W7g">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pY-x2-Kns">
-                                        <rect key="frame" x="69" y="156" width="275" height="60"/>
+                                        <rect key="frame" x="69.666666666666686" y="156" width="275" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="275" id="WDj-L7-VyV"/>
@@ -55,7 +54,7 @@
                             <constraint firstItem="xUq-E0-SXT" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="8" id="Qp0-Kx-zHk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xUq-E0-SXT" secondAttribute="trailing" constant="8" id="V15-CR-PRw"/>
                             <constraint firstItem="xUq-E0-SXT" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="beG-NE-UJ6"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="QsP-EC-SIH" secondAttribute="bottom" id="ubM-Gs-TsR"/>
+                            <constraint firstAttribute="bottom" secondItem="QsP-EC-SIH" secondAttribute="bottom" id="ubM-Gs-TsR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Jsk-U4-VZ5"/>
@@ -74,7 +73,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Gsk-aD-7Nm">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sCD-cE-uai" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="92S-qF-W7g" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MIO-oC-44V">
@@ -86,6 +84,7 @@
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="zjW-ld-AS0"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sCD-cE-uai" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.23188405797103" y="132.88043478260872"/>
         </scene>
