@@ -24,7 +24,7 @@ struct RecognitionQueue<T: Hashable> {
   mutating func enqueue(_ value: T) {
     values.append(value)
     if values.count > size {
-      values.remove(at: 0)
+      dequeue()
     }
   }
   

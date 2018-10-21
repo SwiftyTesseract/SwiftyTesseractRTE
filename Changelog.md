@@ -1,3 +1,13 @@
+#### 2.0.0 - TBD
+* `SwiftyTesseractRTE` class renamed to `RealTimeEngine`
+* `SwiftyTesseractRTEDelegate` removed in favor of `onRecognitionComplete` closure property.
+* Added `onRecognitionComplete` parameter of type `((String) -> ())?` to all `RealTimeEngine` initializers
+* Removed redundant `crop(_:toBoundsOf:)` method in `AVSampleProcessor` protocol, leaving only `crop(_:toBoundsOf:containedIn:)` as the only cropping method.
+* `SwiftyTesseract` dependency updated to use 2.x versions
+* Cleaned up and optimized non-public facing implementation details in `RecognitionReliability`, `ImageProcessor`, and `RealTimeEngine`
+* Updated for Swift 4.2
+* Updated Readme and Documentation
+
 #### 1.1.0 - May 24, 2018
 * `AVManager` protocol made public
 * Added 2 new cases to `RecognitionReliability` to allow for returning results on 1 and 2 frames

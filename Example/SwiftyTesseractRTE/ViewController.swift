@@ -103,7 +103,7 @@ class ViewController: UIViewController {
     let swiftyTesseract = SwiftyTesseract(language: .english)
     engine = RealTimeEngine(swiftyTesseract: swiftyTesseract, desiredReliability: .verifiable) { [weak self] recognizedString in
       AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-      DispatchQueue.main.async { [weak self] in
+      DispatchQueue.main.async { 
         self?.recognitionLabel.text = recognizedString
       }
       self?.recognitionIsRunning = false
