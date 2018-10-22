@@ -1,4 +1,4 @@
-#### 2.0.0 - TBD
+#### 2.0.0 - October 21, 2018
 * `SwiftyTesseractRTE` class renamed to `RealTimeEngine`
 * `SwiftyTesseractRTEDelegate` removed in favor of `onRecognitionComplete` closure property.
 * Added `onRecognitionComplete` parameter of type `((String) -> ())?` to all `RealTimeEngine` initializers
