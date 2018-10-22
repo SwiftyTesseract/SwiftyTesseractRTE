@@ -57,6 +57,7 @@ public class RealTimeEngine: NSObject {
   ///   - desiredReliability: The desired reliability of the recognition results.
   ///   - cameraQuality:      The desired camera quality output to be seen by the end user. The default is `.medium`.
   ///   Anything higher than `.medium` has no impact on recognition reliability
+  ///   - onRecognitionComplete: Action to be performed after successful recognition
   public convenience init(swiftyTesseract: SwiftyTesseract,
                           desiredReliability: RecognitionReliability,
                           cameraQuality: AVCaptureSession.Preset = .medium,
@@ -77,6 +78,7 @@ public class RealTimeEngine: NSObject {
   ///   - imageProcessor:     Performs conversion and processing from `CMSampleBuffer` to `UIImage`
   ///   - cameraQuality:      The desired camera quality output to be seen by the end user. The default is .medium.
   ///                         Anything higher than .medium has no impact on recognition reliability
+  ///   - onRecognitionComplete: Action to be performed after successful recognition
   public convenience init(swiftyTesseract: SwiftyTesseract,
                           desiredReliability: RecognitionReliability,
                           imageProcessor: AVSampleProcessor,
@@ -97,6 +99,7 @@ public class RealTimeEngine: NSObject {
   ///   - swiftyTesseract: Instance of SwiftyTesseract
   ///   - desiredReliability: The desired reliability of the recognition results.
   ///   - avManager: Manages the AVCaptureSession
+  ///   - onRecognitionComplete: Action to be performed after successful recognition
   public convenience init(swiftyTesseract: SwiftyTesseract,
                           desiredReliability: RecognitionReliability,
                           avManager: AVManager,
@@ -115,6 +118,7 @@ public class RealTimeEngine: NSObject {
   ///   - desiredReliability: The desired reliability of the recognition results.
   ///   - imageProcessor: Performs conversion and processing from `CMSampleBuffer` to `UIImage`
   ///   - avManager: Manages the AVCaptureSession
+  ///   - onRecognitionComplete: Action to be performed after successful recognition
   public convenience init(swiftyTesseract: SwiftyTesseract,
                           desiredReliability: RecognitionReliability,
                           imageProcessor: AVSampleProcessor,
@@ -168,7 +172,7 @@ public class RealTimeEngine: NSObject {
     avManager.previewLayer.frame = view.bounds
   }
 }
-  // MARK: - Helper functions
+  // Helper functions
 extension RealTimeEngine {
   private func performOCR(on sampleBuffer: CMSampleBuffer) {
     guard
@@ -208,11 +212,6 @@ extension RealTimeEngine {
       self.recognitionQueue.clear()
     }
   }
-}
-
-infix operator <=<: MultiplicationPrecedence
-func <=< <A>(_ fn: @escaping (A) -> (), _ x: A) {
-  fn(x)
 }
 
 extension RealTimeEngine: AVCaptureVideoDataOutputSampleBufferDelegate {

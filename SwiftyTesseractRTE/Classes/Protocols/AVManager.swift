@@ -20,9 +20,11 @@ public protocol AVManager: class {
   var captureSession: AVCaptureSession { get }
 
   /// The delegate to receive the `CMSampleBuffer`s for processing.
+  ///
   /// *Note*: If you are creating a custom object to conform to AVManager, you must
   /// manually set SwiftyTesseractRTE as it's delegate for SwiftyTesseractRTE to
-  /// receive the `CMSampleBuffer`s, otherwise they will not be received to be
-  /// processed for OCR
+  /// receive the `CMSampleBuffer`s *or* have another delegate directly pass
+  /// the paramters of `capture(_:didOutput:from:)` to `RealTimeEngine`'s implementation
+  /// otherwise they will not be received to be processed for OCR
   var delegate: AVCaptureVideoDataOutputSampleBufferDelegate? { get set }
 }

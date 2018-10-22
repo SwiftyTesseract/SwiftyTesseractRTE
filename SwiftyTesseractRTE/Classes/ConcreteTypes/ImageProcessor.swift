@@ -8,20 +8,6 @@
 
 import AVFoundation
 
-infix operator >>>: MultiplicationPrecedence
-func >>> <A, B, C>(_ f: @escaping (A) -> B, _ g: @escaping (B) -> C) -> (A) -> C {
-    return { a in
-        g(f(a))
-    }
-}
-
-func >>> <A, B, C>(_ f: @escaping (A) -> B?, _ g: @escaping (B) -> C?) -> (A) -> C? {
-  return { a in
-    guard let b = f(a) else { return nil }
-    return g(b)
-  }
-}
-
 struct ImageProcessor {
   private var ciContext: CIContext
   

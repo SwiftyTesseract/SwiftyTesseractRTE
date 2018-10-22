@@ -11,7 +11,7 @@
 SwiftyTesseractRTE (SwiftyTesseract Real-Time Engine) is a real-time optical character recognition library built on top of SwiftyTesseract.
 
 |Swift Version|SwiftyTesseractRTE Version|
-|-------------|--------------------------:|
+|:-------------|--------------------------:|
 |4.0|1.x.x|
 |4.1|1.x.x|
 |4.2|2.x.x|
@@ -70,10 +70,10 @@ realTimeEngine.stopPreview()
 ```
 
 ## Camera Permissions
-For camera permissions, you will need to add the `Privacy - Camera Usage Description` permission to your `Info.plist` file. If you are using the default SwiftyTesseractRTE `AVManager` implementation, permission will be requested at the time the camera preview is being generated. If a custom implementation of `AVManager` is provided, then it will be up to the developer to implement the permission request. For most use cases, the default AVManager implementation is preferred and a custom implementation should only be provided if access to `CMSampleBuffer`s are needed from the camera at the same time that SwiftyTesseractRTE is being run for OCR.
+For camera permissions, you will need to add the `Privacy - Camera Usage Description` permission to your `Info.plist` file. If you are using the default SwiftyTesseractRTE `AVManager` implementation, permission will be requested at the time the camera preview is being generated. If a custom implementation of `AVManager` is provided, then it will be up to the developer to implement the permission request. For most use cases, the default `AVManager` implementation is preferred and a custom implementation should only be provided if access to `CMSampleBuffer`s are needed from the camera at the same time that SwiftyTesseractRTE is being run for OCR.
 
 ## RealTimeEngine `onRecognitionComplete` closure property
-Starting in SwiftyTesseractRTE 2.0, the SwiftyTesseractRTEDelegate protocol has been replaced in favor of a closure property called `onRecognitionComplete` witn a type of `(String) -> ()`. This can be assigned in a few ways:
+Starting in SwiftyTesseractRTE 2.0, the SwiftyTesseractRTEDelegate protocol has been replaced in favor of a closure property called `onRecognitionComplete` with a type of `((String) -> ())?`. This can be assigned in a few ways:
 ### Trailing Closure on Instantiation
 ```swift
 RealTimeEngine(swiftyTesseract: swiftyTesseract, desiredReliability: .verifiable) { recognizedString in
