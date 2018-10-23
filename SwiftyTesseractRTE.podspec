@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SwiftyTesseractRTE'
-  s.version          = '1.1.0'
+  s.version          = '2.0.0'
   s.summary          = 'A real-time optical character recognition engine built on top of SwiftyTesseract.'
 
   s.description      = <<-DESC
@@ -21,5 +21,5 @@ Pod::Spec.new do |s|
   s.source_files = 'SwiftyTesseractRTE/Classes/**/*'
 
   s.frameworks = 'UIKit', 'AVFoundation'
-  s.dependency 'SwiftyTesseract', '~> 1.0'
+  s.dependency 'SwiftyTesseract', '~> 2.0'
 end

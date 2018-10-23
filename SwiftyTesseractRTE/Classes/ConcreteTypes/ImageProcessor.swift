@@ -14,22 +14,19 @@ struct ImageProcessor {
   init(ciContext: CIContext = CIContext()) {
     self.ciContext = ciContext
   }
-  
-  private func adjustColors(in ciImage: CIImage?) -> CIImage? {
-    guard
-      let ciImage = ciImage,
-      let filter = CIFilter(name: "CIColorControls",
-                            withInputParameters: [kCIInputImageKey: ciImage,
-                                                  kCIInputSaturationKey: 0,
-                                                  kCIInputContrastKey: 1.45]),
-      let processedImage = filter.outputImage
-      else { return nil }
-    
-    return processedImage
+}
+
+// MARK: - Helper Functions
+extension ImageProcessor {
+  private func adjustColors(in ciImage: CIImage) -> CIImage? {
+    let filter = CIFilter(name: "CIColorControls",
+                          parameters: [kCIInputImageKey: ciImage,
+                                       kCIInputSaturationKey: 0,
+                                       kCIInputContrastKey: 1.45])
+    return filter?.outputImage
   }
   
-  private func convertToGrayscale(_ image: CGImage?) -> CGImage? {
-    guard let image = image else { return nil }
+  private func grayscaled(_ image: CGImage) -> CGImage? {
     let colorSpace = CGColorSpaceCreateDeviceGray()
     let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.none.rawValue)
     let cgContext = CGContext(data: nil,
@@ -41,31 +38,8 @@ struct ImageProcessor {
                               bitmapInfo: bitmapInfo.rawValue)
     cgContext?.draw(image,
                     in: CGRect(x: 0, y: 0, width: image.width, height: image.height))
-    
+
     return cgContext?.makeImage()
-  }
-  
-  private func convertToCvImageBuffer(from sampleBuffer: CMSampleBuffer) -> CVImageBuffer? {
-    guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return nil }
-    return imageBuffer
-  }
-  
-  private func convertToCiImage(from imageBuffer: CVImageBuffer?) -> CIImage? {
-    guard let imageBuffer = imageBuffer else { return nil }
-    return CIImage(cvImageBuffer: imageBuffer)
-  }
-  
-  private func convertToCgImage(from ciImage: CIImage?) -> CGImage? {
-    guard
-      let ciImage = ciImage,
-      let cgImage = ciContext.createCGImage(ciImage, from: ciImage.extent)
-      else { return nil }
-    return cgImage
-  }
-  
-  private func convertToUiImage(from cgImage: CGImage?) -> UIImage? {
-    guard let cgImage = cgImage else { return nil }
-    return UIImage(cgImage: cgImage)
   }
   
   private func calculateCroppingRect(for image: UIImage, toSize size: CGSize) -> CGRect {
@@ -76,42 +50,74 @@ struct ImageProcessor {
     let cropY = (image.size.height - cropHeight) / 2.0
     return CGRect(x: cropX, y: cropY, width: cropWidth, height: cropHeight)
   }
+  
+  private func crop(_ image: UIImage, toBoundsOf previewLayer: AVCaptureVideoPreviewLayer) -> UIImage? {
+    let previewLayerSize = previewLayer.bounds.size
+    let cropRect = calculateCroppingRect(for: image, toSize: previewLayerSize)
+    return image.cgImage?.cropping(to: cropRect)
+      .flatMap { croppedImage in
+        return UIImage(cgImage: croppedImage, scale: image.scale, orientation: image.imageOrientation)
+    }
+  }
+    
+  private func crop(_ image: UIImage, toBoundsOf areaOfInterest: CGRect, at scale: TwoDimensionalScale) -> UIImage? {
+    let resizedAreaOfInterest = resize(areaOfInterest, to: scale)
+    
+    return image.cgImage?.cropping(to: resizedAreaOfInterest)
+      .flatMap { croppedImage in
+        return UIImage(cgImage: croppedImage, scale: image.scale, orientation: image.imageOrientation)
+    }
+  }
+  
+  private func resize(_ rect: CGRect, to scale: TwoDimensionalScale) -> CGRect {
+    return CGRect(x: rect.origin.x * scale.y,
+                  y: rect.origin.y * scale.x,
+                  width: rect.width * scale.y,
+                  height: rect.height * scale.x)
+  }
 }
 
 extension ImageProcessor: AVSampleProcessor {
-
   func convertToGrayscaleUiImage(from sampleBuffer: CMSampleBuffer) -> UIImage? {
-    guard
-      let uiImage = sampleBuffer
-        |> convertToCvImageBuffer
-        |> convertToCiImage
-        |> adjustColors
-        |> convertToCgImage
-        |> convertToGrayscale
-        |> convertToUiImage
-      else { return nil }
-
-    return uiImage
-  }
-  
-  func crop(_ image: UIImage, toBoundsOf previewLayer: AVCaptureVideoPreviewLayer) -> UIImage? {
-    let previewLayerSize = previewLayer.bounds.size
-    let cropRect = calculateCroppingRect(for: image, toSize: previewLayerSize)
-    guard let cropImage = image.cgImage?.cropping(to: cropRect) else { return nil }
-    return UIImage(cgImage: cropImage, scale: image.scale, orientation: image.imageOrientation)
+    return CMSampleBufferGetImageBuffer(sampleBuffer)
+        .flatMap(
+          CIImage.init(cvImageBuffer:) >>>
+          adjustColors >>>
+          ciContext.createCGImage >>>
+          grayscaled >>>
+          UIImage.init
+        )
   }
   
   func crop(_ image: UIImage, toBoundsOf areaOfInterest: CGRect, containedIn previewLayer: AVCaptureVideoPreviewLayer) -> UIImage? {
-    let previewLayerSize = previewLayer.bounds.size
-    let xAxisMultiplier = image.size.height / previewLayerSize.height
-    let yAxisMultiplier = image.size.width / previewLayerSize.width
-    
-    let resizedAreaOfInterest = CGRect(x: areaOfInterest.origin.x * yAxisMultiplier,
-                                       y: areaOfInterest.origin.y * xAxisMultiplier,
-                                       width: areaOfInterest.width * yAxisMultiplier,
-                                       height: areaOfInterest.height * xAxisMultiplier)
+    return crop(image, toBoundsOf: previewLayer).flatMap { image in
+      let previewLayerSize = previewLayer.bounds.size
+      let scale = TwoDimensionalScale(x: image.size.height / previewLayerSize.height, y: image.size.width / previewLayerSize.width)
+      return crop(image, toBoundsOf: areaOfInterest, at: scale)
+    }
+  }
+}
 
-    guard let cropImage = image.cgImage?.cropping(to: resizedAreaOfInterest) else { return image }
-    return UIImage(cgImage: cropImage, scale: image.scale, orientation: image.imageOrientation)
+extension CIContext {
+  // Helper function to allow for passing a single value to `createCGImage(_:from:)`
+  func createCGImage(_ ciImage: CIImage) -> CGImage? {
+    return createCGImage(ciImage, from: ciImage.extent)
+  }
+}
+
+// Helper struct to reduce the API surface area of CGPoint when using it for scaling operations
+private struct TwoDimensionalScale {
+  private let cgPoint: CGPoint
+  
+  var y: CGFloat {
+    return cgPoint.y
+  }
+  
+  var x: CGFloat {
+    return cgPoint.x
+  }
+  
+  init(x: CGFloat, y: CGFloat) {
+    cgPoint = CGPoint(x: x, y: y)
   }
 }

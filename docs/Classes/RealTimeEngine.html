@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RealTimeEngine Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/RealTimeEngine" class="dashAnchor"></a>
+
+    <a title="RealTimeEngine Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+           Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html"> Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      RealTimeEngine Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RealTimeEngine.html">RealTimeEngine</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/RecognitionReliability.html">RecognitionReliability</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AVManager.html">AVManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/AVSampleProcessor.html">AVSampleProcessor</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>RealTimeEngine</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RealTimeEngine</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>A class to perform real-time optical character recognition</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20variables"></a>
+                <a name="//apple_ref/swift/Section/Public variables" class="dashAnchor"></a>
+                <a href="#/Public%20variables">
+                  <h3 class="section-name">Public variables</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18SwiftyTesseractRTE14RealTimeEngineC16regionOfInterestSo6CGRectVSgvp"></a>
+                    <a name="//apple_ref/swift/Property/regionOfInterest" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SwiftyTesseractRTE14RealTimeEngineC16regionOfInterestSo6CGRectVSgvp">regionOfInterest</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The region within the AVCaptureVideoPreviewLayer that OCR is to be performed. If using a UIView to
+define the region of interest this <strong>must</strong> be assigned as the UIView&rsquo;s frame and
+be a subview of the the AVCaptureVideoPreviewLayer&rsquo;s parent view.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">regionOfInterest</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18SwiftyTesseractRTE14RealTimeEngineC19recognitionIsActiveSbvp"></a>
+                    <a name="//apple_ref/swift/Property/recognitionIsActive" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SwiftyTesseractRTE14RealTimeEngineC19recognitionIsActiveSbvp">recognitionIsActive</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets recognition to be running or not. Default is <strong>true</strong>. Setting the value to false will
+allow the preview to be active without processing incoming video frames.
+If it is not desired for recognition to be active after initialization, set this
+value to false immediately after creating an instance of SwiftyTesseractRTE</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">recognitionIsActive</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18SwiftyTesseractRTE14RealTimeEngineC13cameraQualitySo22AVCaptureSessionPresetavp"></a>
+                    <a name="//apple_ref/swift/Property/cameraQuality" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SwiftyTesseractRTE14RealTimeEngineC13cameraQualitySo22AVCaptureSessionPresetavp">cameraQuality</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The quality of the previewLayer video session. The default is set to .medium. Changing this
+setting will only affect how the video is displayed to the user and will not affect the 
+results of OCR if set above <code>.medium</code>. Setting the quality higher will result in decreased performance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">cameraQuality</span><span class="p">:</span> <span class="kt">AVCaptureSession</span><span class="o">.</span><span class="kt">Preset</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18SwiftyTesseractRTE14RealTimeEngineC21onRecognitionCompleteySScSgvp"></a>
+                    <a name="//apple_ref/swift/Property/onRecognitionComplete" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SwiftyTesseractRTE14RealTimeEngineC21onRecognitionCompleteySScSgvp">onRecognitionComplete</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Action to be performed after successful recognition</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">onRecognitionComplete</span><span class="p">:</span> <span class="p">((</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initializers"></a>
+                <a name="//apple_ref/swift/Section/Initializers" class="dashAnchor"></a>
+                <a href="#/Initializers">
+                  <h3 class="section-name">Initializers</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18SwiftyTesseractRTE14RealTimeEngineC06swiftyB018desiredReliability13cameraQuality21onRecognitionCompleteAC0aB0AHC_AA0mI0OSo22AVCaptureSessionPresetaySScSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(swiftyTesseract:desiredReliability:cameraQuality:onRecognitionComplete:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SwiftyTesseractRTE14RealTimeEngineC06swiftyB018desiredReliability13cameraQuality21onRecognitionCompleteAC0aB0AHC_AA0mI0OSo22AVCaptureSessionPresetaySScSgtcfc">init(swiftyTesseract:desiredReliability:cameraQuality:onRecognitionComplete:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Primary Initializer - Uses SwiftyTesseractRTE defaults</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">swiftyTesseract</span><span class="p">:</span> <span class="kt">SwiftyTesseract</span><span class="p">,</span>
+                        <span class="nv">desiredReliability</span><span class="p">:</span> <span class="kt"><a href="../Enums/RecognitionReliability.html">RecognitionReliability</a></span><span class="p">,</span>
+                        <span class="nv">cameraQuality</span><span class="p">:</span> <span class="kt">AVCaptureSession</span><span class="o">.</span><span class="kt">Preset</span> <span class="o">=</span> <span class="o">.</span><span class="n">medium</span><span class="p">,</span>
+                        <span class="nv">onRecognitionComplete</span><span class="p">:</span> <span class="p">((</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>swiftyTesseract</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Instance of SwiftyTesseract</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>desiredReliability</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The desired reliability of the recognition results.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cameraQuality</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The desired camera quality output to be seen by the end user. The default is <code>.medium</code>.
+Anything higher than <code>.medium</code> has no impact on recognition reliability</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>onRecognitionComplete</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Action to be performed after successful recognition</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18SwiftyTesseractRTE14RealTimeEngineC06swiftyB018desiredReliability14imageProcessor13cameraQuality21onRecognitionCompleteAC0aB0AIC_AA0oI0OAA08AVSampleK0_pSo22AVCaptureSessionPresetaySScSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(swiftyTesseract:desiredReliability:imageProcessor:cameraQuality:onRecognitionComplete:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SwiftyTesseractRTE14RealTimeEngineC06swiftyB018desiredReliability14imageProcessor13cameraQuality21onRecognitionCompleteAC0aB0AIC_AA0oI0OAA08AVSampleK0_pSo22AVCaptureSessionPresetaySScSgtcfc">init(swiftyTesseract:desiredReliability:imageProcessor:cameraQuality:onRecognitionComplete:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">swiftyTesseract</span><span class="p">:</span> <span class="kt">SwiftyTesseract</span><span class="p">,</span>
+                        <span class="nv">desiredReliability</span><span class="p">:</span> <span class="kt"><a href="../Enums/RecognitionReliability.html">RecognitionReliability</a></span><span class="p">,</span>
+                        <span class="nv">imageProcessor</span><span class="p">:</span> <span class="kt"><a href="../Protocols/AVSampleProcessor.html">AVSampleProcessor</a></span><span class="p">,</span>
+                        <span class="nv">cameraQuality</span><span class="p">:</span> <span class="kt">AVCaptureSession</span><span class="o">.</span><span class="kt">Preset</span> <span class="o">=</span> <span class="o">.</span><span class="n">medium</span><span class="p">,</span>
+                        <span class="nv">onRecognitionComplete</span><span class="p">:</span> <span class="p">((</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>swiftyTesseract</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Instance of SwiftyTesseract</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>desiredReliability</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The desired reliability of the recognition results.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>imageProcessor</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Performs conversion and processing from <code>CMSampleBuffer</code> to <code>UIImage</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cameraQuality</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The desired camera quality output to be seen by the end user. The default is .medium.
+                Anything higher than .medium has no impact on recognition reliability</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>onRecognitionComplete</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Action to be performed after successful recognition</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18SwiftyTesseractRTE14RealTimeEngineC06swiftyB018desiredReliability9avManager21onRecognitionCompleteAC0aB0AHC_AA0mI0OAA9AVManager_pySScSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(swiftyTesseract:desiredReliability:avManager:onRecognitionComplete:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SwiftyTesseractRTE14RealTimeEngineC06swiftyB018desiredReliability9avManager21onRecognitionCompleteAC0aB0AHC_AA0mI0OAA9AVManager_pySScSgtcfc">init(swiftyTesseract:desiredReliability:avManager:onRecognitionComplete:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">swiftyTesseract</span><span class="p">:</span> <span class="kt">SwiftyTesseract</span><span class="p">,</span>
+                        <span class="nv">desiredReliability</span><span class="p">:</span> <span class="kt"><a href="../Enums/RecognitionReliability.html">RecognitionReliability</a></span><span class="p">,</span>
+                        <span class="nv">avManager</span><span class="p">:</span> <span class="kt"><a href="../Protocols/AVManager.html">AVManager</a></span><span class="p">,</span>
+                        <span class="nv">onRecognitionComplete</span><span class="p">:</span> <span class="p">((</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>swiftyTesseract</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Instance of SwiftyTesseract</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>desiredReliability</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The desired reliability of the recognition results.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>avManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Manages the AVCaptureSession</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>onRecognitionComplete</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Action to be performed after successful recognition</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18SwiftyTesseractRTE14RealTimeEngineC06swiftyB018desiredReliability14imageProcessor9avManager21onRecognitionCompleteAC0aB0AIC_AA0oI0OAA08AVSampleK0_pAA9AVManager_pySScSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(swiftyTesseract:desiredReliability:imageProcessor:avManager:onRecognitionComplete:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SwiftyTesseractRTE14RealTimeEngineC06swiftyB018desiredReliability14imageProcessor9avManager21onRecognitionCompleteAC0aB0AIC_AA0oI0OAA08AVSampleK0_pAA9AVManager_pySScSgtcfc">init(swiftyTesseract:desiredReliability:imageProcessor:avManager:onRecognitionComplete:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">swiftyTesseract</span><span class="p">:</span> <span class="kt">SwiftyTesseract</span><span class="p">,</span>
+                        <span class="nv">desiredReliability</span><span class="p">:</span> <span class="kt"><a href="../Enums/RecognitionReliability.html">RecognitionReliability</a></span><span class="p">,</span>
+                        <span class="nv">imageProcessor</span><span class="p">:</span> <span class="kt"><a href="../Protocols/AVSampleProcessor.html">AVSampleProcessor</a></span><span class="p">,</span>
+                        <span class="nv">avManager</span><span class="p">:</span> <span class="kt"><a href="../Protocols/AVManager.html">AVManager</a></span><span class="p">,</span>
+                        <span class="nv">onRecognitionComplete</span><span class="p">:</span> <span class="p">((</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>swiftyTesseract</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Instance of SwiftyTesseract</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>desiredReliability</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The desired reliability of the recognition results.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>imageProcessor</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Performs conversion and processing from <code>CMSampleBuffer</code> to <code>UIImage</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>avManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Manages the AVCaptureSession</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>onRecognitionComplete</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Action to be performed after successful recognition</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Public%20functions"></a>
+                <a name="//apple_ref/swift/Section/Public functions" class="dashAnchor"></a>
+                <a href="#/Public%20functions">
+                  <h3 class="section-name">Public functions</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18SwiftyTesseractRTE14RealTimeEngineC11stopPreviewyyF"></a>
+                    <a name="//apple_ref/swift/Method/stopPreview()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SwiftyTesseractRTE14RealTimeEngineC11stopPreviewyyF">stopPreview()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Stops the camera preview</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">stopPreview</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18SwiftyTesseractRTE14RealTimeEngineC12startPreviewyyF"></a>
+                    <a name="//apple_ref/swift/Method/startPreview()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SwiftyTesseractRTE14RealTimeEngineC12startPreviewyyF">startPreview()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Restarts the camera preview</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">startPreview</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18SwiftyTesseractRTE14RealTimeEngineC16bindPreviewLayer2toySo6UIViewC_tF"></a>
+                    <a name="//apple_ref/swift/Method/bindPreviewLayer(to:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18SwiftyTesseractRTE14RealTimeEngineC16bindPreviewLayer2toySo6UIViewC_tF">bindPreviewLayer(to:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Binds SwiftyTesseractRTE AVCaptureVideoPreviewLayer to UIView.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">bindPreviewLayer</span><span class="p">(</span><span class="n">to</span> <span class="nv">view</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>view</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The view to present the live preview</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@SwiftyTesseractRTE@objc(cs)RealTimeEngine(im)captureOutput:didOutputSampleBuffer:fromConnection:"></a>
+                    <a name="//apple_ref/swift/Method/captureOutput(_:didOutput:from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@SwiftyTesseractRTE@objc(cs)RealTimeEngine(im)captureOutput:didOutputSampleBuffer:fromConnection:">captureOutput(_:didOutput:from:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Provides conformance to <code>AVCaptureVideoDataOutputSampleBufferDelegate</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">captureOutput</span><span class="p">(</span><span class="n">_</span> <span class="nv">output</span><span class="p">:</span> <span class="kt">AVCaptureOutput</span><span class="p">,</span> <span class="n">didOutput</span> <span class="nv">sampleBuffer</span><span class="p">:</span> <span class="kt">CMSampleBuffer</span><span class="p">,</span> <span class="n">from</span> <span class="nv">connection</span><span class="p">:</span> <span class="kt">AVCaptureConnection</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>output</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code>AVCaptureOutput</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sampleBuffer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code>CMSampleBuffer</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>connection</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code>AVCaptureConnection</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external">Steven Sherry</a>. All rights reserved. (Last updated: 2018-10-21)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

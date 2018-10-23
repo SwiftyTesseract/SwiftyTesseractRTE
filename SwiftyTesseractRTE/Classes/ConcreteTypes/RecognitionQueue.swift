@@ -10,13 +10,9 @@ struct RecognitionQueue<T: Hashable> {
   private var values: [T]
   
   let size: Int
-  
-  var count: Int {
-    return values.count
-  }
-  
+
   var allValuesMatch: Bool {
-    guard size == count else { return false }
+    guard size == values.count else { return false }
     return Set(values).count == 1
   }
   
@@ -28,7 +24,7 @@ struct RecognitionQueue<T: Hashable> {
   mutating func enqueue(_ value: T) {
     values.append(value)
     if values.count > size {
-      values.remove(at: 0)
+      dequeue()
     }
   }
   
@@ -46,6 +42,6 @@ struct RecognitionQueue<T: Hashable> {
 
 extension RecognitionQueue {
   init(desiredReliability: RecognitionReliability) {
-    self.init(maxElements: desiredReliability.rawValue)
+    self.init(maxElements: desiredReliability.numberOfResults)
   }
 }

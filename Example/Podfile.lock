@@ -1,24 +1,20 @@
 PODS:
-  - SwiftyTesseract (1.1.1)
-  - SwiftyTesseractRTE (1.0.4):
-    - SwiftyTesseract (~> 1.0)
+  - SwiftyTesseract (2.0.0)
+  - SwiftyTesseractRTE (2.0.0):
+    - SwiftyTesseract (~> 2.0)
 
 DEPENDENCIES:
-  - SwiftyTesseract (~> 1.0)
+  - SwiftyTesseract (~> 2.0)
   - SwiftyTesseractRTE (from `../`)
-
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - SwiftyTesseract
 
 EXTERNAL SOURCES:
   SwiftyTesseractRTE:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
-  SwiftyTesseract: 3ad54738aac589e687f4ad6cdd9ac5e6655f7166
-  SwiftyTesseractRTE: 6e347c1c075f38c4822e8d5b4a0b084520949c25
+  SwiftyTesseract: 9a7e7df8b89c56d732a58c5fcf2e79c35d1e88c9
+  SwiftyTesseractRTE: 118628e808ca94997fd60699e2a6faa893ebf328
 
-PODFILE CHECKSUM: cdcd12312efe284e734e0b07194005212e8a6367
+PODFILE CHECKSUM: 7ade0a9672f40b7a6bcc6f14fcd843a27150399e
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.4.0

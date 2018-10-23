@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     }
   }
   
-  var engine: SwiftyTesseractRTE!
+  var engine: RealTimeEngine!
   var excludeLayer: CAShapeLayer!
   var flashlightButton: UIBarButtonItem!
   var recognitionButton: UIButton!
@@ -41,9 +41,8 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     
     // MARK: - UI Setup
-    
     let navigationBar = navigationController?.navigationBar
-    let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+    let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     
     if #available(iOS 11.0, *) {
       navigationBar?.prefersLargeTitles = true
@@ -95,17 +94,22 @@ class ViewController: UIViewController {
     regionOfInterest.backgroundColor = .clear
     
     excludeLayer = CAShapeLayer()
-    excludeLayer.fillRule = kCAFillRuleEvenOdd
+    excludeLayer.fillRule = .evenOdd
     excludeLayer.fillColor = UIColor.black.cgColor
     excludeLayer.opacity = 0.7
     
-    // SwiftyTesseractRTE Setup
+    // RealTimeEngine Setup
     
     let swiftyTesseract = SwiftyTesseract(language: .english)
-    engine = SwiftyTesseractRTE(swiftyTesseract: swiftyTesseract, desiredReliability: .verifiable)
-    engine.recognitionIsActive = false
-    engine.delegate = self
+    engine = RealTimeEngine(swiftyTesseract: swiftyTesseract, desiredReliability: .verifiable) { [weak self] recognizedString in
+      AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+      DispatchQueue.main.async { 
+        self?.recognitionLabel.text = recognizedString
+      }
+      self?.recognitionIsRunning = false
+    }
     
+    engine.recognitionIsActive = false
     engine.startPreview()
   }
   
@@ -171,24 +175,3 @@ class ViewController: UIViewController {
     flashlightButton.title = flashlightButtonTitle
   }
 }
-
-extension ViewController: SwiftyTesseractRTEDelegate {
-  
-  func onRecognitionComplete(_ recognizedString: String) {
-    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-    DispatchQueue.main.async { [weak self] in
-      self?.recognitionLabel.text = recognizedString
-    }
-    recognitionIsRunning = false
-  }
-  
-}
-
-extension Bool {
-  
-  mutating func toggle() {
-    self = !self
-  }
-  
-}
-
