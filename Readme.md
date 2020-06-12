@@ -119,10 +119,10 @@ $ pod install
 ```
 
 ## Setting Up SwiftyTesseract for Use in SwiftyTesseractRTE
-See SwiftyTesseract's [Additional Configuration](https://github.com/SwiftyTesseract/SwiftyTesseract/blob/master/Readme.md#additional-configuration) section on properly setting up SwiftyTesseract to be utilized in your project.
+See SwiftyTesseract's [Additional Configuration](https://github.com/SwiftyTesseract/SwiftyTesseract/blob/master/README.md#additional-configuration) section on properly setting up SwiftyTesseract to be utilized in your project.
 
 ## Documentation
 Official documentation for SwiftyTesseractRTE can be found [here](https://swiftytesseract.github.io/SwiftyTesseractRTE/)
 
 # Contributions Welcome
-Contributions are always welcome! Please refer to [Contributing to SwiftyTesseractRTE](https://github.com/SwiftyTesseract/SwiftyTesseractRTE/blob/master/Contributions.md) for the full guidelines on creating issues and opening pull requests to the project.
+Contributions are always welcome! Please refer to [Contributing to SwiftyTesseractRTE](https://github.com/SwiftyTesseract/SwiftyTesseractRTE/blob/master/CONTRIBUTING.md) for the full guidelines on creating issues and opening pull requests to the project.
